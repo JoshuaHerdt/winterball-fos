@@ -79,7 +79,7 @@ main { position: relative; z-index: 1; overflow-x: clip; }
 [data-panel] { padding-block: 56px 120px; outline: none; }
 [data-panel].enter .rise { animation: rise .9s cubic-bezier(.2, .7, .2, 1) both; }
 [data-panel].enter .rise.d1 { animation-delay: .08s; } [data-panel].enter .rise.d2 { animation-delay: .16s; } [data-panel].enter .rise.d3 { animation-delay: .24s; } [data-panel].enter .rise.d4 { animation-delay: .32s; }
-@keyframes rise { from { opacity: .001; transform: translateY(18px); filter: blur(5px); } }
+@keyframes rise { from { opacity: .001; transform: translateY(18px); } }
 .eyebrow { font: 500 12px/1 var(--f-body); letter-spacing: .32em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 14px; margin: 0; }
 .eyebrow::before { content: ""; width: 36px; height: 1px; background: var(--gold); }
 .h2 { font: italic 500 clamp(40px, 6vw, 72px)/1.02 var(--f-display); letter-spacing: -.02em; margin: 18px 0 14px; text-wrap: balance; }
@@ -101,11 +101,12 @@ main { position: relative; z-index: 1; overflow-x: clip; }
 .hero .eyebrow { justify-content: center; }
 .hero .eyebrow::after { content: ""; width: 36px; height: 1px; background: var(--gold); }
 .title { margin: 24px 0 0; font-family: var(--f-display); font-weight: 400; line-height: .86; letter-spacing: -.035em; }
-.title .w { position: relative; display: inline-block; font-style: italic; font-size: clamp(72px, 15vw, 214px); padding: 0 .08em; background: linear-gradient(100deg, #b8873f 0%, var(--gold) 25%, #fff2cf 46%, var(--gold) 62%, #a87a37 85%, var(--gold-hi) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 10px 40px rgba(226, 182, 107, .28)); animation: reveal 1.8s cubic-bezier(.65, 0, .2, 1) both .1s; }
-.title .w::after { content: attr(data-text); position: absolute; inset: 0; padding: 0 .08em; background: linear-gradient(100deg, transparent 42%, rgba(255, 252, 240, .95) 50%, transparent 58%); background-size: 260% 100%; background-position: var(--sx, 130%) 0; -webkit-background-clip: text; background-clip: text; color: transparent; transition: background-position .5s ease-out; animation: sweep 7s ease-in-out 2s infinite; }
-html.pointing .title .w::after { animation: none; }
-@keyframes sweep { 0%, 70% { background-position: 130% 0; } 100% { background-position: -30% 0; } }
-@keyframes reveal { from { clip-path: inset(-20% 100% -20% 0); filter: blur(10px) drop-shadow(0 10px 40px rgba(226, 182, 107, 0)); } to { clip-path: inset(-20% -5% -20% 0); } }
+.title { filter: drop-shadow(0 10px 36px rgba(226, 182, 107, .22)); }
+.title .w { position: relative; display: inline-block; font-style: italic; font-size: clamp(72px, 15vw, 214px); padding: 0 .08em; background: linear-gradient(100deg, #b8873f 0%, var(--gold) 22%, #fff2cf 42%, var(--gold) 58%, #a87a37 80%, var(--gold-hi) 100%); background-size: 220% 100%; background-position: var(--sx, 30%) 0; -webkit-background-clip: text; background-clip: text; color: transparent; transition: background-position .6s ease-out; animation: reveal 1.3s cubic-bezier(.6, 0, .2, 1) both .1s, sheen 8s ease-in-out 1.6s infinite alternate; }
+html.pointing .title .w { animation: none; }
+/* Einblenden ohne Unschärfe: nur ein sauberer Wisch von links nach rechts */
+@keyframes reveal { from { clip-path: inset(-25% 100% -25% -5%); opacity: .2; } to { clip-path: inset(-25% -5% -25% -5%); opacity: 1; } }
+@keyframes sheen { from { background-position: 0% 0; } to { background-position: 100% 0; } }
 .title .y { display: block; font-size: clamp(22px, 3vw, 34px); font-weight: 500; letter-spacing: .6em; margin-top: 16px; color: var(--snow); padding-left: .6em; font-variant-numeric: lining-nums; }
 .hero .lead { margin: 24px auto 0; text-align: center; font-size: 19px; max-width: 46ch; color: #c3cce0; }
 .cta { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-top: 32px; }
@@ -1100,7 +1101,7 @@ html.sheet-open{overflow:hidden}
     const dx = e.clientX / innerWidth - .5;
     windT = dx * 1.6;
     document.documentElement.classList.add("pointing");
-    title.style.setProperty("--sx", (130 - (e.clientX / innerWidth) * 160).toFixed(1) + "%");
+    title.style.setProperty("--sx", (100 - (e.clientX / innerWidth) * 100).toFixed(1) + "%");
     layers.forEach((g) => g.setAttribute("transform", `translate(${(-dx * g.dataset.depth).toFixed(1)} 0)`));
   });
 })();
