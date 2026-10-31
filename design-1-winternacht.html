@@ -1009,8 +1009,7 @@ html.sheet-open{overflow:hidden}
     name = alias[name] || name;
     if (!tabs.includes(name)) name = "start";
     const apply = () => { show(name); if (user) window.scrollTo(0, 0); };
-    if (user && document.startViewTransition && !still && document.documentElement.dataset.tab !== name) document.startViewTransition(apply);
-    else apply();
+    apply();
     if (user) try { history.replaceState(null, "", "#" + name); } catch {}
     if (focus) setTimeout(() => {
       const card = $(".ev--" + focus);
@@ -1018,14 +1017,15 @@ html.sheet-open{overflow:hidden}
     }, 360);
   }
   document.addEventListener("click", (e) => {
+    // <html data-tab="…"> merkt sich nur den aktiven Reiter und darf hier nicht zählen
     const t = e.target.closest("[data-tab],[data-goto]");
-    if (!t || sheet.contains(t)) return;
+    if (!t || t === document.documentElement || sheet.contains(t)) return;
     e.preventDefault();
     go_(t.dataset.tab || t.dataset.goto, true, t.dataset.focus);
   });
   document.addEventListener("keydown", (e) => {
     const t = e.target.closest && e.target.closest("[data-tab]");
-    if (!t || !["ArrowLeft", "ArrowRight", "Home", "End"].includes(e.key)) return;
+    if (!t || t === document.documentElement || !["ArrowLeft", "ArrowRight", "Home", "End"].includes(e.key)) return;
     const all = $$("[data-tab]", t.parentElement), i = all.indexOf(t);
     const n = e.key === "Home" ? 0 : e.key === "End" ? all.length - 1 : (i + (e.key === "ArrowRight" ? 1 : -1) + all.length) % all.length;
     all[n].focus(); go_(all[n].dataset.tab, true); e.preventDefault();
