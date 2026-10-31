@@ -537,6 +537,7 @@ const CONFIG = {
   events: [
     {
       id: "winterball",
+      seite: "winterball/",                        // Unterseite dieses Events (relativ zur Startseite)
       name: "Winterball",
       jahr: "2026",
       kicker: "Die Ballnacht im Dezember",
@@ -568,6 +569,7 @@ const CONFIG = {
     },
     {
       id: "abiball",
+      seite: "abiball/",
       name: "Abiball",
       jahr: "2027",
       kicker: "Für den Abschlussjahrgang 2027",
@@ -642,6 +644,13 @@ const CONFIG = {
   const enc = encodeURIComponent;
   const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const fine = matchMedia("(pointer: fine)").matches;
+  // Eine Event-Seite setzt vorher window.WB_ONLY = "winterball" o. ä. und zeigt dann nur dieses Event
+  const ALL = CONFIG.events.slice();
+  if (window.WB_ONLY) CONFIG.events = CONFIG.events.filter((e) => e.id === window.WB_ONLY);
+  const single = CONFIG.events.length === 1;
+  // Teilen-Links zeigen auf die Seite, auf der man gerade ist (falls sie richtig gehostet ist)
+  const pageUrl = /^https?:$/.test(location.protocol) && !/claude|localhost|127\.0\.0\.1/.test(location.hostname)
+    ? location.origin + location.pathname : CONFIG.seitenUrl;
   const evById = (id) => CONFIG.events.find((e) => e.id === id);
   const urlOf = (ev) => (ev && ev.ticketUrl) || CONFIG.ticketUrl;
   const host = (u) => { try { return new URL(u).host; } catch { return u; } };
@@ -677,6 +686,7 @@ html.sheet-open{overflow:hidden}
   .sheet.closing .sheet-in{animation-name:wb-sheet-down}
   .sheet-evs{grid-template-columns:1fr 1fr}
   .sheet-ev{min-width:0}
+  .sheet-go{position:sticky;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:3;box-shadow:0 10px 30px -6px rgba(0,0,0,.35)}
 }
 @keyframes wb-sheet-up{from{transform:translateY(100%)}}
 @keyframes wb-sheet-down{to{transform:translateY(100%)}}
@@ -720,8 +730,8 @@ html.sheet-open{overflow:hidden}
     "&text=" + enc(`${ev.name} ${ev.jahr} · ${CONFIG.schule}`) +
     "&dates=" + fmt(ev.start) + "/" + fmt(ev.ende || ev.start) + "&ctz=Europe/Berlin" +
     "&location=" + enc(`${plain(ev.ort)}, ${ev.ortZusatz}`) +
-    "&details=" + enc(`Tickets: ${CONFIG.seitenUrl}`);
-  const waUrl = (ev) => "https://wa.me/?text=" + enc(`Kommst du mit zum ${ev.name} ${ev.jahr}? ${ev.datumText}. Tickets gibt's hier: ${CONFIG.seitenUrl}`);
+    "&details=" + enc(`Tickets: ${pageUrl}`);
+  const waUrl = (ev) => "https://wa.me/?text=" + enc(`Kommst du mit zum ${ev.name} ${ev.jahr}? ${ev.datumText}. Tickets gibt's hier: ${pageUrl}`);
   const quota = (ev) => {
     if (!ev || !ev.kontingent) return "";
     const { gesamt, verkauft } = ev.kontingent, q = Math.min(1, verkauft / gesamt), frei = Math.max(0, gesamt - verkauft);
@@ -795,6 +805,7 @@ html.sheet-open{overflow:hidden}
     sw.addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) showAblauf(b.dataset.ev); });
   }
   showAblauf(CONFIG.events[0].id);
+  if (sw && single) sw.hidden = true;
   const tips = $("#dresscode-tips");
   if (tips) tips.innerHTML = CONFIG.dresscodeTipps.map(([k, v]) => `<li><b>${esc(k)}</b><span>${esc(v)}</span></li>`).join("");
   const faq = $("#faq");
@@ -817,7 +828,7 @@ html.sheet-open{overflow:hidden}
   }
   document.addEventListener("click", (e) => {
     const m = e.target.closest("[data-copy-mail]"); if (m) copy(CONFIG.mail, m, $("[data-mail-text]"));
-    const l = e.target.closest("[data-copy-link]"); if (l) copy(CONFIG.seitenUrl, l);
+    const l = e.target.closest("[data-copy-link]"); if (l) copy(pageUrl, l);
   });
 
   /* ---- Countdown mit rollenden Ziffern ---- */
@@ -865,6 +876,7 @@ html.sheet-open{overflow:hidden}
         g.save(); g.translate(p.x, p.y); g.rotate(p.rot);
         if (shape === "circle") { g.beginPath(); g.arc(0, 0, p.r * .5, 0, 7); g.fill(); }
         else if (shape === "flake") { g.lineWidth = 1.5; g.beginPath(); for (let k = 0; k < 3; k++) { g.rotate(Math.PI / 3); g.moveTo(-p.r, 0); g.lineTo(p.r, 0); } g.stroke(); }
+        else if (shape === "cap") { const s = p.r * 1.3; g.beginPath(); g.moveTo(0, -s * .5); g.lineTo(s, 0); g.lineTo(0, s * .5); g.lineTo(-s, 0); g.closePath(); g.fill(); g.fillRect(-s * .45, 0, s * .9, s * .55); g.fillRect(s * .8, 0, s * .12, s * .7); }
         else if (shape === "spark") { g.beginPath(); g.moveTo(0, -p.r); g.lineTo(p.r * .28, 0); g.lineTo(0, p.r); g.lineTo(-p.r * .28, 0); g.closePath(); g.fill(); }
         else { g.scale(1, Math.cos(p.w)); g.fillRect(-p.r / 2, -p.r / 4, p.r, p.r / 2); }
         g.restore();
@@ -907,6 +919,10 @@ html.sheet-open{overflow:hidden}
     </div>
   </div>`;
   document.body.appendChild(sheet);
+  if (single) {
+    $(".sheet-evs", sheet).hidden = true;
+    $("#buy-title", sheet).textContent = `Dein Ticket für den ${CONFIG.events[0].name}`;
+  }
   const detail = $(".sheet-detail", sheet), go = $(".sheet-go", sheet);
   let current = live;
   function pick(id) {
@@ -1008,7 +1024,7 @@ html.sheet-open{overflow:hidden}
   });
   window.addEventListener("hashchange", () => { const h = location.hash.slice(1); if (h === "kaufen") openSheet(); else go_(h); });
 
-  window.WB = { burst, openSheet, closeSheet, config: CONFIG, next, live, still, fine };
+  window.WB = { burst, openSheet, closeSheet, config: CONFIG, all: ALL, next, live, still, fine, esc, ph, calUrl, pageUrl };
   const h0 = location.hash.slice(1);
   go_(h0 === "kaufen" ? "start" : h0 || "start");
   if (h0 === "kaufen") setTimeout(() => openSheet(), 300);
