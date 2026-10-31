@@ -1,0 +1,778 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%231c4587%22%2F%3E%3Crect%20y%3D%2254%22%20width%3D%2264%22%20height%3D%2210%22%20fill%3D%22%23ef9216%22%2F%3E%3Ctext%20x%3D%2232%22%20y%3D%2238%22%20font-family%3D%22Arial%2CHelvetica%2Csans-serif%22%20font-size%3D%2220%22%20font-weight%3D%22700%22%20fill%3D%22%23fff%22%20text-anchor%3D%22middle%22%3EFOS%3C%2Ftext%3E%3C%2Fsvg%3E">
+<meta name="theme-color" content="#1c4587">
+<script>window.WB_BASE = "../";</script>
+<title>Impressum · Events FOS Holzkirchen</title>
+<meta name="description" content="Impressum der Event-Website der FOS Holzkirchen.">
+<link rel="stylesheet" href="../fonts/f-c9660de5.css">
+<style>
+/* Layout: ruhige Textseite im Stil der Event-Startseite. Schmale Lesespalte, klare Abschnitte,
+   ein Inhaltsverzeichnis an der Seite (auf dem Desktop), Hinweis-Box für das Wichtigste. */
+:root {
+  --paper: #fbfcfd;
+  --tint: #eef3f9;
+  --ink: #15202d;
+  --ink-2: #4c5869;
+  --ink-3: #8592a2;
+  --line: #e1e6ed;
+  --blue: #1c4587;
+  --blue-hi: #2a5bb0;
+  --orange: #ef9216;
+  --f-serif: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --f-sans: "Hanken Grotesk", "Helvetica Neue", system-ui, sans-serif;
+  --burst: #1c4587, #ef9216, #8592a2;
+  --burst-shape: circle;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+body { background: var(--paper); color: var(--ink); font: 400 16px/1.7 var(--f-sans); -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 60; background: var(--paper); }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); }
+a { color: var(--blue); text-underline-offset: 3px; }
+a:hover { color: var(--blue-hi); }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 4px; }
+mark.ph { background: #fff4e0; color: inherit; border-bottom: 1px dashed var(--orange); padding: 0 .2em; border-radius: 2px; }
+.btn { appearance: none; border: 0; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; font: 600 14px/1 var(--f-sans); padding: 11px 18px; border-radius: 999px; background: var(--blue); color: #fff; transition: background .2s; }
+.btn:hover { background: var(--blue-hi); color: #fff; }
+
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: rgba(251, 252, 253, .94); border-bottom: 1px solid var(--line); }
+.top .wrap { height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
+.mark { width: 34px; height: 34px; border-radius: 9px; background: var(--blue); color: #fff; display: grid; place-items: center; font: 600 11px/1 var(--f-sans); letter-spacing: .04em; position: relative; overflow: hidden; flex: none; }
+.mark::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 4px; background: var(--orange); }
+.brand b { display: block; font: 600 15px/1.1 var(--f-sans); }
+.brand small { display: block; font-size: 12px; color: var(--ink-3); }
+.top-r { display: flex; align-items: center; gap: 18px; font-size: 14px; }
+.top-r a.back { color: var(--ink-2); text-decoration: none; }
+.top-r a.back:hover { color: var(--ink); }
+
+.page { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 72px; padding-block: 56px 96px; }
+.toc { position: sticky; top: 96px; align-self: start; font-size: 14px; }
+.toc p { margin: 0 0 10px; font: 500 12px/1.3 var(--f-sans); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+.toc ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; border-left: 1px solid var(--line); }
+.toc a { display: block; padding: 2px 0 2px 14px; margin-left: -1px; border-left: 1px solid transparent; color: var(--ink-2); text-decoration: none; }
+.toc a:hover { color: var(--ink); border-color: var(--blue); }
+article { max-width: 68ch; }
+.label { margin: 0; font: 500 12px/1.3 var(--f-sans); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+article h1 { margin: 14px 0 8px; font: 300 clamp(44px, 6vw, 72px)/1 var(--f-serif); letter-spacing: -.025em; }
+.stand { margin: 0 0 36px; color: var(--ink-3); font-size: 14px; }
+.note { padding: 22px 24px; border-radius: 14px; background: var(--tint); margin: 0 0 40px; }
+.note b { display: block; font: 400 22px/1.2 var(--f-serif); margin-bottom: 8px; }
+.note p { margin: 0; color: var(--ink-2); }
+.note ul { margin: 12px 0 0; padding-left: 20px; color: var(--ink-2); }
+.note li + li { margin-top: 4px; }
+article h2 { margin: 44px 0 10px; font: 400 28px/1.15 var(--f-serif); letter-spacing: -.01em; }
+article h3 { margin: 24px 0 6px; font: 600 16px/1.4 var(--f-sans); }
+article p { margin: 0 0 14px; color: var(--ink-2); }
+article ul { color: var(--ink-2); padding-left: 20px; }
+.card { border: 1px solid var(--line); border-radius: 14px; padding: 18px 22px; background: #fff; margin: 0 0 14px; color: var(--ink); }
+.card p { margin: 0; color: var(--ink); }
+.card small { display: block; color: var(--ink-3); font-size: 13px; margin-bottom: 4px; letter-spacing: .04em; }
+
+footer { border-top: 1px solid var(--line); font-size: 14px; color: var(--ink-2); background: #fff; }
+.foot { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; padding-block: 44px 32px; }
+.f-brand { display: flex; gap: 14px; align-items: flex-start; }
+.f-brand p { margin: 0; max-width: 44ch; }
+.f-brand b { display: block; color: var(--ink); font-weight: 600; margin-bottom: 4px; }
+.f-col { display: grid; gap: 8px; align-content: start; }
+.f-col b { font: 500 12px/1.3 var(--f-sans); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 4px; }
+.f-col a, .f-col button { appearance: none; border: 0; background: none; padding: 0; cursor: pointer; font: inherit; color: var(--ink); text-align: left; text-decoration: none; justify-self: start; }
+.f-col a:hover, .f-col button:hover { color: var(--blue); }
+.f-col a[aria-current="page"] { color: var(--blue); font-weight: 600; }
+.f-base { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-block: 18px 28px; border-top: 1px solid var(--line); font-size: 12px; color: var(--ink-3); }
+
+/* Kauf-Fenster (aus dem gemeinsamen Kern) */
+.sheet::backdrop { background: rgba(21, 32, 45, .4); }
+.sheet-in { background: #fff; color: var(--ink); border-radius: 18px; padding: 34px 30px 26px; box-shadow: 0 40px 100px -30px rgba(0, 0, 0, .45); display: grid; }
+.sheet-step { display: grid; gap: 18px; }
+.sheet-x { background: var(--tint) !important; color: var(--ink); }
+.sheet-x svg { width: 18px; height: 18px; }
+.sheet-kicker { margin: 0; font: 500 12px/1.3 var(--f-sans); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+.sheet-title { margin: -8px 0 0; font: 300 34px/1.05 var(--f-serif); letter-spacing: -.02em; }
+.sheet-ev { padding: 14px; border-radius: 12px; border: 1.5px solid var(--line); background: none; }
+.sheet-ev b { font: 400 19px/1.15 var(--f-serif); }
+.sheet-ev span { font-size: 13px; color: var(--ink-3); }
+.sheet-ev em { font-style: normal; font-size: 13px; color: var(--ink-2); }
+.sheet-ev[aria-checked="true"] { border-color: var(--blue); background: var(--tint); }
+.sheet-detail { display: grid; gap: 14px; }
+.sheet-note { margin: 0; font-size: 15px; color: var(--ink-2); }
+.sheet-need p { margin: 0 0 8px; font: 500 11px/1.3 var(--f-sans); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+.sheet-need ul { display: grid; gap: 6px; font-size: 15px; color: var(--ink-2); }
+.sheet-go { width: 100%; padding: 17px; font-size: 16px; }
+.sheet-host { margin: -6px 0 0; display: flex; gap: 8px; align-items: center; justify-content: center; font-size: 13px; color: var(--ink-3); }
+.sheet-done { text-align: center; justify-items: center; }
+.sheet-ok { width: 60px; height: 60px; border-radius: 50%; display: grid; place-items: center; background: var(--blue); color: #fff; }
+.sheet-sub { margin: -6px 0 4px; color: var(--ink-2); }
+.sheet-share { justify-content: center; gap: 18px !important; }
+.chip-s { appearance: none; border: 0; background: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; font: 500 14px var(--f-sans); color: var(--ink); text-decoration: none; }
+
+@media (max-width: 860px) {
+  .page { grid-template-columns: 1fr; gap: 28px; padding-top: 36px; }
+  .toc { position: static; }
+  .toc ol { grid-template-columns: 1fr 1fr; border-left: 0; gap: 4px 16px; }
+  .toc a { padding-left: 0; border-left: 0; }
+  .foot { grid-template-columns: 1fr 1fr; gap: 28px; }
+  .f-brand { grid-column: 1 / -1; }
+}
+@media (max-width: 520px) {
+  .brand small, .top-r a.back { display: none; }
+  .toc ol { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" data-home href="../" aria-label="Events der FOS Holzkirchen, Startseite">
+      <span class="mark" aria-hidden="true">FOS</span>
+      <span><b>Events</b><small>FOS Holzkirchen</small></span>
+    </a>
+    <div class="top-r">
+      <a class="back" data-home href="../"><span aria-hidden="true">←</span> Alle Events</a>
+      <button class="btn" type="button" data-buy>Tickets</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap page">
+  <nav class="toc" aria-label="Inhalt dieser Seite">
+    <p>Inhalt</p>
+    <ol id="toc"></ol>
+  </nav>
+  <article id="doc">
+    <p class="label">Rechtliches</p>
+    <h1>Impressum</h1>
+    <p class="stand">Stand: Oktober 2026</p>
+
+    <div class="note">
+      <b>Ein Projekt von Schüler:innen</b>
+      <p>Diese Website ist ein ehrenamtliches, nicht-kommerzielles Projekt von Schüler:innen der Staatlichen Fachoberschule Holzkirchen. Sie soll den Ticketverkauf für unsere Schulveranstaltungen erleichtern und ist kein offizieller Internetauftritt der Schule. Offizielle Informationen der Schule findest du unter <a href="https://www.fos-holzkirchen.de" target="_blank" rel="noopener">fos-holzkirchen.de</a>.</p>
+    </div>
+
+    <h2>Angaben gemäß § 5 DDG</h2>
+    <div class="card">
+      <small>Anbieter</small>
+      <p><span data-legal="name"></span><br>Winterball-Team der FOS Holzkirchen<br><span data-legal="anschrift"></span></p>
+    </div>
+    <div class="card">
+      <small>Kontakt</small>
+      <p>E-Mail: <span data-legal="mail"></span></p>
+    </div>
+
+    <h2>Verantwortlich für den Inhalt</h2>
+    <p>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV:</p>
+    <div class="card">
+      <p><span data-legal="name"></span><br><span data-legal="anschrift"></span></p>
+    </div>
+
+    <h2>Ticketverkauf</h2>
+    <p>Der Ticketverkauf wird über einen externen Ticketshop abgewickelt: <a data-shop href="#" target="_blank" rel="noopener">Ticketshop</a>. Für Bestellung, Zahlung und Versand der Tickets gelten die dort angegebenen Bedingungen. Diese Website informiert über die Veranstaltungen und leitet zum Ticketshop weiter.</p>
+
+    <h2>Haftung für Inhalte</h2>
+    <p>Wir erstellen die Inhalte dieser Website mit großer Sorgfalt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir trotzdem keine Gewähr übernehmen. Termine, Orte und Abläufe können sich ändern. Maßgeblich sind die jeweils aktuellen Angaben auf dieser Seite und im Ticketshop.</p>
+    <p>Als Anbieter sind wir nach § 7 Abs. 1 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Sobald uns eine Rechtsverletzung bekannt wird, entfernen wir den betreffenden Inhalt umgehend.</p>
+
+    <h2>Haftung für Links</h2>
+    <p>Diese Website enthält Links zu externen Websites, etwa zum Ticketshop oder zur Website der Schule. Auf deren Inhalte haben wir keinen Einfluss, deshalb übernehmen wir dafür keine Gewähr. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter verantwortlich. Zum Zeitpunkt der Verlinkung waren keine Rechtsverstöße erkennbar. Sollten uns Rechtsverletzungen bekannt werden, entfernen wir die betreffenden Links umgehend.</p>
+
+    <h2>Urheberrecht und Bildnachweise</h2>
+    <p>Texte und Gestaltung dieser Website wurden für dieses Projekt erstellt. Eine Weiterverwendung außerhalb der Schule ist nur mit Zustimmung gestattet.</p>
+    <ul>
+      <li>Fotos des Schulgebäudes: Staatliche Fachoberschule Holzkirchen (<a href="https://www.fos-holzkirchen.de" target="_blank" rel="noopener">fos-holzkirchen.de</a>)</li>
+      <li>Fotos vom Abiball 2026: <span data-legal="fotos"></span></li>
+      <li>Schriftarten: Newsreader, Hanken Grotesk, Bodoni Moda und Jost, jeweils unter der SIL Open Font License</li>
+    </ul>
+    <p>Du bist auf einem Foto zu sehen und möchtest, dass es entfernt wird? Melde dich bei uns, wir nehmen es umgehend von der Seite.</p>
+
+  </article>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div class="f-brand">
+      <span class="mark" aria-hidden="true">FOS</span>
+      <p><b>Events · FOS Holzkirchen</b>Ein ehrenamtliches Projekt von Schüler:innen der FOS Holzkirchen, um den Ticketverkauf für unsere Schulveranstaltungen zu erleichtern.</p>
+    </div>
+    <nav class="f-col" aria-label="Events">
+      <b>Events</b>
+      <a href="../winterball/">Winterball 2026</a>
+      <a href="../abiball/">Abiball 2027</a>
+      <a data-home href="../">Alle Events</a>
+      <button type="button" data-buy>Ticketshop</button>
+    </nav>
+    <nav class="f-col" aria-label="Rechtliches">
+      <b>Rechtliches</b>
+      <a data-impressum href="../impressum/">Impressum</a>
+      <a data-datenschutz href="../datenschutz/">Datenschutz</a>
+      <a href="https://www.fos-holzkirchen.de" target="_blank" rel="noopener">fos-holzkirchen.de ↗</a>
+    </nav>
+  </div>
+  <div class="wrap f-base"><span>© 2026 Schüler:innen der FOS Holzkirchen</span><span>Kein offizieller Internetauftritt der Schule</span></div>
+</footer>
+
+<script>
+/* =====================================================================
+   INHALTE – alle Angaben der Website stehen hier an einer Stelle.
+   Werte ändern, danach ./build.sh ausführen.
+   Leere Felder ("") werden auf der Seite automatisch ausgeblendet.
+   Text in [eckigen Klammern] wird als „noch auszufüllen“ markiert angezeigt.
+   ===================================================================== */
+const CONFIG = {
+  schule: "FOS Holzkirchen",
+  schuleVoll: "Staatliche Fachoberschule Holzkirchen",
+  adresse: "Jörg-Hube-Straße 2, 83607 Holzkirchen",
+  team: "Winterball-Team",
+  seitenUrl: "https://joshuaherdt.github.io/winterball-fos/",   // Adresse der Website (für Teilen-Links)
+  ticketUrl: "https://tickets.maximiliangruendinger.de/fos-hoki", // Ticketshop
+  instagram: "",                                   // Instagram-Name ohne @ (leer = ausgeblendet)
+  mail: "",                                        // Kontakt-E-Mail (leer = ausgeblendet)
+  // Angaben für Impressum und Datenschutzerklärung (§ 5 DDG, Art. 13 DSGVO)
+  verantwortlich: {
+    name: "[Name der verantwortlichen Person]",
+    anschrift: "[Straße und Hausnummer, PLZ Ort]",
+    mail: "[E-Mail-Adresse]",
+    fotos: "[Name der Fotografin / des Fotografen]"   // Bildnachweis Abiball-Fotos
+  },
+  events: [
+    {
+      id: "winterball",
+      seite: "winterball/",                        // Unterseite dieses Events (relativ zur Startseite)
+      name: "Winterball",
+      jahr: "2026",
+      kicker: "Die Ballnacht im Dezember",
+      tagline: "Ein Abend in Abendgarderobe, mit Musik, Tanz und dem ganzen Jahrgang.",
+      start: "2026-12-18T17:30:00",                // Einlass
+      ende: null,                                  // Ende noch offen
+      datumText: "Fr, 18. Dezember 2026",
+      datumKurz: "18.12.2026",
+      zeitText: "Einlass ab 17:30 Uhr",
+      ort: "Wird bekannt gegeben",
+      ortZusatz: "",
+      preise: [],                                  // leer = „Alle Preise im Ticketshop“
+      kontingent: null,                            // { gesamt: 300, verkauft: 120 } – nur echte Zahlen
+      status: "live",                              // live | soon | soldout
+      statusText: "Vorverkauf läuft",
+      ticketUrl: null,                             // null = CONFIG.ticketUrl
+      dresscode: "Festlich: Anzug oder Abendkleid",
+      ablauf: [
+        ["17:30", "Einlass"]
+      ]
+    },
+    {
+      id: "abiball",
+      seite: "abiball/",
+      name: "Abiball",
+      jahr: "2027",
+      kicker: "Für den Abschlussjahrgang 2027",
+      tagline: "Den Abschluss feiern, mit Familie, Freund:innen und Lehrkräften.",
+      start: "2027-07-09T00:00:00",
+      ganztags: true,                              // Uhrzeit steht noch nicht fest
+      ende: null,
+      datumText: "Fr, 9. Juli 2027",
+      datumKurz: "09.07.2027",
+      zeitText: "Uhrzeit wird bekannt gegeben",
+      ort: "Wird bekannt gegeben",
+      ortZusatz: "",
+      abimotto: "",                                // Abimotto (leer = ausgeblendet)
+      preise: [],
+      kontingent: null,
+      status: "soon",
+      statusText: "Vorverkauf startet bald",
+      ticketUrl: null,
+      dresscode: "Abendgarderobe",
+      ablauf: []
+    }
+  ],
+  highlights: [
+    ["music", "Musik & Tanz", "Die Tanzfläche gehört euch, den ganzen Abend lang."],
+    ["star", "Abendgarderobe", "Ein Anlass, sich richtig schick zu machen."],
+    ["glass", "Gemeinsam feiern", "Mit Freund:innen, Mitschüler:innen und Lehrkräften."],
+    ["camera", "Erinnerungen", "Ein Abend, über den ihr noch lange redet."]
+  ],
+  schritte: [
+    ["Event wählen", "Winterball oder Abiball: einfach auf „Ticket kaufen“ tippen."],
+    ["Im Ticketshop bezahlen", "Du landest direkt im Ticketshop und bezahlst dort."],
+    ["Ticket vorzeigen", "Dein Ticket kommt per E-Mail. Am Einlass zeigst du es vor."]
+  ],
+  faq: [
+    ["Wie bekomme ich mein Ticket?",
+     "Tipp auf „Ticket kaufen“ und du landest direkt im Ticketshop. Nach dem Kauf bekommst du dein Ticket per E-Mail. Am Einlass zeigst du es auf dem Handy oder ausgedruckt vor."],
+    ["Wo findet das Event statt?",
+     "Den Veranstaltungsort geben wir rechtzeitig vor dem Event hier auf der Seite bekannt."],
+    ["Brauche ich einen Ausweis?",
+     "Ja. Bring bitte einen gültigen Lichtbildausweis mit, er kann am Einlass zusammen mit deinem Ticket kontrolliert werden."],
+    ["Ich bin unter 18. Was muss ich beachten?",
+     "Es gilt das Jugendschutzgesetz. Alle Details zu Einlass und Altersregeln geben wir rechtzeitig vor dem Event bekannt."],
+    ["Darf ich Gäste mitbringen?",
+     "Ob und wie viele Gäste mitkommen dürfen, siehst du beim Ticketkauf im Ticketshop."],
+    ["Kann ich mein Ticket zurückgeben oder weitergeben?",
+     "Es gelten die Bedingungen des Ticketshops. Bei Fragen helfen wir dir gern weiter."]
+  ],
+  dresscodeTipps: [
+    ["Für ihn", "Anzug oder Smoking, gern mit Fliege oder Krawatte."],
+    ["Für sie", "Abendkleid, Cocktailkleid oder ein eleganter Hosenanzug."],
+    ["Bitte nicht", "Freizeitkleidung, Jogginghose oder Sportschuhe."]
+  ]
+};
+
+/* =====================================================================
+   LOGIK – muss für Inhaltsänderungen nicht angefasst werden.
+   ===================================================================== */
+(function () {
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const ph = (t) => esc(t).replace(/\[([^\]]+)\]/g, '<mark class="ph">$1</mark>');
+  const plain = (t) => String(t).replace(/\[([^\]]+)\]/g, "$1");
+  const enc = encodeURIComponent;
+  const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const fine = matchMedia("(pointer: fine)").matches;
+  // Eine Event-Seite setzt vorher window.WB_ONLY = "winterball" o. ä. und zeigt dann nur dieses Event
+  const ALL = CONFIG.events.slice();
+  if (window.WB_ONLY) CONFIG.events = CONFIG.events.filter((e) => e.id === window.WB_ONLY);
+  const single = CONFIG.events.length === 1;
+  // Teilen-Links zeigen auf die Seite, auf der man gerade ist (falls sie richtig gehostet ist)
+  const pageUrl = /^https?:$/.test(location.protocol) && !/claude|localhost|127\.0\.0\.1/.test(location.hostname)
+    ? location.origin + location.pathname : CONFIG.seitenUrl;
+  const evById = (id) => CONFIG.events.find((e) => e.id === id);
+  const urlOf = (ev) => (ev && ev.ticketUrl) || CONFIG.ticketUrl;
+  const host = (u) => { try { return new URL(u).host; } catch { return u; } };
+  const upcoming = CONFIG.events.map((e) => ({ e, t: new Date(e.start).getTime() }))
+    .filter((x) => x.t > Date.now()).sort((a, b) => a.t - b.t);
+  const next = upcoming[0] ? upcoming[0].e : CONFIG.events[0];
+  const nextT = upcoming[0] ? upcoming[0].t : null;
+  const live = CONFIG.events.find((e) => e.status === "live") || next;
+
+  /* ---- Grundgerüst für Kauf-Fenster, Countdown-Ziffern, Kontingent ---- */
+  const base = document.createElement("style");
+  base.textContent = `
+html.sheet-open{overflow:hidden}
+.price-note{margin:0;font-size:15px;line-height:1.5;opacity:.85}
+.ablauf-more{opacity:.6}
+.ablauf-more time{letter-spacing:.1em}
+.sheet{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;background:transparent;color:inherit;overflow-y:auto;overscroll-behavior:contain}
+.sheet[open]{display:flex;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.sheet::backdrop{background:rgba(0,0,0,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.sheet-in{position:relative;width:min(540px,100%);margin:auto;animation:wb-sheet-in .5s cubic-bezier(.2,.85,.2,1) both}
+.sheet.closing .sheet-in{animation:wb-sheet-out .22s ease-in both}
+.sheet-step[hidden]{display:none!important}
+.sheet-evs{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+.sheet-ev{appearance:none;font:inherit;color:inherit;text-align:left;cursor:pointer;display:grid;gap:2px}
+.sheet-x{appearance:none;border:0;cursor:pointer;position:absolute;top:14px;right:14px;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font:inherit;color:inherit;background:transparent}
+.sheet-need ul,.sheet-prices{list-style:none;margin:0;padding:0}
+.sheet-need li{display:flex;gap:10px;align-items:center}
+.sheet-need svg,.sheet-host svg,.sheet-share svg,.ev-cal svg{width:18px;height:18px;flex:none}
+.sheet-share{display:flex;flex-wrap:wrap;gap:8px}
+.sheet-ok svg{width:34px;height:34px}
+@keyframes wb-sheet-in{from{opacity:0;transform:translateY(28px) scale(.97)}}
+@keyframes wb-sheet-out{to{opacity:0;transform:translateY(18px) scale(.98)}}
+@media (max-width:600px){
+  .sheet[open]{padding:0}
+  .sheet-in{width:100%;margin:auto 0 0;border-bottom-left-radius:0!important;border-bottom-right-radius:0!important;padding-bottom:calc(26px + env(safe-area-inset-bottom,0px))!important;animation-name:wb-sheet-up}
+  .sheet.closing .sheet-in{animation-name:wb-sheet-down}
+  .sheet-evs{grid-template-columns:1fr 1fr}
+  .sheet-ev{min-width:0}
+  .sheet-go{position:sticky;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:3;box-shadow:0 10px 30px -6px rgba(0,0,0,.35)}
+}
+@keyframes wb-sheet-up{from{transform:translateY(100%)}}
+@keyframes wb-sheet-down{to{transform:translateY(100%)}}
+.cd-n{display:inline-flex;justify-content:center}
+.cd-n i{display:inline-block;font-style:normal;overflow:hidden}
+.cd-n i.in{animation:wb-digit .55s cubic-bezier(.2,.85,.25,1.15)}
+@keyframes wb-digit{from{transform:translateY(-.6em);opacity:0;filter:blur(3px)}}
+.quota-bar{height:6px;border-radius:9px;overflow:hidden;background:rgba(127,127,127,.22)}
+.quota-bar i{display:block;height:100%;width:calc(var(--q)*100%);border-radius:inherit;background:currentColor;animation:wb-fill 1.6s cubic-bezier(.2,.85,.2,1) .25s both}
+@keyframes wb-fill{from{width:0}}
+.flash{animation:wb-flash 1.4s ease}
+@keyframes wb-flash{30%{box-shadow:0 0 0 4px var(--flash,rgba(255,200,120,.8))}}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.32s}
+@media (prefers-reduced-motion:reduce){.sheet-in,.sheet.closing .sheet-in,.cd-n i.in,.quota-bar i,.flash{animation:none!important}}
+`;
+  document.head.prepend(base);
+
+  /* ---- Icons ---- */
+  const S = (p) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${p}</svg>`;
+  const ICON = {
+    music: S('<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>'),
+    glass: S('<path d="M8 2h8l-1 8a3 3 0 0 1-6 0z"/><path d="M12 13v8M8 21h8"/>'),
+    food: S('<path d="M7 2v20M4 2v6a3 3 0 0 0 6 0V2M18 22V2c-2.5 0-4 3-4 7s1.5 5 4 5"/>'),
+    camera: S('<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7l2-3h4l2 3"/><circle cx="12" cy="13.5" r="3.5"/>'),
+    star: S('<path d="M12 3l2.4 5.6L20 9.2l-4.4 3.9L17 19l-5-3-5 3 1.4-5.9L4 9.2l5.6-.6z"/>'),
+    mail: S('<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>'),
+    card: S('<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/>'),
+    id: S('<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="11" r="2.5"/><path d="M5.5 17c.8-2 2-3 3.5-3s2.7 1 3.5 3M15 9h3M15 13h3"/>'),
+    lock: S('<rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/>'),
+    check: S('<path d="m5 12.5 4.5 4.5L19 7.5"/>'),
+    cal: S('<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M12 13.5v4M10 15.5h4"/>'),
+    chat: S('<path d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1-4.2A8 8 0 1 1 20 12z"/><path d="M9 10h6M9 14h4"/>'),
+    link: S('<path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/>'),
+    x: S('<path d="M6 6l12 12M18 6 6 18"/>')
+  };
+  window.WB_ICON = ICON;
+
+  /* ---- Bausteine ---- */
+  const fmt = (s) => s.replace(/[-:]/g, "").slice(0, 15);
+  const day = (s) => s.slice(0, 10).replace(/-/g, "");
+  const nextDay = (s) => { const d = new Date(s); d.setDate(d.getDate() + 1); return d.getFullYear() + String(d.getMonth() + 1).padStart(2, "0") + String(d.getDate()).padStart(2, "0"); };
+  const ortText = (ev) => [ev.ort, ev.ortZusatz].filter(Boolean).map(plain).join(", ");
+  const calDates = (ev) => ev.ganztags ? day(ev.start) + "/" + nextDay(ev.start) : fmt(ev.start) + "/" + fmt(ev.ende || ev.start);
+  const calUrl = (ev) => "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+    "&text=" + enc(`${ev.name} ${ev.jahr} · ${CONFIG.schule}`) +
+    "&dates=" + calDates(ev) + (ev.ganztags ? "" : "&ctz=Europe/Berlin") +
+    "&location=" + enc(ortText(ev)) +
+    "&details=" + enc(`Infos und Tickets: ${CONFIG.seitenUrl}${ev.seite || ""}`);
+  const ics = (ev) => {
+    const lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//FOS Holzkirchen//Events//DE", "BEGIN:VEVENT",
+      `UID:${ev.id}-${ev.jahr}@fos-holzkirchen-events`, `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, "").slice(0, 15)}Z`];
+    if (ev.ganztags) lines.push(`DTSTART;VALUE=DATE:${day(ev.start)}`, `DTEND;VALUE=DATE:${nextDay(ev.start)}`);
+    else lines.push(`DTSTART;TZID=Europe/Berlin:${fmt(ev.start)}`, `DTEND;TZID=Europe/Berlin:${fmt(ev.ende || ev.start)}`);
+    lines.push(`SUMMARY:${ev.name} ${ev.jahr} · ${CONFIG.schule}`, `LOCATION:${ortText(ev)}`,
+      `DESCRIPTION:Infos und Tickets: ${CONFIG.seitenUrl}${ev.seite || ""}`, "END:VEVENT", "END:VCALENDAR");
+    return URL.createObjectURL(new Blob([lines.join("\r\n")], { type: "text/calendar" }));
+  };
+  const waUrl = (ev) => "https://wa.me/?text=" + enc(`Kommst du mit zum ${ev.name} ${ev.jahr}? ${ev.datumText}. Infos und Tickets: ${CONFIG.seitenUrl}${ev.seite || ""}`);
+  const quota = (ev) => {
+    if (!ev || !ev.kontingent) return "";
+    const { gesamt, verkauft } = ev.kontingent, q = Math.min(1, verkauft / gesamt), frei = Math.max(0, gesamt - verkauft);
+    return `<div class="quota${q >= .8 ? " hot" : ""}" style="--q:${q.toFixed(3)}">
+      <div class="quota-bar" role="progressbar" aria-valuemin="0" aria-valuemax="${gesamt}" aria-valuenow="${verkauft}" aria-label="Verkaufte Tickets"><i></i></div>
+      <p class="quota-txt">${q >= 1 ? "Ausverkauft" : `Noch <b>${frei}</b> von ${gesamt} Tickets frei`}${q >= .8 && q < 1 ? " · <em>bald weg</em>" : ""}</p></div>`;
+  };
+  const prices = (ev, cls) => !ev.preise.length ? `<p class="price-note">Alle Preise und Ticketarten findest du direkt im Ticketshop.</p>` : `<ul class="${cls}">${ev.preise.map((p) =>
+    `<li><span>${esc(p.label)}${p.hinweis ? `<small>${ph(p.hinweis)}</small>` : ""}</span><b>${p.alt ? `<s>${ph(p.alt)}</s> ` : ""}${ph(p.preis)}</b></li>`).join("")}</ul>`;
+  const buyLabel = (ev) => ev.status === "live" ? "Ticket kaufen" : ev.status === "soldout" ? "Ausverkauft" : "Infos zum Vorverkauf";
+
+  /* ---- Event-Karten ---- */
+  const list = $("#events");
+  if (list) list.innerHTML = CONFIG.events.map((ev, i) => `
+    <article class="ev ev--${ev.id}" data-status="${ev.status}" data-glow>
+      <div class="ev-main">
+        <p class="ev-kicker">${esc(ev.kicker)}</p>
+        <h3 class="ev-name">${esc(ev.name)} <span class="ev-year">${esc(ev.jahr)}</span></h3>
+        <p class="ev-tag">${esc(ev.tagline)}</p>
+        <dl class="ev-facts">
+          <div><dt>Datum</dt><dd>${ph(ev.datumText)}</dd></div>
+          <div><dt>Zeit</dt><dd>${ph(ev.zeitText)}</dd></div>
+          <div><dt>Ort</dt><dd>${ph(ev.ort)}${ev.ortZusatz ? `<small>${ph(ev.ortZusatz)}</small>` : ""}</dd></div>
+        </dl>
+      </div>
+      <div class="ev-side">
+        <span class="ev-status">${esc(ev.statusText)}</span>
+        ${prices(ev, "ev-prices")}
+        ${quota(ev)}
+        <div class="ev-actions">
+          <button type="button" class="btn ev-btn" data-buy="${ev.id}">${buyLabel(ev)} <span aria-hidden="true">→</span></button>
+          <a class="ev-cal" href="${calUrl(ev)}" target="_blank" rel="noopener">${ICON.cal}Im Kalender speichern</a>
+        </div>
+        <span class="ev-no">Nr. ${String(i + 1).padStart(2, "0")} · ${esc(ev.jahr)}</span>
+      </div>
+    </article>`).join("");
+
+  /* ---- Start: Highlights, Schritte, Teaser, Fakten ---- */
+  const hl = $("#highlights");
+  if (hl) hl.innerHTML = CONFIG.highlights.map(([ic, t, d]) =>
+    `<li class="hl"><span class="hl-ic">${ICON[ic] || ICON.star}</span><b>${esc(t)}</b><span>${esc(d)}</span></li>`).join("");
+  const st = $("#steps");
+  if (st) st.innerHTML = CONFIG.schritte.map(([t, d], i) =>
+    `<li class="step"><span class="step-n">${i + 1}</span><b>${esc(t)}</b><span>${esc(d)}</span></li>`).join("");
+  const te = $("#teasers");
+  if (te) te.innerHTML = CONFIG.events.map((ev) =>
+    `<a class="teaser" href="#events" data-goto="events" data-focus="${ev.id}" data-status="${ev.status}">
+       <span class="t-txt"><span class="t-name">${esc(ev.name)}</span><span class="t-meta">${esc(ev.datumKurz)} · ${esc(ev.statusText)}</span></span>
+       <span class="t-go" aria-hidden="true">→</span></a>`).join("");
+  // Querverweise auf einer Event-Seite: die anderen Events + zurück zur Startseite.
+  // data-crosslinks="../" = Pfad von dieser Seite zur Startseite
+  $$("[data-crosslinks]").forEach((box) => {
+    const base = box.dataset.crosslinks || "../";
+    const others = ALL.filter((ev) => !CONFIG.events.includes(ev) && ev.seite);
+    box.innerHTML = others.map((ev) =>
+      `<a class="teaser" href="${esc(base + ev.seite)}" data-status="${ev.status}">
+         <span class="t-txt"><span class="t-name">${esc(ev.name)} ${esc(ev.jahr)}</span><span class="t-meta">${esc(ev.datumKurz)} · ${esc(ev.statusText)}</span></span>
+         <span class="t-go" aria-hidden="true">→</span></a>`).join("") +
+      `<a class="teaser" href="${esc(base)}">
+         <span class="t-txt"><span class="t-name">Alle Events</span><span class="t-meta">Startseite der FOS-Events</span></span>
+         <span class="t-go" aria-hidden="true">→</span></a>`;
+  });
+  $$("[data-quota]").forEach((el) => { const ev = el.dataset.quota === "next" ? live : evById(el.dataset.quota); el.innerHTML = quota(ev); el.hidden = !el.innerHTML; });
+  $$("[data-next-name]").forEach((el) => (el.textContent = `${next.name} ${next.jahr}`));
+  $$("[data-next-date]").forEach((el) => (el.textContent = next.datumText));
+  $$("[data-next-time]").forEach((el) => (el.textContent = next.zeitText));
+  $$("[data-next-ort]").forEach((el) => (el.innerHTML = ph(next.ort)));
+  $$("[data-next-from]").forEach((el) => (el.innerHTML = next.preise.length ? "ab " + ph(next.preise[0].preis) : "Im Ticketshop"));
+  $$("[data-days]").forEach((el) => {
+    if (!nextT) { el.hidden = true; return; }
+    const d = Math.floor((nextT - Date.now()) / 864e5);
+    el.textContent = d > 1 ? `noch ${d} Tage` : d === 1 ? "morgen!" : "heute!";
+  });
+
+  /* ---- Ablauf mit Umschalter, Dresscode, FAQ ---- */
+  const sw = $("#ablauf-switch"), ab = $("#ablauf"), dc = $("#dresscode-event");
+  function showAblauf(id) {
+    const ev = evById(id) || CONFIG.events[0];
+    if (sw) $$("button", sw).forEach((b) => b.setAttribute("aria-pressed", b.dataset.ev === ev.id));
+    if (ab) ab.innerHTML = ev.ablauf.map(([t, w]) => `<li><time>${esc(t)}</time><span>${esc(w)}</span></li>`).join("") +
+      `<li class="ablauf-more"><time>…</time><span>Das weitere Programm geben wir rechtzeitig bekannt.</span></li>`;
+    if (dc) dc.innerHTML = `<b>${esc(ev.name)}:</b> ${ph(ev.dresscode)}`;
+  }
+  if (sw) {
+    sw.innerHTML = CONFIG.events.map((e) => `<button type="button" data-ev="${e.id}">${esc(e.name)}</button>`).join("");
+    sw.addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) showAblauf(b.dataset.ev); });
+  }
+  showAblauf(CONFIG.events[0].id);
+  if (sw && single) sw.hidden = true;
+  const tips = $("#dresscode-tips");
+  if (tips) tips.innerHTML = CONFIG.dresscodeTipps.map(([k, v]) => `<li><b>${esc(k)}</b><span>${esc(v)}</span></li>`).join("");
+  const faq = $("#faq");
+  if (faq) faq.innerHTML = CONFIG.faq.map(([q, a], i) =>
+    `<details${i === 0 ? " open" : ""}><summary>${esc(q)}</summary><p>${ph(a)}</p></details>`).join("");
+
+  /* ---- Kontakt & Links ---- */
+  // Elemente mit data-insta / data-mail-… verschwinden, solange die Angabe leer ist.
+  // data-opt="insta" bzw. data-opt="mail" markiert den ganzen Block, der dann mit ausgeblendet wird.
+  $$("[data-insta]").forEach((a) => { a.href = "https://instagram.com/" + CONFIG.instagram; a.target = "_blank"; a.rel = "noopener"; });
+  $$("[data-insta-text]").forEach((el) => (el.textContent = "@" + CONFIG.instagram));
+  $$("[data-mail-text]").forEach((el) => (el.textContent = CONFIG.mail));
+  if (!CONFIG.instagram) $$("[data-opt=insta], [data-insta]").forEach((el) => (el.hidden = true));
+  if (!CONFIG.mail) $$("[data-opt=mail], [data-copy-mail]").forEach((el) => (el.hidden = true));
+  if (CONFIG.instagram) $$("[data-opt=no-insta]").forEach((el) => (el.hidden = true));
+  const BASE = window.WB_BASE || "";
+  $$("[data-home]").forEach((a) => (a.href = BASE || "./"));
+  $$("[data-legal]").forEach((el) => (el.innerHTML = ph(CONFIG.verantwortlich[el.dataset.legal] || "")));
+  $$("[data-address]").forEach((el) => (el.textContent = CONFIG.adresse));
+  $$("[data-impressum]").forEach((a) => (a.href = BASE + "impressum/"));
+  $$("[data-datenschutz]").forEach((a) => (a.href = BASE + "datenschutz/"));
+  $$("[data-share-wa]").forEach((a) => { a.href = waUrl(live); a.target = "_blank"; a.rel = "noopener"; });
+  async function copy(text, btn, sel) {
+    const lbl = btn.querySelector(".lbl") || btn, old = lbl.textContent;
+    try { await navigator.clipboard.writeText(text); lbl.textContent = "Kopiert ✓"; }
+    catch { if (sel) getSelection().selectAllChildren(sel); lbl.textContent = "Markiert, jetzt kopieren"; }
+    setTimeout(() => (lbl.textContent = old), 1800);
+  }
+  document.addEventListener("click", (e) => {
+    const m = e.target.closest("[data-copy-mail]"); if (m) copy(CONFIG.mail, m, $("[data-mail-text]"));
+    const l = e.target.closest("[data-copy-link]"); if (l) copy(pageUrl, l);
+  });
+
+  /* ---- Countdown mit rollenden Ziffern ---- */
+  const cd = { d: $("#cd-d"), h: $("#cd-h"), m: $("#cd-m"), s: $("#cd-s") };
+  Object.values(cd).forEach((el) => el && el.classList.add("cd-n"));
+  function setDigits(el, txt) {
+    const old = el.dataset.v || "";
+    if (old === txt) return;
+    el.dataset.v = txt;
+    el.innerHTML = [...txt].map((c, i) => `<i${old && old.length === txt.length && old[i] !== c ? ' class="in"' : ""}>${c}</i>`).join("");
+  }
+  function tick() {
+    if (!cd.d) return;
+    const r = nextT ? Math.max(0, nextT - Date.now()) / 1000 : 0;
+    setDigits(cd.d, String(Math.floor(r / 86400)));
+    setDigits(cd.h, String(Math.floor(r / 3600) % 24).padStart(2, "0"));
+    setDigits(cd.m, String(Math.floor(r / 60) % 60).padStart(2, "0"));
+    setDigits(cd.s, String(Math.floor(r) % 60).padStart(2, "0"));
+  }
+  tick(); setInterval(tick, 1000);
+
+  /* ---- Konfetti / Funken beim Kauf ---- */
+  function burst(x, y, n = 110) {
+    if (still) return;
+    const cs = getComputedStyle(document.documentElement);
+    const cols = (cs.getPropertyValue("--burst") || "#ffd27a,#ffffff").split(",").map((s) => s.trim()).filter(Boolean);
+    const shape = cs.getPropertyValue("--burst-shape").trim() || "rect";
+    const c = document.createElement("canvas");
+    c.setAttribute("aria-hidden", "true");
+    c.style.cssText = "position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:2147483000";
+    (sheet.open ? sheet : document.body).appendChild(c);
+    const dpr = Math.min(devicePixelRatio || 1, 2), W = innerWidth, H = innerHeight;
+    c.width = W * dpr; c.height = H * dpr;
+    const g = c.getContext("2d"); g.scale(dpr, dpr);
+    const P = Array.from({ length: n }, () => {
+      const a = -Math.PI / 2 + (Math.random() - .5) * Math.PI * 1.5, v = 5 + Math.random() * 11;
+      return { x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v, r: 4 + Math.random() * 6, rot: Math.random() * 6, vr: (Math.random() - .5) * .35, c: cols[Math.random() * cols.length | 0], l: 1, w: Math.random() * 6.3 };
+    });
+    let f = 0;
+    (function loop() {
+      f++; g.clearRect(0, 0, W, H);
+      for (const p of P) {
+        p.vx *= .982; p.vy = p.vy * .982 + .28; p.w += .12; p.x += p.vx + Math.sin(p.w) * .6; p.y += p.vy; p.rot += p.vr; p.l -= .0085;
+        g.globalAlpha = Math.max(0, Math.min(1, p.l * 1.6)); g.fillStyle = g.strokeStyle = p.c;
+        g.save(); g.translate(p.x, p.y); g.rotate(p.rot);
+        if (shape === "circle") { g.beginPath(); g.arc(0, 0, p.r * .5, 0, 7); g.fill(); }
+        else if (shape === "flake") { g.lineWidth = 1.5; g.beginPath(); for (let k = 0; k < 3; k++) { g.rotate(Math.PI / 3); g.moveTo(-p.r, 0); g.lineTo(p.r, 0); } g.stroke(); }
+        else if (shape === "cap") { const s = p.r * 1.3; g.beginPath(); g.moveTo(0, -s * .5); g.lineTo(s, 0); g.lineTo(0, s * .5); g.lineTo(-s, 0); g.closePath(); g.fill(); g.fillRect(-s * .45, 0, s * .9, s * .55); g.fillRect(s * .8, 0, s * .12, s * .7); }
+        else if (shape === "spark") { g.beginPath(); g.moveTo(0, -p.r); g.lineTo(p.r * .28, 0); g.lineTo(0, p.r); g.lineTo(-p.r * .28, 0); g.closePath(); g.fill(); }
+        else { g.scale(1, Math.cos(p.w)); g.fillRect(-p.r / 2, -p.r / 4, p.r, p.r / 2); }
+        g.restore();
+      }
+      if (f < 150) requestAnimationFrame(loop); else c.remove();
+    })();
+  }
+
+  /* ---- Kauf-Fenster ---- */
+  const sheet = document.createElement("dialog");
+  sheet.className = "sheet"; sheet.id = "buy"; sheet.setAttribute("aria-labelledby", "buy-title");
+  sheet.innerHTML = `
+  <div class="sheet-in">
+    <button type="button" class="sheet-x" data-close aria-label="Schließen">${ICON.x}</button>
+    <div class="sheet-step" data-step="pick">
+      <p class="sheet-kicker">Ticket kaufen</p>
+      <h2 class="sheet-title" id="buy-title">Für welchen Abend?</h2>
+      <div class="sheet-evs" role="radiogroup" aria-label="Event wählen">
+        ${CONFIG.events.map((e) => `<button type="button" role="radio" class="sheet-ev" data-pick="${e.id}" data-status="${e.status}" aria-checked="false">
+          <b>${esc(e.name)} ${esc(e.jahr)}</b><span>${esc(e.datumKurz)}</span><em>${esc(e.statusText)}</em></button>`).join("")}
+      </div>
+      <div class="sheet-detail" aria-live="polite"></div>
+      <div class="sheet-need"><p>Das brauchst du</p><ul>
+        <li>${ICON.mail}<span>Eine E-Mail-Adresse für dein Ticket</span></li>
+        <li>${ICON.card}<span>Bezahlung direkt im Ticketshop</span></li>
+        <li>${ICON.id}<span>Deinen Ausweis am Einlass</span></li></ul></div>
+      <a class="btn sheet-go" href="#" target="_blank" rel="noopener"><span class="lbl">Weiter zur Ticketseite</span> <span aria-hidden="true">→</span></a>
+      <p class="sheet-host">${ICON.lock}<span>Weiter zu <b class="sheet-host-name"></b>, dort bezahlst du sicher.</span></p>
+    </div>
+    <div class="sheet-step sheet-done" data-step="done" hidden>
+      <div class="sheet-ok">${ICON.check}</div>
+      <h2 class="sheet-title">Ab zur Ticketseite!</h2>
+      <p class="sheet-sub">Die Ticketseite ist in einem neuen Tab geöffnet. Falls nicht, <a class="sheet-retry" href="#" target="_blank" rel="noopener">tipp hier</a>.</p>
+      <p class="sheet-kicker">Wer kommt mit?</p>
+      <div class="sheet-share">
+        <a class="chip-s sheet-wa" href="#" target="_blank" rel="noopener">${ICON.chat}<span>Per WhatsApp einladen</span></a>
+        <a class="chip-s sheet-cal" href="#" target="_blank" rel="noopener">${ICON.cal}<span>In den Kalender</span></a>
+        <button type="button" class="chip-s" data-copy-link>${ICON.link}<span class="lbl">Link kopieren</span></button>
+      </div>
+    </div>
+  </div>`;
+  document.body.appendChild(sheet);
+  if (single) {
+    $(".sheet-evs", sheet).hidden = true;
+    $("#buy-title", sheet).textContent = `Dein Ticket für den ${CONFIG.events[0].name}`;
+  }
+  const detail = $(".sheet-detail", sheet), go = $(".sheet-go", sheet);
+  let current = live;
+  function pick(id) {
+    const ev = evById(id) || live; current = ev;
+    $$(".sheet-ev", sheet).forEach((b) => b.setAttribute("aria-checked", b.dataset.pick === ev.id));
+    detail.innerHTML = prices(ev, "sheet-prices") + quota(ev) + (ev.status === "soon"
+      ? `<p class="sheet-note">Der Vorverkauf startet bald. Im Ticketshop siehst du, sobald Tickets verfügbar sind${CONFIG.instagram ? `, und auf Instagram (<b>@${esc(CONFIG.instagram)}</b>) sagen wir Bescheid` : ""}.</p>` : "");
+    go.href = urlOf(ev);
+    $(".lbl", go).textContent = ev.status === "live" ? "Weiter zur Ticketseite" : "Ticketseite ansehen";
+    $(".sheet-host-name", sheet).textContent = host(urlOf(ev));
+    $(".sheet-retry", sheet).href = urlOf(ev);
+    $(".sheet-wa", sheet).href = waUrl(ev);
+    $(".sheet-cal", sheet).href = calUrl(ev);
+  }
+  function step(name) { $$(".sheet-step", sheet).forEach((s) => (s.hidden = s.dataset.step !== name)); }
+  async function openSheet(id) {
+    if (window.WB.beforeOpen) await window.WB.beforeOpen(id);
+    pick(id); step("pick");
+    document.documentElement.classList.add("sheet-open");
+    if (sheet.showModal) sheet.showModal(); else sheet.setAttribute("open", "");
+    document.dispatchEvent(new CustomEvent("wb:open", { detail: id }));
+  }
+  function closeSheet() {
+    if (!sheet.open) return;
+    sheet.classList.add("closing");
+    setTimeout(() => {
+      sheet.classList.remove("closing");
+      if (sheet.close) sheet.close(); else sheet.removeAttribute("open");
+    }, still ? 0 : 220);
+  }
+  sheet.addEventListener("close", () => { document.documentElement.classList.remove("sheet-open"); document.dispatchEvent(new CustomEvent("wb:close")); });
+  sheet.addEventListener("cancel", (e) => { e.preventDefault(); closeSheet(); });
+  sheet.addEventListener("click", (e) => {
+    if (e.target === sheet || e.target.closest("[data-close]")) return closeSheet();
+    const p = e.target.closest("[data-pick]"); if (p) pick(p.dataset.pick);
+  });
+  go.addEventListener("click", (e) => {
+    burst(e.clientX || innerWidth / 2, e.clientY || innerHeight / 2);
+    setTimeout(() => step("done"), 380);
+  });
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-buy]");
+    if (b && !sheet.contains(b)) { e.preventDefault(); openSheet(b.dataset.buy); }
+  });
+
+  /* ---- Lichtpunkt unter dem Mauszeiger & magnetische Buttons ---- */
+  if (fine && !still) {
+    let raf = 0, last;
+    document.addEventListener("pointermove", (e) => {
+      last = e; if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        const el = last.target.closest && last.target.closest("[data-glow]");
+        if (el) { const r = el.getBoundingClientRect(); el.style.setProperty("--mx", (last.clientX - r.left) + "px"); el.style.setProperty("--my", (last.clientY - r.top) + "px"); }
+        const m = last.target.closest && last.target.closest(".magnet");
+        $$(".magnet.pull").forEach((x) => { if (x !== m) { x.classList.remove("pull"); x.style.translate = ""; } });
+        if (m) { const r = m.getBoundingClientRect(); m.classList.add("pull"); m.style.translate = `${((last.clientX - r.left - r.width / 2) * .18).toFixed(1)}px ${((last.clientY - r.top - r.height / 2) * .28).toFixed(1)}px`; }
+      });
+    });
+  }
+
+  /* ---- Reiter (mit Tastatur & weichem Übergang) ---- */
+  const tabs = ["start", "events", "infos", "kontakt"], alias = { tickets: "events" };
+  $$("[data-panel]").forEach((p) => { p.id = p.id || "p-" + p.dataset.panel; p.setAttribute("role", "tabpanel"); p.tabIndex = -1; });
+  $$("[data-tab]").forEach((b) => b.setAttribute("aria-controls", "p-" + b.dataset.tab));
+  function show(name) {
+    $$("[data-panel]").forEach((p) => {
+      const on = p.dataset.panel === name;
+      p.hidden = !on;
+      if (on) { p.classList.remove("enter"); void p.offsetWidth; p.classList.add("enter"); }
+    });
+    $$("[data-tab]").forEach((b) => { const on = b.dataset.tab === name; b.setAttribute("aria-selected", on); b.tabIndex = on ? 0 : -1; });
+    document.documentElement.dataset.tab = name;
+  }
+  function go_(name, user, focus) {
+    name = alias[name] || name;
+    if (!tabs.includes(name)) name = "start";
+    const apply = () => { show(name); if (user) window.scrollTo(0, 0); };
+    apply();
+    if (user) try { history.replaceState(null, "", "#" + name); } catch {}
+    if (focus) setTimeout(() => {
+      const card = $(".ev--" + focus);
+      if (card) { card.scrollIntoView({ behavior: still ? "auto" : "smooth", block: "center" }); card.classList.remove("flash"); void card.offsetWidth; card.classList.add("flash"); }
+    }, 360);
+  }
+  document.addEventListener("click", (e) => {
+    // <html data-tab="…"> merkt sich nur den aktiven Reiter und darf hier nicht zählen
+    const t = e.target.closest("[data-tab],[data-goto]");
+    if (!t || t === document.documentElement || sheet.contains(t)) return;
+    e.preventDefault();
+    go_(t.dataset.tab || t.dataset.goto, true, t.dataset.focus);
+  });
+  document.addEventListener("keydown", (e) => {
+    const t = e.target.closest && e.target.closest("[data-tab]");
+    if (!t || t === document.documentElement || !["ArrowLeft", "ArrowRight", "Home", "End"].includes(e.key)) return;
+    const all = $$("[data-tab]", t.parentElement), i = all.indexOf(t);
+    const n = e.key === "Home" ? 0 : e.key === "End" ? all.length - 1 : (i + (e.key === "ArrowRight" ? 1 : -1) + all.length) % all.length;
+    all[n].focus(); go_(all[n].dataset.tab, true); e.preventDefault();
+  });
+  window.addEventListener("hashchange", () => { const h = location.hash.slice(1); if (h === "kaufen") openSheet(); else go_(h); });
+
+  window.WB = { burst, openSheet, closeSheet, config: CONFIG, all: ALL, next, live, still, fine, esc, ph, calUrl, ics, ortText, pageUrl };
+  const h0 = location.hash.slice(1);
+  go_(h0 === "kaufen" ? "start" : h0 || "start");
+  if (h0 === "kaufen") setTimeout(() => openSheet(), 300);
+})();
+</script>
+<script>
+(() => {
+  /* Inhaltsverzeichnis aus den Überschriften */
+  const toc = document.getElementById("toc");
+  toc.innerHTML = [...document.querySelectorAll("#doc h2")].map((h, i) => {
+    h.id = h.id || "abschnitt-" + (i + 1);
+    return `<li><a href="#${h.id}">${h.textContent.replace(/^\d+\.\s*/, "")}</a></li>`;
+  }).join("");
+  /* Aktuelle Seite im Footer markieren */
+  document.querySelectorAll(".f-col a").forEach((a) => { if (a.pathname === location.pathname) a.setAttribute("aria-current", "page"); });
+  /* Ticketshop-Adresse aus der Konfiguration */
+  document.querySelectorAll("[data-shop]").forEach((a) => { a.href = window.WB.config.ticketUrl; a.textContent = new URL(window.WB.config.ticketUrl).host; });
+})();
+</script>
+</body>
+</html>

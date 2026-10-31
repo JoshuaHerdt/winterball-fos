@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%231c4587%22%2F%3E%3Crect%20y%3D%2254%22%20width%3D%2264%22%20height%3D%2210%22%20fill%3D%22%23ef9216%22%2F%3E%3Ctext%20x%3D%2232%22%20y%3D%2238%22%20font-family%3D%22Arial%2CHelvetica%2Csans-serif%22%20font-size%3D%2220%22%20font-weight%3D%22700%22%20fill%3D%22%23fff%22%20text-anchor%3D%22middle%22%3EFOS%3C%2Ftext%3E%3C%2Fsvg%3E">
 <meta name="theme-color" content="#1c4587">
+<meta name="robots" content="noindex">
+<script>window.WB_BASE = "";</script>
 <title>Winterball FOS Holzkirchen · Fassade</title>
 <meta name="description" content="Tickets, Termine und alle Infos zu den Events der FOS Holzkirchen.">
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Hanken+Grotesk:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="fonts/f-9903f11c.css">
 <style>
 /* Layout: ruhiges Magazin-Layout. Echtes Foto der FOS (Lärchenholz unter blauem Himmel) als Anker,
    asymmetrisches Raster, eine Serifenschrift für Überschriften, eine Grotesk für alles andere.
@@ -509,22 +509,27 @@ footer a:hover { color: var(--ink); }
 
 <script>
 /* =====================================================================
-   INHALTE – alle Platzhalter stehen hier an einer Stelle.
-   Werte austauschen, danach ./build.sh ausführen.
-   Alles in [eckigen Klammern] wird auf der Seite markiert angezeigt.
+   INHALTE – alle Angaben der Website stehen hier an einer Stelle.
+   Werte ändern, danach ./build.sh ausführen.
+   Leere Felder ("") werden auf der Seite automatisch ausgeblendet.
+   Text in [eckigen Klammern] wird als „noch auszufüllen“ markiert angezeigt.
    ===================================================================== */
 const CONFIG = {
   schule: "FOS Holzkirchen",
   schuleVoll: "Staatliche Fachoberschule Holzkirchen",
   adresse: "Jörg-Hube-Straße 2, 83607 Holzkirchen",
   team: "Winterball-Team",
-  seitenUrl: "https://winterball.beispiel.de",     // PLATZHALTER: Adresse DIESER Landingpage (für Teilen-Links)
-  ticketUrl: "https://tickets.beispiel.de",        // PLATZHALTER: Link zur Ticketseite
-  zahlarten: "[PayPal, Karte oder Überweisung]",   // PLATZHALTER
-  instagram: "winterball.fos",                     // PLATZHALTER: Instagram-Name ohne @
-  mail: "winterball@beispiel.de",                  // PLATZHALTER: Kontakt-Mail
-  impressumUrl: "#",                               // PLATZHALTER
-  datenschutzUrl: "#",                             // PLATZHALTER
+  seitenUrl: "https://joshuaherdt.github.io/winterball-fos/",   // Adresse der Website (für Teilen-Links)
+  ticketUrl: "https://tickets.maximiliangruendinger.de/fos-hoki", // Ticketshop
+  instagram: "",                                   // Instagram-Name ohne @ (leer = ausgeblendet)
+  mail: "",                                        // Kontakt-E-Mail (leer = ausgeblendet)
+  // Angaben für Impressum und Datenschutzerklärung (§ 5 DDG, Art. 13 DSGVO)
+  verantwortlich: {
+    name: "[Name der verantwortlichen Person]",
+    anschrift: "[Straße und Hausnummer, PLZ Ort]",
+    mail: "[E-Mail-Adresse]",
+    fotos: "[Name der Fotografin / des Fotografen]"   // Bildnachweis Abiball-Fotos
+  },
   events: [
     {
       id: "winterball",
@@ -532,30 +537,22 @@ const CONFIG = {
       name: "Winterball",
       jahr: "2026",
       kicker: "Die Ballnacht im Dezember",
-      tagline: "Ein Abend in Abendgarderobe, mit Musik bis spät und dem ganzen Jahrgang auf der Tanzfläche.",
-      start: "2026-12-12T19:00:00",                // PLATZHALTER: Datum & Beginn
-      ende: "2026-12-13T01:00:00",
-      datumText: "Sa, 12. Dezember 2026",
-      datumKurz: "12.12.2026",
-      zeitText: "Einlass 18:30 · Beginn 19:00",
-      ort: "[Location eintragen]",
-      ortZusatz: "Holzkirchen",
-      preise: [
-        { label: "FOS-Schüler:innen", preis: "[XX] €", alt: "[XX] €", hinweis: "Early Bird bis [Datum]" },
-        { label: "Gäste", preis: "[XX] €" }
-      ],
-      // PLATZHALTER: nur ECHTE Zahlen eintragen, sonst kontingent: null (dann wird nichts angezeigt)
-      kontingent: { gesamt: 320, verkauft: 214 },
+      tagline: "Ein Abend in Abendgarderobe, mit Musik, Tanz und dem ganzen Jahrgang.",
+      start: "2026-12-18T17:30:00",                // Einlass
+      ende: null,                                  // Ende noch offen
+      datumText: "Fr, 18. Dezember 2026",
+      datumKurz: "18.12.2026",
+      zeitText: "Einlass ab 17:30 Uhr",
+      ort: "Wird bekannt gegeben",
+      ortZusatz: "",
+      preise: [],                                  // leer = „Alle Preise im Ticketshop“
+      kontingent: null,                            // { gesamt: 300, verkauft: 120 } – nur echte Zahlen
       status: "live",                              // live | soon | soldout
       statusText: "Vorverkauf läuft",
       ticketUrl: null,                             // null = CONFIG.ticketUrl
-      dresscode: "Festlich: Anzug, Smoking oder Abendkleid",
+      dresscode: "Festlich: Anzug oder Abendkleid",
       ablauf: [
-        ["18:30", "Einlass & Sektempfang"],
-        ["19:30", "Begrüßung & Eröffnungstanz"],
-        ["20:00", "Buffet"],
-        ["21:00", "Party mit DJ"],
-        ["01:00", "Ende der Ballnacht"]
+        ["17:30", "Einlass"]
       ]
     },
     {
@@ -565,61 +562,53 @@ const CONFIG = {
       jahr: "2027",
       kicker: "Für den Abschlussjahrgang 2027",
       tagline: "Den Abschluss feiern, mit Familie, Freund:innen und Lehrkräften.",
-      start: "2027-07-03T17:00:00",                // PLATZHALTER
-      ende: "2027-07-04T02:00:00",
-      datumText: "Sa, 3. Juli 2027",
-      datumKurz: "03.07.2027",
-      zeitText: "Einlass 17:00 · Beginn 18:00",
-      ort: "[Location eintragen]",
-      ortZusatz: "Landkreis Miesbach",
-      preise: [
-        { label: "Absolvent:innen", preis: "[XX] €" },
-        { label: "Familie & Gäste", preis: "[XX] €" }
-      ],
+      start: "2027-07-09T00:00:00",
+      ganztags: true,                              // Uhrzeit steht noch nicht fest
+      ende: null,
+      datumText: "Fr, 9. Juli 2027",
+      datumKurz: "09.07.2027",
+      zeitText: "Uhrzeit wird bekannt gegeben",
+      ort: "Wird bekannt gegeben",
+      ortZusatz: "",
+      abimotto: "",                                // Abimotto (leer = ausgeblendet)
+      preise: [],
       kontingent: null,
       status: "soon",
       statusText: "Vorverkauf startet bald",
       ticketUrl: null,
       dresscode: "Abendgarderobe",
-      ablauf: [
-        ["17:00", "Einlass & Empfang"],
-        ["18:00", "Reden & Ehrungen"],
-        ["19:00", "Dinner"],
-        ["21:00", "Eröffnungstanz & Party"],
-        ["02:00", "Ende"]
-      ]
+      ablauf: []
     }
   ],
-  // PLATZHALTER: nur versprechen, was es wirklich gibt
   highlights: [
-    ["music", "Musik bis spät", "DJ-Set und eine Tanzfläche, die nicht leer wird."],
-    ["glass", "Sektempfang", "Zum Ankommen ein Glas Sekt oder Saft."],
-    ["food", "Buffet", "Warmes Essen, Desserts und Snacks für später."],
-    ["camera", "Fotobox", "Bilder zum Mitnehmen, mit dem ganzen Jahrgang."]
+    ["music", "Musik & Tanz", "Die Tanzfläche gehört euch, den ganzen Abend lang."],
+    ["star", "Abendgarderobe", "Ein Anlass, sich richtig schick zu machen."],
+    ["glass", "Gemeinsam feiern", "Mit Freund:innen, Mitschüler:innen und Lehrkräften."],
+    ["camera", "Erinnerungen", "Ein Abend, über den ihr noch lange redet."]
   ],
   schritte: [
-    ["Event wählen", "Winterball oder Abiball, einfach auf „Ticket kaufen“ tippen."],
-    ["Sicher bezahlen", "Auf unserer Ticketseite dauert das keine zwei Minuten."],
-    ["Ticket aufs Handy", "Dein Ticket kommt per E-Mail. Am Einlass zeigst du es vor."]
+    ["Event wählen", "Winterball oder Abiball: einfach auf „Ticket kaufen“ tippen."],
+    ["Im Ticketshop bezahlen", "Du landest direkt im Ticketshop und bezahlst dort."],
+    ["Ticket vorzeigen", "Dein Ticket kommt per E-Mail. Am Einlass zeigst du es vor."]
   ],
   faq: [
     ["Wie bekomme ich mein Ticket?",
-     "Tipp auf „Ticket kaufen“, wähl dein Event und du landest auf unserer Ticketseite. Nach dem Kauf bekommst du dein Ticket per E-Mail. Am Einlass zeigst du es auf dem Handy oder ausgedruckt vor."],
-    ["Dürfen Gäste von anderen Schulen kommen?",
-     "[Regelung eintragen, z. B.: Ja, jede:r FOS-Schüler:in darf bis zu zwei Gäste mitbringen.]"],
+     "Tipp auf „Ticket kaufen“ und du landest direkt im Ticketshop. Nach dem Kauf bekommst du dein Ticket per E-Mail. Am Einlass zeigst du es auf dem Handy oder ausgedruckt vor."],
+    ["Wo findet das Event statt?",
+     "Den Veranstaltungsort geben wir rechtzeitig vor dem Event hier auf der Seite bekannt."],
     ["Brauche ich einen Ausweis?",
-     "Ja. Bring bitte einen Lichtbildausweis mit, er wird am Einlass zusammen mit deinem Ticket kontrolliert."],
+     "Ja. Bring bitte einen gültigen Lichtbildausweis mit, er kann am Einlass zusammen mit deinem Ticket kontrolliert werden."],
     ["Ich bin unter 18. Was muss ich beachten?",
-     "Es gilt das Jugendschutzgesetz. [Regelung eintragen, z. B. ob ein ausgefüllter Muttizettel nötig ist.]"],
+     "Es gilt das Jugendschutzgesetz. Alle Details zu Einlass und Altersregeln geben wir rechtzeitig vor dem Event bekannt."],
+    ["Darf ich Gäste mitbringen?",
+     "Ob und wie viele Gäste mitkommen dürfen, siehst du beim Ticketkauf im Ticketshop."],
     ["Kann ich mein Ticket zurückgeben oder weitergeben?",
-     "[Regelung eintragen.] Bei Fragen schreib uns einfach, wir finden eine Lösung."],
-    ["Wie komme ich hin?",
-     "Die genaue Anfahrt folgt mit der Location. Holzkirchen erreichst du mit der S3 und der BRB aus München."]
+     "Es gelten die Bedingungen des Ticketshops. Bei Fragen helfen wir dir gern weiter."]
   ],
   dresscodeTipps: [
-    ["Herren", "Anzug oder Smoking, gern mit Fliege oder Krawatte."],
-    ["Damen", "Abendkleid, Cocktailkleid oder ein eleganter Hosenanzug."],
-    ["Bitte nicht", "Jogginghose, Sneaker mit Löchern oder Kostüme."]
+    ["Für ihn", "Anzug oder Smoking, gern mit Fliege oder Krawatte."],
+    ["Für sie", "Abendkleid, Cocktailkleid oder ein eleganter Hosenanzug."],
+    ["Bitte nicht", "Freizeitkleidung, Jogginghose oder Sportschuhe."]
   ]
 };
 
@@ -655,6 +644,9 @@ const CONFIG = {
   const base = document.createElement("style");
   base.textContent = `
 html.sheet-open{overflow:hidden}
+.price-note{margin:0;font-size:15px;line-height:1.5;opacity:.85}
+.ablauf-more{opacity:.6}
+.ablauf-more time{letter-spacing:.1em}
 .sheet{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;background:transparent;color:inherit;overflow-y:auto;overscroll-behavior:contain}
 .sheet[open]{display:flex;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
 .sheet::backdrop{background:rgba(0,0,0,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
@@ -717,12 +709,25 @@ html.sheet-open{overflow:hidden}
 
   /* ---- Bausteine ---- */
   const fmt = (s) => s.replace(/[-:]/g, "").slice(0, 15);
+  const day = (s) => s.slice(0, 10).replace(/-/g, "");
+  const nextDay = (s) => { const d = new Date(s); d.setDate(d.getDate() + 1); return d.getFullYear() + String(d.getMonth() + 1).padStart(2, "0") + String(d.getDate()).padStart(2, "0"); };
+  const ortText = (ev) => [ev.ort, ev.ortZusatz].filter(Boolean).map(plain).join(", ");
+  const calDates = (ev) => ev.ganztags ? day(ev.start) + "/" + nextDay(ev.start) : fmt(ev.start) + "/" + fmt(ev.ende || ev.start);
   const calUrl = (ev) => "https://calendar.google.com/calendar/render?action=TEMPLATE" +
     "&text=" + enc(`${ev.name} ${ev.jahr} · ${CONFIG.schule}`) +
-    "&dates=" + fmt(ev.start) + "/" + fmt(ev.ende || ev.start) + "&ctz=Europe/Berlin" +
-    "&location=" + enc(`${plain(ev.ort)}, ${ev.ortZusatz}`) +
-    "&details=" + enc(`Tickets: ${pageUrl}`);
-  const waUrl = (ev) => "https://wa.me/?text=" + enc(`Kommst du mit zum ${ev.name} ${ev.jahr}? ${ev.datumText}. Tickets gibt's hier: ${pageUrl}`);
+    "&dates=" + calDates(ev) + (ev.ganztags ? "" : "&ctz=Europe/Berlin") +
+    "&location=" + enc(ortText(ev)) +
+    "&details=" + enc(`Infos und Tickets: ${CONFIG.seitenUrl}${ev.seite || ""}`);
+  const ics = (ev) => {
+    const lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//FOS Holzkirchen//Events//DE", "BEGIN:VEVENT",
+      `UID:${ev.id}-${ev.jahr}@fos-holzkirchen-events`, `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, "").slice(0, 15)}Z`];
+    if (ev.ganztags) lines.push(`DTSTART;VALUE=DATE:${day(ev.start)}`, `DTEND;VALUE=DATE:${nextDay(ev.start)}`);
+    else lines.push(`DTSTART;TZID=Europe/Berlin:${fmt(ev.start)}`, `DTEND;TZID=Europe/Berlin:${fmt(ev.ende || ev.start)}`);
+    lines.push(`SUMMARY:${ev.name} ${ev.jahr} · ${CONFIG.schule}`, `LOCATION:${ortText(ev)}`,
+      `DESCRIPTION:Infos und Tickets: ${CONFIG.seitenUrl}${ev.seite || ""}`, "END:VEVENT", "END:VCALENDAR");
+    return URL.createObjectURL(new Blob([lines.join("\r\n")], { type: "text/calendar" }));
+  };
+  const waUrl = (ev) => "https://wa.me/?text=" + enc(`Kommst du mit zum ${ev.name} ${ev.jahr}? ${ev.datumText}. Infos und Tickets: ${CONFIG.seitenUrl}${ev.seite || ""}`);
   const quota = (ev) => {
     if (!ev || !ev.kontingent) return "";
     const { gesamt, verkauft } = ev.kontingent, q = Math.min(1, verkauft / gesamt), frei = Math.max(0, gesamt - verkauft);
@@ -730,7 +735,7 @@ html.sheet-open{overflow:hidden}
       <div class="quota-bar" role="progressbar" aria-valuemin="0" aria-valuemax="${gesamt}" aria-valuenow="${verkauft}" aria-label="Verkaufte Tickets"><i></i></div>
       <p class="quota-txt">${q >= 1 ? "Ausverkauft" : `Noch <b>${frei}</b> von ${gesamt} Tickets frei`}${q >= .8 && q < 1 ? " · <em>bald weg</em>" : ""}</p></div>`;
   };
-  const prices = (ev, cls) => `<ul class="${cls}">${ev.preise.map((p) =>
+  const prices = (ev, cls) => !ev.preise.length ? `<p class="price-note">Alle Preise und Ticketarten findest du direkt im Ticketshop.</p>` : `<ul class="${cls}">${ev.preise.map((p) =>
     `<li><span>${esc(p.label)}${p.hinweis ? `<small>${ph(p.hinweis)}</small>` : ""}</span><b>${p.alt ? `<s>${ph(p.alt)}</s> ` : ""}${ph(p.preis)}</b></li>`).join("")}</ul>`;
   const buyLabel = (ev) => ev.status === "live" ? "Ticket kaufen" : ev.status === "soldout" ? "Ausverkauft" : "Infos zum Vorverkauf";
 
@@ -745,7 +750,7 @@ html.sheet-open{overflow:hidden}
         <dl class="ev-facts">
           <div><dt>Datum</dt><dd>${ph(ev.datumText)}</dd></div>
           <div><dt>Zeit</dt><dd>${ph(ev.zeitText)}</dd></div>
-          <div><dt>Ort</dt><dd>${ph(ev.ort)}<small>${ph(ev.ortZusatz)}</small></dd></div>
+          <div><dt>Ort</dt><dd>${ph(ev.ort)}${ev.ortZusatz ? `<small>${ph(ev.ortZusatz)}</small>` : ""}</dd></div>
         </dl>
       </div>
       <div class="ev-side">
@@ -785,11 +790,12 @@ html.sheet-open{overflow:hidden}
          <span class="t-txt"><span class="t-name">Alle Events</span><span class="t-meta">Startseite der FOS-Events</span></span>
          <span class="t-go" aria-hidden="true">→</span></a>`;
   });
-  $$("[data-quota]").forEach((el) => { const ev = el.dataset.quota === "next" ? live : evById(el.dataset.quota); el.innerHTML = quota(ev); });
+  $$("[data-quota]").forEach((el) => { const ev = el.dataset.quota === "next" ? live : evById(el.dataset.quota); el.innerHTML = quota(ev); el.hidden = !el.innerHTML; });
   $$("[data-next-name]").forEach((el) => (el.textContent = `${next.name} ${next.jahr}`));
   $$("[data-next-date]").forEach((el) => (el.textContent = next.datumText));
+  $$("[data-next-time]").forEach((el) => (el.textContent = next.zeitText));
   $$("[data-next-ort]").forEach((el) => (el.innerHTML = ph(next.ort)));
-  $$("[data-next-from]").forEach((el) => (el.innerHTML = "ab " + ph(next.preise[0].preis)));
+  $$("[data-next-from]").forEach((el) => (el.innerHTML = next.preise.length ? "ab " + ph(next.preise[0].preis) : "Im Ticketshop"));
   $$("[data-days]").forEach((el) => {
     if (!nextT) { el.hidden = true; return; }
     const d = Math.floor((nextT - Date.now()) / 864e5);
@@ -801,7 +807,8 @@ html.sheet-open{overflow:hidden}
   function showAblauf(id) {
     const ev = evById(id) || CONFIG.events[0];
     if (sw) $$("button", sw).forEach((b) => b.setAttribute("aria-pressed", b.dataset.ev === ev.id));
-    if (ab) ab.innerHTML = ev.ablauf.map(([t, w]) => `<li><time>${esc(t)}</time><span>${esc(w)}</span></li>`).join("");
+    if (ab) ab.innerHTML = ev.ablauf.map(([t, w]) => `<li><time>${esc(t)}</time><span>${esc(w)}</span></li>`).join("") +
+      `<li class="ablauf-more"><time>…</time><span>Das weitere Programm geben wir rechtzeitig bekannt.</span></li>`;
     if (dc) dc.innerHTML = `<b>${esc(ev.name)}:</b> ${ph(ev.dresscode)}`;
   }
   if (sw) {
@@ -817,12 +824,20 @@ html.sheet-open{overflow:hidden}
     `<details${i === 0 ? " open" : ""}><summary>${esc(q)}</summary><p>${ph(a)}</p></details>`).join("");
 
   /* ---- Kontakt & Links ---- */
+  // Elemente mit data-insta / data-mail-… verschwinden, solange die Angabe leer ist.
+  // data-opt="insta" bzw. data-opt="mail" markiert den ganzen Block, der dann mit ausgeblendet wird.
   $$("[data-insta]").forEach((a) => { a.href = "https://instagram.com/" + CONFIG.instagram; a.target = "_blank"; a.rel = "noopener"; });
   $$("[data-insta-text]").forEach((el) => (el.textContent = "@" + CONFIG.instagram));
   $$("[data-mail-text]").forEach((el) => (el.textContent = CONFIG.mail));
+  if (!CONFIG.instagram) $$("[data-opt=insta], [data-insta]").forEach((el) => (el.hidden = true));
+  if (!CONFIG.mail) $$("[data-opt=mail], [data-copy-mail]").forEach((el) => (el.hidden = true));
+  if (CONFIG.instagram) $$("[data-opt=no-insta]").forEach((el) => (el.hidden = true));
+  const BASE = window.WB_BASE || "";
+  $$("[data-home]").forEach((a) => (a.href = BASE || "./"));
+  $$("[data-legal]").forEach((el) => (el.innerHTML = ph(CONFIG.verantwortlich[el.dataset.legal] || "")));
   $$("[data-address]").forEach((el) => (el.textContent = CONFIG.adresse));
-  $$("[data-impressum]").forEach((a) => (a.href = CONFIG.impressumUrl));
-  $$("[data-datenschutz]").forEach((a) => (a.href = CONFIG.datenschutzUrl));
+  $$("[data-impressum]").forEach((a) => (a.href = BASE + "impressum/"));
+  $$("[data-datenschutz]").forEach((a) => (a.href = BASE + "datenschutz/"));
   $$("[data-share-wa]").forEach((a) => { a.href = waUrl(live); a.target = "_blank"; a.rel = "noopener"; });
   async function copy(text, btn, sel) {
     const lbl = btn.querySelector(".lbl") || btn, old = lbl.textContent;
@@ -905,7 +920,7 @@ html.sheet-open{overflow:hidden}
       <div class="sheet-detail" aria-live="polite"></div>
       <div class="sheet-need"><p>Das brauchst du</p><ul>
         <li>${ICON.mail}<span>Eine E-Mail-Adresse für dein Ticket</span></li>
-        <li>${ICON.card}<span>Zahlung per ${ph(CONFIG.zahlarten)}</span></li>
+        <li>${ICON.card}<span>Bezahlung direkt im Ticketshop</span></li>
         <li>${ICON.id}<span>Deinen Ausweis am Einlass</span></li></ul></div>
       <a class="btn sheet-go" href="#" target="_blank" rel="noopener"><span class="lbl">Weiter zur Ticketseite</span> <span aria-hidden="true">→</span></a>
       <p class="sheet-host">${ICON.lock}<span>Weiter zu <b class="sheet-host-name"></b>, dort bezahlst du sicher.</span></p>
@@ -933,7 +948,7 @@ html.sheet-open{overflow:hidden}
     const ev = evById(id) || live; current = ev;
     $$(".sheet-ev", sheet).forEach((b) => b.setAttribute("aria-checked", b.dataset.pick === ev.id));
     detail.innerHTML = prices(ev, "sheet-prices") + quota(ev) + (ev.status === "soon"
-      ? `<p class="sheet-note">Der Vorverkauf startet bald. Folg uns auf Instagram (<b>@${esc(CONFIG.instagram)}</b>), dann verpasst du den Start nicht.</p>` : "");
+      ? `<p class="sheet-note">Der Vorverkauf startet bald. Im Ticketshop siehst du, sobald Tickets verfügbar sind${CONFIG.instagram ? `, und auf Instagram (<b>@${esc(CONFIG.instagram)}</b>) sagen wir Bescheid` : ""}.</p>` : "");
     go.href = urlOf(ev);
     $(".lbl", go).textContent = ev.status === "live" ? "Weiter zur Ticketseite" : "Ticketseite ansehen";
     $(".sheet-host-name", sheet).textContent = host(urlOf(ev));
@@ -1028,7 +1043,7 @@ html.sheet-open{overflow:hidden}
   });
   window.addEventListener("hashchange", () => { const h = location.hash.slice(1); if (h === "kaufen") openSheet(); else go_(h); });
 
-  window.WB = { burst, openSheet, closeSheet, config: CONFIG, all: ALL, next, live, still, fine, esc, ph, calUrl, pageUrl };
+  window.WB = { burst, openSheet, closeSheet, config: CONFIG, all: ALL, next, live, still, fine, esc, ph, calUrl, ics, ortText, pageUrl };
   const h0 = location.hash.slice(1);
   go_(h0 === "kaufen" ? "start" : h0 || "start");
   if (h0 === "kaufen") setTimeout(() => openSheet(), 300);
