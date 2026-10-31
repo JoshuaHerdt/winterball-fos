@@ -527,11 +527,11 @@ const CONFIG = {
   team: "Winterball-Team",
   seitenUrl: "https://joshuaherdt.github.io/winterball-fos/",   // Adresse der Website (für Teilen-Links)
   ticketUrl: "https://tickets.maximiliangruendinger.de/fos-hoki", // Ticketshop
-  instagram: "",                                   // Instagram-Name ohne @ (leer = ausgeblendet)
+  instagram: "fos_holzkirchen_smv",               // Instagram-Name ohne @ (leer = ausgeblendet)
   mail: "tickets.fosholzkirchen@gmail.com",        // Kontakt-E-Mail (leer = ausgeblendet)
   // Angaben für Impressum und Datenschutzerklärung (§ 5 DDG, Art. 13 DSGVO)
   verantwortlich: {
-    name: "Frau Romatka-Hort",
+    name: "Regine Romatka-Hort",
     anschrift: "c/o Staatliche Fachoberschule Holzkirchen, Jörg-Hube-Straße 2, 83607 Holzkirchen",
     mail: "tickets.fosholzkirchen@gmail.com",
     fotos: "Malou, Klasse 13BS"   // Bildnachweis Abiball-Fotos
@@ -548,17 +548,18 @@ const CONFIG = {
       ende: null,                                  // Ende noch offen
       datumText: "Fr, 18. Dezember 2026",
       datumKurz: "18.12.2026",
-      zeitText: "Einlass ab 17:30 Uhr",
-      ort: "Wird bekannt gegeben",
-      ortZusatz: "",
+      zeitText: "Einlass 17:30 · Beginn 18:00",
+      ort: "Aula der FOS Holzkirchen",
+      ortZusatz: "Jörg-Hube-Straße 2, 83607 Holzkirchen",
       preise: [],                                  // leer = „Alle Preise im Ticketshop“
       kontingent: null,                            // { gesamt: 300, verkauft: 120 } – nur echte Zahlen
       status: "live",                              // live | soon | soldout
       statusText: "Vorverkauf läuft",
       ticketUrl: null,                             // null = CONFIG.ticketUrl
-      dresscode: "Festlich: Anzug oder Abendkleid",
+      dresscode: "Abendgarderobe",
       ablauf: [
-        ["17:30", "Einlass"]
+        ["17:30", "Einlass"],
+        ["18:00", "Beginn des Winterballs"]
       ]
     },
     {
@@ -582,7 +583,7 @@ const CONFIG = {
       status: "soon",
       statusText: "Vorverkauf startet bald",
       ticketUrl: null,
-      dresscode: "Abendgarderobe",
+      dresscode: "Wird noch bekannt gegeben",
       ablauf: []
     }
   ],
@@ -601,7 +602,7 @@ const CONFIG = {
     ["Wie bekomme ich mein Ticket?",
      "Tipp auf „Ticket kaufen“ und du landest direkt im Ticketshop. Nach dem Kauf bekommst du dein Ticket per E-Mail. Am Einlass zeigst du es auf dem Handy oder ausgedruckt vor."],
     ["Wo findet das Event statt?",
-     "Den Veranstaltungsort geben wir rechtzeitig vor dem Event hier auf der Seite bekannt."],
+     "Der Winterball findet in der Aula der FOS Holzkirchen statt (Jörg-Hube-Straße 2, 83607 Holzkirchen). Den Ort für den Abiball geben wir rechtzeitig hier auf der Seite bekannt."],
     ["Brauche ich einen Ausweis?",
      "Ja. Bring bitte einen gültigen Lichtbildausweis mit, er kann am Einlass zusammen mit deinem Ticket kontrolliert werden."],
     ["Ich bin unter 18. Was muss ich beachten?",
