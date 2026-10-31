@@ -113,10 +113,10 @@ main { position: relative; z-index: 1; overflow-x: clip; }
 .hero .eyebrow::after { content: ""; width: 36px; height: 1px; background: var(--gold); }
 .title { margin: 24px 0 0; font-family: var(--f-display); font-weight: 400; line-height: .86; letter-spacing: -.035em; }
 .title { filter: drop-shadow(0 10px 36px rgba(226, 182, 107, .22)); }
-.title .w { position: relative; display: inline-block; font-style: italic; font-size: clamp(72px, 15vw, 214px); padding: 0 .08em; background: linear-gradient(100deg, #b8873f 0%, var(--gold) 22%, #fff2cf 42%, var(--gold) 58%, #a87a37 80%, var(--gold-hi) 100%); background-size: 220% 100%; background-position: var(--sx, 30%) 0; -webkit-background-clip: text; background-clip: text; color: transparent; transition: background-position .6s ease-out; animation: reveal 1.3s cubic-bezier(.6, 0, .2, 1) both .1s, sheen 8s ease-in-out 1.6s infinite alternate; }
-html.pointing .title .w { animation: none; }
-/* Einblenden ohne Unschärfe: nur ein sauberer Wisch von links nach rechts */
-@keyframes reveal { from { clip-path: inset(-25% 100% -25% -5%); opacity: .2; } to { clip-path: inset(-25% -5% -25% -5%); opacity: 1; } }
+.title .w { position: relative; display: inline-block; font-style: italic; font-size: clamp(72px, 15vw, 214px); padding: 0 .08em; background: linear-gradient(100deg, #b8873f 0%, var(--gold) 22%, #fff2cf 42%, var(--gold) 58%, #a87a37 80%, var(--gold-hi) 100%); background-size: 220% 100%; background-position: var(--sx, 30%) 0; -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-mask-image: linear-gradient(90deg, #000 45%, transparent 55%); mask-image: linear-gradient(90deg, #000 45%, transparent 55%); -webkit-mask-size: 300% 100%; mask-size: 300% 100%; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: 0 0; mask-position: 0 0; transition: background-position .6s ease-out; animation: reveal 2.6s cubic-bezier(.22, 1, .36, 1) both .2s, sheen 8s ease-in-out 2.8s infinite alternate; }
+html.pointing.revealed .title .w { animation: none; }
+/* Sanftes Einblenden ohne Unschärfe: weicher Lichtverlauf von links nach rechts, dazu Aufsteigen und Einblenden */
+@keyframes reveal { from { -webkit-mask-position: 100% 0; mask-position: 100% 0; opacity: 0; transform: translateY(14px); } 40% { opacity: 1; } to { -webkit-mask-position: 0 0; mask-position: 0 0; opacity: 1; transform: none; } }
 @keyframes sheen { from { background-position: 0% 0; } to { background-position: 100% 0; } }
 .title .y { display: block; font-size: clamp(22px, 3vw, 34px); font-weight: 500; letter-spacing: .6em; margin-top: 16px; color: var(--snow); padding-left: .6em; font-variant-numeric: lining-nums; }
 .hero .lead { margin: 24px auto 0; text-align: center; font-size: 19px; max-width: 46ch; color: #c3cce0; }
@@ -1142,6 +1142,9 @@ html.sheet-open{overflow:hidden}
   size(); draw();
 
   const title = document.getElementById("title"), layers = [...document.querySelectorAll("#alps [data-depth]")];
+  // Erst nach dem Einblenden darf der Glanz der Maus folgen
+  title.addEventListener("animationend", (e) => { if (e.animationName === "reveal") document.documentElement.classList.add("revealed"); });
+  if (still) document.documentElement.classList.add("revealed");
   if (still) return;
   addEventListener("pointermove", (e) => {
     if (e.pointerType !== "mouse") return;
