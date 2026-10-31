@@ -69,6 +69,7 @@ h1, h2, h3 { margin: 0; font-weight: 400; text-wrap: balance; }
 .top nav { display: flex; align-items: center; gap: 24px; font-size: 14px; }
 .top nav a { text-decoration: none; color: var(--ink-2); }
 .top nav a:hover { color: var(--ink); }
+.evnav { display: contents; }
 
 /* ---------- Hero ---------- */
 .hero { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: 64px; align-items: center; padding-block: 56px 72px; }
@@ -211,7 +212,7 @@ footer a:hover { color: var(--ink); }
       <span><b>Events</b><small>FOS Holzkirchen</small></span>
     </a>
     <nav aria-label="Links">
-      <a href="#programm">Events</a>
+      <span class="evnav" id="evnav"></span>
       <a class="hide-s" data-insta href="#">Instagram</a>
       <a class="btn" href="#" data-buy style="padding:10px 16px;font-size:14px;color:#fff">Tickets</a>
     </nav>
@@ -543,6 +544,19 @@ html.sheet-open{overflow:hidden}
     `<a class="teaser" href="#events" data-goto="events" data-focus="${ev.id}" data-status="${ev.status}">
        <span class="t-txt"><span class="t-name">${esc(ev.name)}</span><span class="t-meta">${esc(ev.datumKurz)} · ${esc(ev.statusText)}</span></span>
        <span class="t-go" aria-hidden="true">→</span></a>`).join("");
+  // Querverweise auf einer Event-Seite: die anderen Events + zurück zur Startseite.
+  // data-crosslinks="../" = Pfad von dieser Seite zur Startseite
+  $$("[data-crosslinks]").forEach((box) => {
+    const base = box.dataset.crosslinks || "../";
+    const others = ALL.filter((ev) => !CONFIG.events.includes(ev) && ev.seite);
+    box.innerHTML = others.map((ev) =>
+      `<a class="teaser" href="${esc(base + ev.seite)}" data-status="${ev.status}">
+         <span class="t-txt"><span class="t-name">${esc(ev.name)} ${esc(ev.jahr)}</span><span class="t-meta">${esc(ev.datumKurz)} · ${esc(ev.statusText)}</span></span>
+         <span class="t-go" aria-hidden="true">→</span></a>`).join("") +
+      `<a class="teaser" href="${esc(base)}">
+         <span class="t-txt"><span class="t-name">Alle Events</span><span class="t-meta">Startseite der FOS-Events</span></span>
+         <span class="t-go" aria-hidden="true">→</span></a>`;
+  });
   $$("[data-quota]").forEach((el) => { const ev = el.dataset.quota === "next" ? live : evById(el.dataset.quota); el.innerHTML = quota(ev); });
   $$("[data-next-name]").forEach((el) => (el.textContent = `${next.name} ${next.jahr}`));
   $$("[data-next-date]").forEach((el) => (el.textContent = next.datumText));
@@ -825,6 +839,7 @@ html.sheet-open{overflow:hidden}
       </div>
     </article>`;
   document.querySelectorAll(".card [data-insta]").forEach((a) => { a.href = "https://instagram.com/" + window.WB.config.instagram; a.target = "_blank"; a.rel = "noopener"; });
+  document.getElementById("evnav").innerHTML = all.filter((ev) => ev.seite).map((ev) => `<a href="${esc(ev.seite)}">${esc(ev.name)}</a>`).join("");
   document.getElementById("nextLink").href = next.seite || "#programm";
 })();
 </script>

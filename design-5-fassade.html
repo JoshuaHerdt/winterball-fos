@@ -770,6 +770,19 @@ html.sheet-open{overflow:hidden}
     `<a class="teaser" href="#events" data-goto="events" data-focus="${ev.id}" data-status="${ev.status}">
        <span class="t-txt"><span class="t-name">${esc(ev.name)}</span><span class="t-meta">${esc(ev.datumKurz)} · ${esc(ev.statusText)}</span></span>
        <span class="t-go" aria-hidden="true">→</span></a>`).join("");
+  // Querverweise auf einer Event-Seite: die anderen Events + zurück zur Startseite.
+  // data-crosslinks="../" = Pfad von dieser Seite zur Startseite
+  $$("[data-crosslinks]").forEach((box) => {
+    const base = box.dataset.crosslinks || "../";
+    const others = ALL.filter((ev) => !CONFIG.events.includes(ev) && ev.seite);
+    box.innerHTML = others.map((ev) =>
+      `<a class="teaser" href="${esc(base + ev.seite)}" data-status="${ev.status}">
+         <span class="t-txt"><span class="t-name">${esc(ev.name)} ${esc(ev.jahr)}</span><span class="t-meta">${esc(ev.datumKurz)} · ${esc(ev.statusText)}</span></span>
+         <span class="t-go" aria-hidden="true">→</span></a>`).join("") +
+      `<a class="teaser" href="${esc(base)}">
+         <span class="t-txt"><span class="t-name">Alle Events</span><span class="t-meta">Startseite der FOS-Events</span></span>
+         <span class="t-go" aria-hidden="true">→</span></a>`;
+  });
   $$("[data-quota]").forEach((el) => { const ev = el.dataset.quota === "next" ? live : evById(el.dataset.quota); el.innerHTML = quota(ev); });
   $$("[data-next-name]").forEach((el) => (el.textContent = `${next.name} ${next.jahr}`));
   $$("[data-next-date]").forEach((el) => (el.textContent = next.datumText));
