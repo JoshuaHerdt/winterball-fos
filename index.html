@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Winterball FOS Holzkirchen · Entwürfe</title>
+<meta name="description" content="Fünf Entwürfe für die Ticket-Landingpage von Winterball und Abiball der FOS Holzkirchen.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300&family=Hanken+Grotesk:wght@400;500;600&display=swap">
+<style>
+:root { --paper: #fbfbf9; --ink: #1b1d20; --ink-2: #5d6168; --ink-3: #8a8f96; --line: #e4e4e0; --blue: #1848a0; color-scheme: light; }
+@media (prefers-color-scheme: dark) { :root { --paper: #111316; --ink: #ecebe6; --ink-2: #a4a8ae; --ink-3: #7c8188; --line: #25282d; --blue: #93b2f2; color-scheme: dark; } }
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--paper); color: var(--ink); font: 400 16px/1.6 "Hanken Grotesk", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 960px; margin: 0 auto; padding: 72px max(24px, env(safe-area-inset-right, 0px)) 64px max(24px, env(safe-area-inset-left, 0px)); }
+.label { margin: 0; font-size: 12px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+h1 { margin: 16px 0 0; font: 300 clamp(48px, 9vw, 96px)/.95 "Newsreader", Georgia, serif; letter-spacing: -.03em; }
+h1 em { font-style: italic; color: var(--ink-2); }
+.lead { margin: 24px 0 0; max-width: 52ch; color: var(--ink-2); font-size: 18px; }
+ol { list-style: none; margin: 56px 0 0; padding: 0; border-top: 1px solid var(--ink); }
+li a { display: grid; grid-template-columns: 48px 1fr auto; gap: 16px; align-items: baseline; padding: 24px 0; border-bottom: 1px solid var(--line); text-decoration: none; color: inherit; transition: padding .3s; }
+li a:hover { padding-left: 10px; }
+.n { font: italic 300 22px/1 "Newsreader", Georgia, serif; color: var(--ink-3); }
+.t { font: 300 clamp(28px, 4vw, 40px)/1.05 "Newsreader", Georgia, serif; letter-spacing: -.015em; }
+.t small { display: block; margin-top: 8px; font: 400 15px/1.5 "Hanken Grotesk", system-ui, sans-serif; color: var(--ink-2); letter-spacing: 0; }
+.go { color: var(--ink-3); font-size: 20px; transition: transform .3s, color .3s; }
+li a:hover .go { transform: translateX(6px); color: var(--blue); }
+.note { margin: 32px 0 0; font-size: 14px; color: var(--ink-3); }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <p class="label">FOS Holzkirchen · Winterball-Team</p>
+  <h1>Fünf Entwürfe <em>für unsere Ticketseite</em></h1>
+  <p class="lead">Klick dich durch und sag uns, welcher Entwurf dir am besten gefällt. Alle Daten, Preise und Links sind noch Platzhalter.</p>
+  <ol>
+    <li><a href="design-1-winternacht.html"><span class="n">1</span><span class="t">Winternacht<small>Gala unter dem Winterhimmel, Schnee und Champagner-Gold.</small></span><span class="go">→</span></a></li>
+    <li><a href="design-2-alpengluehen.html"><span class="n">2</span><span class="t">Alpenglühen<small>Heller Plakatstil mit Riesenschrift, Bergen und FOS-Orange.</small></span><span class="go">→</span></a></li>
+    <li><a href="design-3-ballsaal.html"><span class="n">3</span><span class="t">Ballsaal<small>Art déco in Schwarz und Gold, Tickets als Eintrittskarten.</small></span><span class="go">→</span></a></li>
+    <li><a href="design-4-holz.html"><span class="n">4</span><span class="t">Holz<small>Das Holz in Holzkirchen: Baumscheibe, Kaminglut, Holzschilder.</small></span><span class="go">→</span></a></li>
+    <li><a href="design-5-fassade.html"><span class="n">5</span><span class="t">Fassade<small>Ruhig und modern, mit echten Fotos unserer Schule.</small></span><span class="go">→</span></a></li>
+  </ol>
+  <p class="note">Entwürfe, Stand Oktober 2026. Fotos: FOS Holzkirchen.</p>
+</main>
+</body>
+</html>
