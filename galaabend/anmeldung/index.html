@@ -332,7 +332,7 @@ footer { border-top: 1px solid var(--line-2); font-size: 14px; color: var(--mist
           <label class="f" data-req="zuschuss"><span>Ungefähr wie viel?</span><input type="number" name="zuschuss" min="1" max="2000" step="1" inputmode="numeric" placeholder="Betrag in Euro"><em class="err">Bitte gib einen Betrag an.</em></label>
         </div>
         <label class="f" data-req="zuschussWofuer" data-if="zuschussJa=ja"><span>Wofür?</span><textarea name="zuschussWofuer" maxlength="800" placeholder="z. B. Stoff für Kostüme, Requisiten"></textarea><em class="err">Bitte schreib kurz, wofür.</em></label>
-        <p class="hint" data-if="zuschussJa=ja">Die Anfrage ist noch keine Zusage. Das Orga-Team entscheidet nach den ersten Anmeldungen über die Zuschüsse. <b>Geld gibt es nur zurück, wenn wir es vorher bestätigt haben.</b></p>
+        <p class="hint" data-if="zuschussJa=ja">Wir schauen uns alle Wünsche gemeinsam an und sagen dir dann, was möglich ist. <b>Bitte kauf erst ein, wenn wir den Zuschuss bestätigt haben</b>, damit wir dir das Geld sicher erstatten können.</p>
       </div>
     </section>
 
@@ -355,7 +355,7 @@ footer { border-top: 1px solid var(--line-2); font-size: 14px; color: var(--mist
       <h2>Alles richtig?</h2>
       <p class="lead">Schau noch einmal drüber. Mit „Bearbeiten“ kommst du zurück zum jeweiligen Schritt.</p>
       <div class="sum" id="sum"></div>
-      <p class="hint" style="margin-top:18px">Die Anmeldung ist für dich <b>verbindlich</b>. Ob du auftrittst, sagt dir das Orga-Team nach seiner Entscheidung, spätestens nach ein bis zwei Wochen.</p>
+      <p class="hint" style="margin-top:18px"><b>Schön, dass du dabei sein willst!</b> Nach dem Absenden bekommst du eine Bestätigung per E-Mail. In den nächsten ein bis zwei Wochen meldet sich das Orga-Team bei dir, um alles Weitere mit dir zu besprechen.</p>
     </section>
 
     <p class="fail" id="fail" hidden></p>
@@ -369,7 +369,7 @@ footer { border-top: 1px solid var(--line-2); font-size: 14px; color: var(--mist
       <div class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></div>
       <p class="label">Anmeldung angekommen</p>
       <h2>Applaus, <span id="doneName"></span>!</h2>
-      <p>Danke für deine Anmeldung. In ein paar Minuten bekommst du eine Bestätigung per E-Mail (schau zur Not im Spam-Ordner). Das Orga-Team schaut sich deinen Act an und meldet sich innerhalb von ein bis zwei Wochen bei dir.</p>
+      <p>Danke, dass du dabei sein willst, wir freuen uns riesig auf deinen Act! In ein paar Minuten bekommst du eine Bestätigung per E-Mail (schau zur Not im Spam-Ordner). In den nächsten ein bis zwei Wochen meldet sich das Orga-Team bei dir, um alles Weitere zu besprechen.</p>
       <div class="row">
         <a class="btn" href="../">Zum Galaabend <span aria-hidden="true">→</span></a>
         <button type="button" class="btn btn-ghost" id="again">Noch einen Act anmelden</button>
