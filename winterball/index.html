@@ -152,14 +152,9 @@ html.pointing.revealed .title .w { animation: none; }
 .sec { margin-top: 84px; }
 .sec-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: 30px; }
 .sec-text { margin: 0; max-width: 52ch; color: var(--mist); font-size: 16px; line-height: 1.6; }
-.dc { margin-top: 18px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 28px 40px; align-items: center; padding: 28px 30px; border: 1px solid var(--line); border-radius: 22px; background: var(--glass); }
-.dc-main .eyebrow { margin: 0; }
-.dc-name { margin: 8px 0 0; font: italic 400 clamp(32px, 3.4vw, 44px)/1.05 var(--f-display); color: var(--gold-hi); }
-.dc-sub { margin: 6px 0 0; color: var(--mist); font-size: 15px; }
-.dc-tips { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
-.dc-tips li { display: grid; gap: 4px; padding-left: 16px; border-left: 1px solid var(--line); }
-.dc-tips b { font-weight: 500; letter-spacing: .14em; text-transform: uppercase; font-size: 12px; color: var(--gold); }
-.dc-tips span { color: var(--snow); font-size: 15px; }
+.dc { margin-top: 18px; padding: 28px 30px; border: 1px solid var(--line); border-radius: 22px; background: var(--glass); text-align: center; }
+.dc-main .eyebrow { margin: 0; justify-content: center; }
+.dc-name { margin: 10px 0 0; font: italic 400 clamp(34px, 3.6vw, 48px)/1.05 var(--f-display); color: var(--gold-hi); }
 #highlights { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
 .hl { position: relative; border: 1px solid var(--line); border-radius: 22px; background: var(--glass); padding: 26px 24px; display: grid; gap: 6px; align-content: start; transition: transform .5s cubic-bezier(.2, .8, .2, 1), border-color .4s; }
 .hl:hover { transform: translateY(-6px); border-color: rgba(226, 182, 107, .6); }
@@ -313,11 +308,9 @@ footer { position: relative; z-index: 1; border-top: 1px solid rgba(238, 242, 25
 @media (max-width: 1000px) {
   #highlights { grid-template-columns: 1fr 1fr; }
   .finale { grid-template-columns: 1fr; }
-  .dc { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
   .dc { padding: 22px 20px; }
-  .dc-tips { grid-template-columns: 1fr; gap: 14px; }
 }
 @media (max-width: 440px) {
   .hero .eyebrow { letter-spacing: .2em; gap: 10px; }
@@ -449,9 +442,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid rgba(238, 242, 25
           <div class="dc-main">
             <p class="eyebrow">Dresscode</p>
             <p class="dc-name" data-dresscode></p>
-            <p class="dc-sub">Wir freuen uns auf euren schönsten Auftritt.</p>
           </div>
-          <ul class="dc-tips" data-dc-tips></ul>
         </div>
       </section>
 
@@ -768,9 +759,9 @@ const CONFIG = {
      "Es gelten die Bedingungen des Ticketshops. Bei Fragen helfen wir dir gern weiter."]
   ],
   dresscodeTipps: [
-    ["Für ihn", "Anzug oder Smoking, gern mit Fliege oder Krawatte."],
-    ["Für sie", "Abendkleid, Cocktailkleid oder ein eleganter Hosenanzug."],
-    ["Bitte nicht", "Freizeitkleidung, Jogginghose oder Sportschuhe."]
+    ["Zur Inspiration", "Anzug, Kleid, Hosenanzug oder was du sonst gern zu einem festlichen Abend trägst."],
+    ["Ganz dein Stil", "Ob klassisch, modern oder mit eigener Note: Hauptsache, du fühlst dich wohl."],
+    ["Kleiner Tipp", "Für Jogginghose und Turnschuhe ist der Abend eigentlich zu schön."]
   ]
 };
 
