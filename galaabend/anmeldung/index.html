@@ -1,0 +1,1211 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%231f5fa8%22%2F%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%23f3d488%22%20stroke-width%3D%224.2%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Crect%20x%3D%2224%22%20y%3D%227%22%20width%3D%2216%22%20height%3D%2229%22%20rx%3D%228%22%20fill%3D%22%23f3d488%22%2F%3E%3Cpath%20d%3D%22M16%2029a16%2016%200%200%200%2032%200M32%2045v10M23%2055h18%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E">
+<meta name="theme-color" content="#0c1a3a">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:title" content="Act anmelden · Galaabend 2027 · FOS Holzkirchen">
+<meta property="og:description" content="Bühne frei für dich: Melde deinen Act für den Galaabend der FOS Holzkirchen an. Musik, Tanz, Comedy, Theater und mehr.">
+<meta property="og:url" content="https://joshuaherdt.github.io/winterball-fos/galaabend/anmeldung/">
+<meta property="og:image" content="https://joshuaherdt.github.io/winterball-fos/og/galaabend.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://joshuaherdt.github.io/winterball-fos/galaabend/anmeldung/">
+<script>window.WB_BASE = "../../";</script>
+<title>Act anmelden · Galaabend 2027 · FOS Holzkirchen</title>
+<meta name="description" content="Bühne frei für dich: Melde deinen Act für den Galaabend der FOS Holzkirchen an. Musik, Tanz, Comedy, Theater und mehr.">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="../../fonts/f-07fc7286.css">
+<style>
+/* Act-Anmeldung für den Galaabend: gleiche Bühnen-Optik wie die Eventseite, aber ruhig und
+   aufs Ausfüllen konzentriert. Ein Schritt pro Bildschirm, große Antippflächen, am Ende eine
+   Zusammenfassung. Die Angaben gehen an ein Google-Formular (siehe CONFIG → anmeldung). */
+:root {
+  --night: #070d1f;
+  --navy: #0c1a3a;
+  --navy-2: #12254f;
+  --blue: #1f5fa8;
+  --blue-hi: #5b93d6;
+  --gold: #c9a24a;
+  --gold-hi: #f3d488;
+  --cream: #f6efe0;
+  --mist: #a9b4cc;
+  --mist-2: #7c88a4;
+  --line: rgba(201, 162, 74, .22);
+  --line-2: rgba(201, 162, 74, .4);
+  --bad: #ff9b8a;
+  --f-show: "Limelight", "Didot", Georgia, serif;
+  --f-sans: "Josefin Sans", "Avenir Next", system-ui, sans-serif;
+  --burst: #f3d488, #c9a24a, #ffffff, #5b93d6;
+  --burst-shape: spark;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+[hidden] { display: none !important; }
+body { background: radial-gradient(90% 60% at 50% 0, #142a5c, var(--night) 70%) fixed, var(--night); color: var(--cream); font: 400 17px/1.55 var(--f-sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 60; background: var(--night); }
+.wrap { max-width: 760px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--gold-hi); outline-offset: 3px; border-radius: 6px; }
+::selection { background: var(--gold); color: var(--night); }
+h1, h2, h3 { font-weight: 400; margin: 0; text-wrap: balance; }
+.label { margin: 0; font: 600 12px/1.3 var(--f-sans); letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }
+
+/* Kopf */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: rgba(7, 13, 31, .9); border-bottom: 1px solid var(--line); }
+.top .bar { max-width: 1200px; margin: 0 auto; height: 64px; padding: 0 max(20px, env(safe-area-inset-right, 0px)) 0 max(20px, env(safe-area-inset-left, 0px)); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; white-space: nowrap; }
+.mono { flex: none; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; border: 1px solid var(--gold); color: var(--gold-hi); box-shadow: 0 0 24px -6px rgba(243, 212, 136, .55); }
+.mono svg { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.mono .grille { stroke-width: 1; opacity: .7; }
+.brand b { display: block; font: 400 17px/1 var(--f-show); color: var(--gold-hi); letter-spacing: .04em; }
+.brand small { display: block; margin-top: 4px; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--mist); }
+.back { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--mist); text-decoration: none; white-space: nowrap; }
+.back:hover { color: var(--gold-hi); }
+
+/* Buttons */
+.btn { appearance: none; border: 0; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; font: 600 15px/1 var(--f-sans); letter-spacing: .06em; text-transform: uppercase; padding: 17px 26px 15px; border-radius: 999px; color: var(--night); background: linear-gradient(180deg, var(--gold-hi), var(--gold)); box-shadow: 0 10px 34px -10px rgba(243, 212, 136, .55), inset 0 1px 0 rgba(255, 255, 255, .5); transition: transform .2s, filter .2s; }
+.btn:hover { transform: translateY(-1px); filter: brightness(1.06); }
+.btn:active { transform: translateY(1px); }
+.btn[disabled] { opacity: .6; cursor: wait; }
+.btn-ghost { background: transparent; color: var(--cream); box-shadow: inset 0 0 0 1px var(--line-2); }
+.btn-ghost:hover { box-shadow: inset 0 0 0 1px var(--gold-hi); color: var(--gold-hi); }
+.txt-btn { appearance: none; border: 0; background: none; cursor: pointer; padding: 0 0 2px; font: 600 13px/1.4 var(--f-sans); letter-spacing: .1em; text-transform: uppercase; color: var(--gold-hi); background-image: linear-gradient(currentColor, currentColor); background-size: 100% 1px; background-position: 0 100%; background-repeat: no-repeat; }
+
+/* Intro */
+.intro { padding: 56px 0 8px; text-align: center; display: grid; justify-items: center; gap: 16px; }
+.intro h1 { font: 400 clamp(44px, 8vw, 78px)/1 var(--f-show); color: var(--gold-hi); text-shadow: 0 0 2px #fff6dd, 0 0 18px rgba(243, 212, 136, .6), 0 0 40px rgba(201, 162, 74, .45); }
+.intro p { margin: 0; color: var(--mist); max-width: 52ch; }
+.facts { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 6px; }
+.facts span { padding: 8px 14px 6px; border-radius: 999px; border: 1px solid var(--line-2); background: rgba(7, 13, 31, .6); font-size: 14px; }
+.facts b { color: var(--gold-hi); font-weight: 600; }
+
+/* Karte mit Schritten */
+.card { margin: 32px 0 80px; border-radius: 22px; border: 1px solid var(--line-2); background: linear-gradient(180deg, var(--navy-2), var(--navy)); box-shadow: 0 40px 90px -40px rgba(0, 0, 0, .9); overflow: hidden; }
+.prog { display: flex; gap: 6px; padding: 22px 28px 0; }
+.prog i { flex: 1; height: 4px; border-radius: 9px; background: rgba(169, 180, 204, .18); transition: background .4s; }
+.prog i.on { background: linear-gradient(90deg, var(--gold), var(--gold-hi)); }
+.step-meta { display: flex; justify-content: space-between; gap: 12px; padding: 14px 28px 0; font-size: 13px; color: var(--mist); letter-spacing: .06em; }
+.step { padding: 18px 28px 30px; animation: step-in .45s cubic-bezier(.2, .8, .2, 1) both; }
+.step.back-in { animation-name: step-back; }
+@keyframes step-in { from { opacity: 0; transform: translateX(22px); } }
+@keyframes step-back { from { opacity: 0; transform: translateX(-22px); } }
+.step h2 { font: 400 clamp(30px, 4.6vw, 42px)/1.05 var(--f-show); color: var(--gold-hi); }
+.step > p.lead { margin: 10px 0 0; color: var(--mist); }
+.fields { display: grid; gap: 22px; margin-top: 26px; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.f { display: grid; gap: 8px; }
+.f > span, .f legend { font-weight: 600; font-size: 16px; padding: 0; }
+.f small { color: var(--mist-2); font-size: 14px; }
+.f .opt { font-weight: 400; color: var(--mist-2); font-size: 14px; }
+fieldset.f { border: 0; margin: 0; padding: 0; min-width: 0; }
+input[type="text"], input[type="tel"], input[type="email"], input[type="number"], textarea {
+  width: 100%; font: 400 17px/1.4 var(--f-sans); color: var(--cream); background: rgba(7, 13, 31, .55); border: 1px solid rgba(169, 180, 204, .28); border-radius: 12px; padding: 14px 16px 12px; transition: border-color .2s, box-shadow .2s; }
+textarea { min-height: 120px; resize: vertical; }
+input::placeholder, textarea::placeholder { color: #66718c; }
+input:focus, textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201, 162, 74, .2); }
+.f.bad input, .f.bad textarea, .f.bad .chips { border-color: var(--bad); }
+.err { display: none; color: var(--bad); font-size: 14px; }
+.f.bad .err { display: block; }
+.count { justify-self: end; font-size: 12px; color: var(--mist-2); margin-top: -4px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; border: 1px solid transparent; border-radius: 14px; }
+.chip { position: relative; }
+.chip input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.chip span { display: inline-flex; align-items: center; gap: 8px; padding: 11px 16px 9px; border-radius: 999px; border: 1px solid rgba(169, 180, 204, .3); background: rgba(7, 13, 31, .45); font-size: 15px; cursor: pointer; transition: background .2s, border-color .2s, color .2s; user-select: none; }
+.chip:hover span { border-color: var(--gold); }
+.chip input:checked + span { background: linear-gradient(180deg, var(--gold-hi), var(--gold)); color: var(--night); border-color: transparent; font-weight: 600; }
+.chip input:focus-visible + span { outline: 2px solid var(--gold-hi); outline-offset: 2px; }
+.range { display: grid; grid-template-columns: 1fr auto; gap: 18px; align-items: center; }
+input[type="range"] { width: 100%; accent-color: var(--gold); height: 28px; }
+.range output { min-width: 92px; text-align: center; padding: 10px 12px 8px; border-radius: 12px; border: 1px solid var(--line-2); font: 400 22px/1 var(--f-show); color: var(--gold-hi); }
+.people { display: grid; gap: 10px; }
+.person { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; }
+.rm { appearance: none; cursor: pointer; width: 46px; height: 46px; border-radius: 12px; border: 1px solid rgba(169, 180, 204, .28); background: none; color: var(--mist); font-size: 20px; }
+.rm:hover { color: var(--bad); border-color: var(--bad); }
+.add { justify-self: start; }
+.hint { margin: 0; padding: 14px 16px 12px; border-radius: 12px; background: rgba(31, 95, 168, .18); border: 1px solid rgba(91, 147, 214, .3); color: var(--mist); font-size: 15px; }
+.hint b { color: var(--cream); }
+.consent { display: grid; grid-template-columns: 26px 1fr; gap: 12px; align-items: start; padding: 16px; border-radius: 14px; border: 1px solid rgba(169, 180, 204, .28); background: rgba(7, 13, 31, .45); cursor: pointer; font-size: 15px; color: var(--mist); }
+.consent input { width: 22px; height: 22px; margin: 1px 0 0; accent-color: var(--gold); }
+.consent a { color: var(--gold-hi); }
+.f.bad .consent { border-color: var(--bad); }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+/* Navigation unten in der Karte */
+.nav { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 18px 28px 26px; border-top: 1px solid var(--line); }
+.nav .btn { min-width: 160px; }
+
+/* Zusammenfassung */
+.sum { display: grid; gap: 14px; margin-top: 24px; }
+.sum section { padding: 16px 18px 14px; border-radius: 14px; border: 1px solid var(--line); background: rgba(7, 13, 31, .4); }
+.sum header { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+.sum h3 { font: 600 12px/1.3 var(--f-sans); letter-spacing: .18em; text-transform: uppercase; color: var(--gold); }
+.sum dl { margin: 0; display: grid; grid-template-columns: 150px 1fr; gap: 6px 16px; font-size: 15px; }
+.sum dt { color: var(--mist-2); }
+.sum dd { margin: 0; white-space: pre-line; word-break: break-word; }
+
+/* Fertig */
+.done { padding: 44px 28px 40px; text-align: center; display: grid; justify-items: center; gap: 16px; }
+.done .ok { width: 72px; height: 72px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(180deg, var(--gold-hi), var(--gold)); color: var(--night); box-shadow: 0 0 40px -6px rgba(243, 212, 136, .7); }
+.done .ok svg { width: 32px; height: 32px; }
+.done h2 { font: 400 clamp(34px, 6vw, 52px)/1.05 var(--f-show); color: var(--gold-hi); }
+.done p { margin: 0; color: var(--mist); max-width: 46ch; }
+.done .row { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 20px; margin-top: 8px; }
+.fail { margin: 0 28px 20px; padding: 16px 18px 14px; border-radius: 14px; border: 1px solid var(--bad); background: rgba(255, 155, 138, .08); color: var(--cream); font-size: 15px; }
+.fail a { color: var(--gold-hi); }
+
+.closed { margin: 32px 0 80px; padding: 40px 28px; border-radius: 22px; border: 1px solid var(--line-2); background: linear-gradient(180deg, var(--navy-2), var(--navy)); text-align: center; display: grid; gap: 14px; justify-items: center; }
+.closed h2 { font: 400 36px/1.1 var(--f-show); color: var(--gold-hi); }
+.closed p { margin: 0; color: var(--mist); max-width: 46ch; }
+
+footer { border-top: 1px solid var(--line-2); font-size: 14px; color: var(--mist-2); }
+.foot { max-width: 1200px; margin: 0 auto; padding: 22px max(20px, env(safe-area-inset-right, 0px)) calc(28px + env(safe-area-inset-bottom, 0px)) max(20px, env(safe-area-inset-left, 0px)); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px 24px; }
+.foot nav { display: flex; gap: 18px; flex-wrap: wrap; }
+.foot a { color: var(--mist); text-decoration: none; }
+.foot a:hover { color: var(--gold-hi); }
+
+@media (max-width: 640px) {
+  .back .long { display: none; }
+  .intro { padding-top: 36px; }
+  .card { margin-top: 24px; border-radius: 18px; }
+  .prog, .step-meta { padding-left: 20px; padding-right: 20px; }
+  .step { padding: 16px 20px 26px; }
+  .two { grid-template-columns: 1fr; }
+  .nav { padding: 16px 20px calc(20px + env(safe-area-inset-bottom, 0px)); position: sticky; bottom: 0; background: var(--navy); }
+  .nav .btn { min-width: 0; flex: 1; padding-inline: 16px; }
+  .sum dl { grid-template-columns: 1fr; gap: 0 0; }
+  .sum dt { margin-top: 6px; }
+  .fail { margin: 0 20px 18px; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="bar">
+    <a class="brand" href="../" aria-label="Zur Seite des Galaabends">
+      <span class="mono" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="9" y="2.5" width="6" height="11" rx="3"/><path class="grille" d="M9.6 6h4.8M9.6 8.5h4.8M9.6 11h4.8"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4M8.5 21h7"/></svg></span>
+      <span><b>Galaabend</b><small>Act-Anmeldung</small></span>
+    </a>
+    <a class="back" href="../"><span aria-hidden="true">←</span> <span class="long">Zurück zum </span>Galaabend</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="intro">
+    <p class="label">Acts gesucht</p>
+    <h1>Bühne frei für dich!</h1>
+    <p>Singen, tanzen, zaubern, Sketche spielen oder etwas ganz anderes: Erzähl uns von deinem Act. Das dauert etwa fünf Minuten.</p>
+    <div class="facts"><span>Höchstens <b>10 Minuten</b></span><span>Anmeldeschluss <b data-due></b></span><span>Antwort in <b>1–2 Wochen</b></span></div>
+  </div>
+
+  <div class="closed" id="closed" hidden>
+    <p class="label">Anmeldung geschlossen</p>
+    <h2 id="closedTitle">Der Vorhang ist zu</h2>
+    <p id="closedText">Die Anmeldung für Acts ist beendet. Danke an alle, die sich gemeldet haben!</p>
+    <a class="btn" href="../">Zum Galaabend <span aria-hidden="true">→</span></a>
+  </div>
+
+  <form class="card" id="form" novalidate>
+    <div class="prog" id="prog" aria-hidden="true"></div>
+    <div class="step-meta"><span id="stepNo"></span><span id="stepName"></span></div>
+
+    <!-- 1 · Du -->
+    <section class="step" data-step="Über dich">
+      <h2>Wer bist du?</h2>
+      <p class="lead">Damit wir wissen, mit wem wir sprechen, und dich erreichen können.</p>
+      <div class="fields">
+        <label class="f" data-req="name"><span>Dein Name</span><input type="text" name="name" autocomplete="name" placeholder="Vor- und Nachname"><em class="err">Bitte gib deinen Namen an.</em></label>
+        <fieldset class="f" data-req="rolle"><legend>Du bist …</legend>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="rolle" value="Schüler:in"><span>Schüler:in</span></label>
+            <label class="chip"><input type="radio" name="rolle" value="Lehrkraft"><span>Lehrkraft</span></label>
+            <label class="chip"><input type="radio" name="rolle" value="Ehemalige:r"><span>Ehemalige:r</span></label>
+            <label class="chip"><input type="radio" name="rolle" value="Sonstiges"><span>Sonstiges</span></label>
+          </div>
+          <em class="err">Bitte wähl eins aus.</em>
+        </fieldset>
+        <label class="f" data-req="klasse" data-if="rolle=Schüler:in"><span>Deine Klasse</span><input type="text" name="klasse" placeholder="z. B. 12BS" autocapitalize="characters"><em class="err">Bitte gib deine Klasse an.</em></label>
+        <div class="f" data-req="kontakt">
+          <span>So erreichen wir dich</span>
+          <small>Mindestens eins von beidem.</small>
+          <div class="two">
+            <input type="tel" name="telefon" autocomplete="tel" inputmode="tel" placeholder="Handynummer" aria-label="Handynummer">
+            <input type="email" name="email" autocomplete="email" placeholder="E-Mail-Adresse" aria-label="E-Mail-Adresse">
+          </div>
+          <em class="err" id="kontaktErr">Bitte gib eine Handynummer oder eine E-Mail-Adresse an.</em>
+        </div>
+        <fieldset class="f"><legend>Am liebsten per … <span class="opt">(optional)</span></legend>
+          <div class="chips">
+            <label class="chip"><input type="checkbox" name="erreichbar" value="WhatsApp"><span>WhatsApp</span></label>
+            <label class="chip"><input type="checkbox" name="erreichbar" value="Anruf"><span>Anruf</span></label>
+            <label class="chip"><input type="checkbox" name="erreichbar" value="SMS"><span>SMS</span></label>
+            <label class="chip"><input type="checkbox" name="erreichbar" value="E-Mail"><span>E-Mail</span></label>
+          </div>
+        </fieldset>
+      </div>
+    </section>
+
+    <!-- 2 · Act -->
+    <section class="step" data-step="Dein Act" hidden>
+      <h2>Was hast du vor?</h2>
+      <p class="lead">Ein paar Sätze reichen. Wir wollen uns nur vorstellen können, was uns erwartet.</p>
+      <div class="fields">
+        <label class="f" data-req="titel"><span>Titel deines Acts</span><input type="text" name="titel" placeholder="z. B. „Bohemian Rhapsody a cappella“" maxlength="120"><em class="err">Gib deinem Act einen Titel, gern auch einen Arbeitstitel.</em></label>
+        <fieldset class="f" data-req="sparte"><legend>Was für ein Act ist es?</legend>
+          <small>Mehrere möglich.</small>
+          <div class="chips">
+            <label class="chip"><input type="checkbox" name="sparte" value="Gesang"><span>Gesang</span></label>
+            <label class="chip"><input type="checkbox" name="sparte" value="Band"><span>Band</span></label>
+            <label class="chip"><input type="checkbox" name="sparte" value="Instrumental"><span>Instrumental</span></label>
+            <label class="chip"><input type="checkbox" name="sparte" value="Tanz"><span>Tanz</span></label>
+            <label class="chip"><input type="checkbox" name="sparte" value="Comedy"><span>Comedy</span></label>
+            <label class="chip"><input type="checkbox" name="sparte" value="Theater / Sketch"><span>Theater / Sketch</span></label>
+            <label class="chip"><input type="checkbox" name="sparte" value="Parodie"><span>Parodie</span></label>
+            <label class="chip"><input type="checkbox" name="sparte" value="Zauberei"><span>Zauberei</span></label>
+            <label class="chip"><input type="checkbox" name="sparte" value="Etwas anderes"><span>Etwas anderes</span></label>
+          </div>
+          <em class="err">Bitte wähl mindestens eins aus.</em>
+        </fieldset>
+        <label class="f" data-req="beschreibung"><span>Beschreib deinen Act kurz</span><textarea name="beschreibung" maxlength="1500" placeholder="Was passiert auf der Bühne? Welches Lied, welcher Tanz, welche Idee?"></textarea><span class="count" data-count="beschreibung"></span><em class="err">Bitte beschreib deinen Act in ein paar Sätzen.</em></label>
+      </div>
+    </section>
+
+    <!-- 3 · Wer -->
+    <section class="step" data-step="Mitwirkende" hidden>
+      <h2>Wer macht mit?</h2>
+      <p class="lead">Trag alle ein, die mit auf der Bühne stehen, dich eingeschlossen.</p>
+      <div class="fields">
+        <fieldset class="f"><legend>Auf der Bühne</legend>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="allein" value="ja" checked><span>Nur ich</span></label>
+            <label class="chip"><input type="radio" name="allein" value="nein"><span>Wir sind mehrere</span></label>
+          </div>
+        </fieldset>
+        <div class="f" data-req="leute" data-if="allein=nein">
+          <span>Namen der Mitwirkenden</span>
+          <small>Mit Klasse, falls ihr Schüler:innen seid.</small>
+          <div class="people" id="people"></div>
+          <button type="button" class="txt-btn add" id="addPerson">+ Person hinzufügen</button>
+          <em class="err">Bitte trag mindestens eine weitere Person ein.</em>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 · Bühne & Technik -->
+    <section class="step" data-step="Bühne & Technik" hidden>
+      <h2>Was brauchst du dafür?</h2>
+      <p class="lead">Ton und Licht sind grundsätzlich vorhanden. Alles Weitere klären wir mit dir.</p>
+      <div class="fields">
+        <div class="f">
+          <span>Wie lange dauert dein Act ungefähr?</span>
+          <div class="range"><input type="range" name="dauer" min="1" max="10" step="1" value="4" aria-label="Dauer in Minuten"><output id="dauerOut">4 Min.</output></div>
+          <small>Höchstens 10 Minuten.</small>
+        </div>
+        <fieldset class="f"><legend>Technik und Ausstattung <span class="opt">(optional)</span></legend>
+          <div class="chips">
+            <label class="chip"><input type="checkbox" name="technik" value="Mikrofon"><span>Mikrofon</span></label>
+            <label class="chip"><input type="checkbox" name="technik" value="Headset"><span>Headset</span></label>
+            <label class="chip"><input type="checkbox" name="technik" value="Musik abspielen"><span>Musik abspielen</span></label>
+            <label class="chip"><input type="checkbox" name="technik" value="Beamer / Leinwand"><span>Beamer / Leinwand</span></label>
+            <label class="chip"><input type="checkbox" name="technik" value="Klavier / Keyboard"><span>Klavier / Keyboard</span></label>
+            <label class="chip"><input type="checkbox" name="technik" value="Verstärker"><span>Verstärker</span></label>
+            <label class="chip"><input type="checkbox" name="technik" value="Besonderes Licht"><span>Besonderes Licht</span></label>
+            <label class="chip"><input type="checkbox" name="technik" value="Requisiten / Möbel"><span>Requisiten / Möbel</span></label>
+          </div>
+        </fieldset>
+        <label class="f"><span>Noch etwas zur Technik? <span class="opt">(optional)</span></span><textarea name="technikMehr" maxlength="800" placeholder="z. B. zwei Mikros auf Ständern, Musik kommt vom Handy"></textarea></label>
+        <label class="f"><span>Bringst du selbst etwas mit? <span class="opt">(optional)</span></span><small>Instrumente, Kostüme, Requisiten oder Anschaffungen, die du sowieso geplant hast.</small><textarea name="mitbringen" maxlength="800" placeholder="z. B. eigene Gitarre und Verstärker"></textarea></label>
+      </div>
+    </section>
+
+    <!-- 5 · Kosten -->
+    <section class="step" data-step="Kosten" hidden>
+      <h2>Brauchst du einen Zuschuss?</h2>
+      <p class="lead">Falls für deinen Act etwas besorgt werden muss, zum Beispiel Kostüme oder Requisiten.</p>
+      <div class="fields">
+        <fieldset class="f"><legend>Kostenzuschuss</legend>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="zuschussJa" value="nein" checked><span>Nein, brauche ich nicht</span></label>
+            <label class="chip"><input type="radio" name="zuschussJa" value="ja"><span>Ja</span></label>
+          </div>
+        </fieldset>
+        <div class="two" data-if="zuschussJa=ja">
+          <label class="f" data-req="zuschuss"><span>Ungefähr wie viel?</span><input type="number" name="zuschuss" min="1" max="2000" step="1" inputmode="numeric" placeholder="Betrag in Euro"><em class="err">Bitte gib einen Betrag an.</em></label>
+        </div>
+        <label class="f" data-req="zuschussWofuer" data-if="zuschussJa=ja"><span>Wofür?</span><textarea name="zuschussWofuer" maxlength="800" placeholder="z. B. Stoff für Kostüme, Requisiten"></textarea><em class="err">Bitte schreib kurz, wofür.</em></label>
+        <p class="hint" data-if="zuschussJa=ja">Die Anfrage ist noch keine Zusage. Das Orga-Team entscheidet nach den ersten Anmeldungen über die Zuschüsse. <b>Geld gibt es nur zurück, wenn wir es vorher bestätigt haben.</b></p>
+      </div>
+    </section>
+
+    <!-- 6 · Noch was -->
+    <section class="step" data-step="Zum Schluss" hidden>
+      <h2>Was willst du uns noch sagen?</h2>
+      <p class="lead">Wünsche, Fragen, Ideen oder etwas, das wir wissen sollten.</p>
+      <div class="fields">
+        <label class="f"><span>Deine Nachricht an das Orga-Team <span class="opt">(optional)</span></span><textarea name="nachricht" maxlength="1500" placeholder="z. B. Wir können nur dienstags proben. Oder: Ich hätte noch eine Idee für die Moderation …"></textarea><span class="count" data-count="nachricht"></span></label>
+        <div class="f" data-req="einwilligung">
+          <label class="consent"><input type="checkbox" name="einwilligung" value="ja"><span>Ich bin einverstanden, dass das Orga-Team des Galaabends meine Angaben speichert, um meine Anmeldung zu bearbeiten und mich zu kontaktieren. Die Daten werden nach dem Galaabend gelöscht. Mehr dazu in der <a data-datenschutz href="../../datenschutz/" target="_blank" rel="noopener">Datenschutzerklärung</a>.</span></label>
+          <em class="err">Bitte stimm zu, damit wir deine Anmeldung bearbeiten dürfen.</em>
+        </div>
+        <label class="hp" aria-hidden="true">Bitte leer lassen<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+      </div>
+    </section>
+
+    <!-- 7 · Prüfen -->
+    <section class="step" data-step="Prüfen" hidden>
+      <h2>Alles richtig?</h2>
+      <p class="lead">Schau noch einmal drüber. Mit „Bearbeiten“ kommst du zurück zum jeweiligen Schritt.</p>
+      <div class="sum" id="sum"></div>
+      <p class="hint" style="margin-top:18px">Die Anmeldung ist für dich <b>verbindlich</b>. Ob du auftrittst, sagt dir das Orga-Team nach seiner Entscheidung, spätestens nach ein bis zwei Wochen.</p>
+    </section>
+
+    <p class="fail" id="fail" hidden></p>
+    <div class="nav" id="nav">
+      <button type="button" class="btn btn-ghost" id="prev">Zurück</button>
+      <button type="button" class="btn" id="next">Weiter <span aria-hidden="true">→</span></button>
+    </div>
+
+    <!-- Fertig -->
+    <div class="done" id="done" hidden>
+      <div class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></div>
+      <p class="label">Anmeldung angekommen</p>
+      <h2>Applaus, <span id="doneName"></span>!</h2>
+      <p>Danke für deine Anmeldung. Das Orga-Team schaut sich deinen Act an und meldet sich innerhalb von ein bis zwei Wochen bei dir. Bis dahin: Fang ruhig schon an zu üben.</p>
+      <div class="row">
+        <a class="btn" href="../">Zum Galaabend <span aria-hidden="true">→</span></a>
+        <button type="button" class="btn btn-ghost" id="again">Noch einen Act anmelden</button>
+      </div>
+    </div>
+  </form>
+</main>
+
+<footer>
+  <div class="foot">
+    <span>Galaabend 2027 · Ein Projekt von Schüler:innen der FOS Holzkirchen</span>
+    <nav aria-label="Rechtliches"><a data-impressum href="../../impressum/">Impressum</a><a data-datenschutz href="../../datenschutz/">Datenschutz</a><a data-insta href="#">Instagram</a></nav>
+  </div>
+</footer>
+
+<script>window.WB_ONLY = "galaabend";</script>
+<script>
+/* =====================================================================
+   INHALTE – alle Angaben der Website stehen hier an einer Stelle.
+   Werte ändern, danach ./build.sh ausführen.
+   Leere Felder ("") werden auf der Seite automatisch ausgeblendet.
+   Text in [eckigen Klammern] wird als „noch auszufüllen“ markiert angezeigt.
+   ===================================================================== */
+const CONFIG = {
+  schule: "FOS Holzkirchen",
+  schuleVoll: "Staatliche Fachoberschule Holzkirchen",
+  adresse: "Jörg-Hube-Straße 2, 83607 Holzkirchen",
+  team: "Winterball-Team",
+  seitenUrl: "https://joshuaherdt.github.io/winterball-fos/",   // Adresse der Website (für Teilen-Links)
+  ticketUrl: "https://tickets.maximiliangruendinger.de/fos-hoki", // Ticketshop
+  instagram: "fos_holzkirchen_smv",               // Instagram-Name ohne @ (leer = ausgeblendet)
+  mail: "tickets.fosholzkirchen@gmail.com",        // Kontakt-E-Mail (leer = ausgeblendet)
+  // Angaben für Impressum und Datenschutzerklärung (§ 5 DDG, Art. 13 DSGVO)
+  verantwortlich: {
+    name: "Joshua Herdt (Schülersprecher)",        // verantwortlich für die Website
+    name2: "Maximilian Gründinger (Ticketsystem)",  // ebenfalls verantwortlich für die Website
+    projekt: "Regine Romatka-Hort",                // verantwortlich für das Projekt
+    anschrift: "c/o Staatliche Fachoberschule Holzkirchen, Jörg-Hube-Straße 2, 83607 Holzkirchen",
+    mail: "tickets.fosholzkirchen@gmail.com",
+    fotos: "Malou, Klasse 13BS"   // Bildnachweis Abiball-Fotos
+  },
+  events: [
+    {
+      id: "winterball",
+      seite: "winterball/",                        // Unterseite dieses Events (relativ zur Startseite)
+      name: "Winterball",
+      jahr: "2026",
+      kicker: "Die Ballnacht im Dezember",
+      tagline: "Ein Abend in Abendgarderobe, mit Musik, Tanz und dem ganzen Jahrgang.",
+      start: "2026-12-18T17:30:00",                // Einlass
+      ende: null,                                  // Ende noch offen
+      datumText: "Fr, 18. Dezember 2026",
+      datumKurz: "18.12.2026",
+      zeitText: "Einlass 17:30 · Beginn 18:00",
+      ort: "Aula der FOS Holzkirchen",
+      ortZusatz: "Jörg-Hube-Straße 2, 83607 Holzkirchen",
+      preise: [],                                  // leer = „Alle Preise im Ticketshop“
+      kontingent: null,                            // { gesamt: 300, verkauft: 120 } – nur echte Zahlen
+      status: "live",                              // live | soon | soldout
+      statusText: "Vorverkauf läuft",
+      ticketUrl: null,                             // null = CONFIG.ticketUrl
+      dresscode: "Abendgarderobe",
+      ablauf: [
+        ["17:30", "Einlass"],
+        ["18:00", "Beginn des Winterballs"]
+      ]
+    },
+    {
+      id: "galaabend",
+      seite: "galaabend/",
+      name: "Galaabend",
+      jahr: "2027",
+      kicker: "Die Bühnenshow im Februar",
+      tagline: "Eine Bühnenshow von Schüler:innen und Lehrkräften: Musik, Tanz, Comedy, Theater und mehr.",
+      start: "2027-02-05T18:00:00",                // Einlass
+      ende: "2027-02-05T22:00:00",
+      datumText: "Fr, 5. Februar 2027",
+      datumKurz: "05.02.2027",
+      vorlaeufig: true,                            // Termin noch nicht endgültig (wird als „vorläufig“ angezeigt)
+      zeitText: "Einlass 18:00 · Beginn 18:30",
+      ort: "Aula der FOS Holzkirchen",
+      ortZusatz: "Jörg-Hube-Straße 2, 83607 Holzkirchen",
+      preise: [
+        { label: "Ticket", preis: "5 €", hinweis: "Zwei kaufen, ein drittes Ticket gratis für Familie oder Freunde" }
+      ],
+      kontingent: null,
+      plaetze: 420,
+      ausweis: false,                              // kein Ausweis am Einlass nötig
+      status: "soon",
+      statusText: "Vorverkauf ab 25. November",
+      vorverkauf: "Online ab 25. November 2026, an der Schule ab dem ersten Schultag im Januar.",
+      ticketUrl: null,
+      dresscode: "Wird noch bekannt gegeben",
+      anmeldungUrl: "",                            // Link zur Act-Anmeldung (leer = „Anmeldung öffnet bald“), später "anmeldung/"
+      // Act-Anmeldung (galaabend/anmeldung/): schickt die Angaben an ein Google-Formular.
+      // formUrl = Link zum Formular (…/viewform), felder = Zuordnung unserer Felder zu den Formularfragen (entry.…)
+      anmeldung: {
+        formUrl: "",
+        felder: {}
+      },
+      anmeldeschluss: "23. Dezember 2026",
+      ablaufFertig: true,                          // kompletter Ablauf, kein „weiteres Programm folgt“
+      ablauf: [
+        ["18:00", "Einlass, freie Platzwahl"],
+        ["18:30", "Erster Teil der Show"],
+        ["19:30", "Pause"],
+        ["20:00", "Zweiter Teil der Show"],
+        ["21:00", "Ausklang"],
+        ["22:00", "Ende"]
+      ],
+      highlights: [
+        ["mic", "Musik & Tanz", "Bands, Gesang, Instrumentalstücke und Choreos."],
+        ["mask", "Comedy & Theater", "Sketche, Parodien, Zauberei und andere Bühnenideen."],
+        ["users", "Lehrkräfte auf der Bühne", "Auch unsere Lehrkräfte treten auf. Lasst euch überraschen."],
+        ["book", "Eine Reise", "Ein Urlaub, der nicht nach Plan läuft. Mehr verraten wir noch nicht."]
+      ],
+      faq: [
+        ["Was ist der Galaabend?",
+         "Eine Bühnenshow von Schüler:innen, für Schüler:innen, Lehrkräfte, Eltern und Freunde. Keine Party und kein Ball, sondern rund drei Stunden Programm mit Pause: Musik, Tanz, Comedy, Theater und mehr, verbunden durch eine durchgehende Geschichte."],
+        ["Was kostet ein Ticket?",
+         "Ein Ticket kostet 5 €. Wer zwei Tickets kauft, bekommt ein drittes gratis dazu. Das Gratisticket ist für eine Person von außerhalb der Schule gedacht, zum Beispiel Familie oder Freunde."],
+        ["Steht der Termin schon fest?",
+         "Geplant ist Freitag, der 5. Februar 2027. Der Termin ist noch vorläufig. Sobald er endgültig feststeht, steht es hier und auf Instagram."],
+        ["Ab wann gibt es Tickets?",
+         "Online ab dem 25. November 2026, an der Schule zusätzlich ab dem ersten Schultag im Januar."],
+        ["Gibt es feste Sitzplätze?",
+         "Nein, es gilt freie Platzwahl. In der Aula gibt es 420 Plätze. Der Einlass beginnt um 18:00 Uhr."],
+        ["Wie kann ich selbst auftreten?",
+         "Melde deinen Act bis zum 23. Dezember 2026 an. Ein Act dauert höchstens 10 Minuten, erlaubt ist fast alles, was auf eine Bühne passt. Nach der Anmeldung meldet sich das Orga-Team innerhalb von ein bis zwei Wochen bei dir."],
+        ["Gibt es etwas zu essen und zu trinken?",
+         "In der Pause ist ein Verkauf von Schüler:innen geplant. Genauere Infos geben wir rechtzeitig hier bekannt."]
+      ]
+    },
+    {
+      id: "abiball",
+      seite: "abiball/",
+      name: "Abiball",
+      jahr: "2027",
+      kicker: "Für den Abschlussjahrgang 2027",
+      tagline: "Den Abschluss feiern, mit Familie, Freund:innen und Lehrkräften.",
+      start: "2027-07-09T00:00:00",
+      ganztags: true,                              // Uhrzeit steht noch nicht fest
+      ende: null,
+      datumText: "Fr, 9. Juli 2027",
+      datumKurz: "09.07.2027",
+      zeitText: "Uhrzeit wird bekannt gegeben",
+      ort: "Wird bekannt gegeben",
+      ortZusatz: "",
+      abimotto: "",                                // Abimotto (leer = ausgeblendet)
+      preise: [],
+      kontingent: null,
+      status: "soon",
+      statusText: "Vorverkauf startet bald",
+      ticketUrl: null,
+      dresscode: "Wird noch bekannt gegeben",
+      ablauf: []
+    }
+  ],
+  highlights: [
+    ["music", "Musik & Tanz", "Die Tanzfläche gehört euch, den ganzen Abend lang."],
+    ["star", "Abendgarderobe", "Ein Anlass, sich richtig schick zu machen."],
+    ["glass", "Gemeinsam feiern", "Mit Freund:innen, Mitschüler:innen und Lehrkräften."],
+    ["camera", "Erinnerungen", "Ein Abend, über den ihr noch lange redet."]
+  ],
+  schritte: [
+    ["Event wählen", "Such dir dein Event aus und tipp auf „Ticket kaufen“."],
+    ["Im Ticketshop bezahlen", "Du landest direkt im Ticketshop und bezahlst dort."],
+    ["Ticket vorzeigen", "Dein Ticket kommt per E-Mail. Am Einlass zeigst du es vor."]
+  ],
+  faq: [
+    ["Wie bekomme ich mein Ticket?",
+     "Tipp auf „Ticket kaufen“ und du landest direkt im Ticketshop. Nach dem Kauf bekommst du dein Ticket per E-Mail. Am Einlass zeigst du es auf dem Handy oder ausgedruckt vor."],
+    ["Wo findet das Event statt?",
+     "Winterball und Galaabend finden in der Aula der FOS Holzkirchen statt (Jörg-Hube-Straße 2, 83607 Holzkirchen). Den Ort für den Abiball geben wir rechtzeitig hier auf der Seite bekannt."],
+    ["Brauche ich einen Ausweis?",
+     "Ja. Bring bitte einen gültigen Lichtbildausweis mit, er kann am Einlass zusammen mit deinem Ticket kontrolliert werden."],
+    ["Ich bin unter 18. Was muss ich beachten?",
+     "Es gilt das Jugendschutzgesetz. Alle Details zu Einlass und Altersregeln geben wir rechtzeitig vor dem Event bekannt."],
+    ["Darf ich Gäste mitbringen?",
+     "Ob und wie viele Gäste mitkommen dürfen, siehst du beim Ticketkauf im Ticketshop."],
+    ["Kann ich mein Ticket zurückgeben oder weitergeben?",
+     "Es gelten die Bedingungen des Ticketshops. Bei Fragen helfen wir dir gern weiter."]
+  ],
+  dresscodeTipps: [
+    ["Für ihn", "Anzug oder Smoking, gern mit Fliege oder Krawatte."],
+    ["Für sie", "Abendkleid, Cocktailkleid oder ein eleganter Hosenanzug."],
+    ["Bitte nicht", "Freizeitkleidung, Jogginghose oder Sportschuhe."]
+  ]
+};
+
+/* =====================================================================
+   LOGIK – muss für Inhaltsänderungen nicht angefasst werden.
+   ===================================================================== */
+(function () {
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const ph = (t) => esc(t).replace(/\[([^\]]+)\]/g, '<mark class="ph">$1</mark>');
+  const plain = (t) => String(t).replace(/\[([^\]]+)\]/g, "$1");
+  const enc = encodeURIComponent;
+  const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const fine = matchMedia("(pointer: fine)").matches;
+  // Eine Event-Seite setzt vorher window.WB_ONLY = "winterball" o. ä. und zeigt dann nur dieses Event
+  const ALL = CONFIG.events.slice();
+  if (window.WB_ONLY) CONFIG.events = CONFIG.events.filter((e) => e.id === window.WB_ONLY);
+  const single = CONFIG.events.length === 1;
+  // Teilen-Links zeigen auf die Seite, auf der man gerade ist (falls sie richtig gehostet ist)
+  const pageUrl = /^https?:$/.test(location.protocol) && !/claude|localhost|127\.0\.0\.1/.test(location.hostname)
+    ? location.origin + location.pathname : CONFIG.seitenUrl;
+  const evById = (id) => CONFIG.events.find((e) => e.id === id);
+  const urlOf = (ev) => (ev && ev.ticketUrl) || CONFIG.ticketUrl;
+  const host = (u) => { try { return new URL(u).host; } catch { return u; } };
+  const upcoming = CONFIG.events.map((e) => ({ e, t: new Date(e.start).getTime() }))
+    .filter((x) => x.t > Date.now()).sort((a, b) => a.t - b.t);
+  const next = upcoming[0] ? upcoming[0].e : CONFIG.events[0];
+  const nextT = upcoming[0] ? upcoming[0].t : null;
+  const live = CONFIG.events.find((e) => e.status === "live") || next;
+
+  /* ---- Grundgerüst für Kauf-Fenster, Countdown-Ziffern, Kontingent ---- */
+  const base = document.createElement("style");
+  base.textContent = `
+html.sheet-open{overflow:hidden}
+.price-note{margin:0;font-size:15px;line-height:1.5;opacity:.85}
+.ablauf-more{opacity:.6}
+.ablauf-more time{letter-spacing:.1em}
+.sheet{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;background:transparent;color:inherit;overflow-y:auto;overscroll-behavior:contain}
+.sheet[open]{display:flex;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.sheet::backdrop{background:rgba(0,0,0,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.sheet-in{position:relative;width:min(540px,100%);margin:auto;animation:wb-sheet-in .5s cubic-bezier(.2,.85,.2,1) both}
+.sheet.closing .sheet-in{animation:wb-sheet-out .22s ease-in both}
+.sheet-step[hidden]{display:none!important}
+.sheet-evs{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+.sheet-ev{appearance:none;font:inherit;color:inherit;text-align:left;cursor:pointer;display:grid;gap:2px}
+.sheet-x{appearance:none;border:0;cursor:pointer;position:absolute;top:14px;right:14px;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font:inherit;color:inherit;background:transparent}
+.sheet-need ul,.sheet-prices{list-style:none;margin:0;padding:0}
+.sheet-need li{display:flex;gap:10px;align-items:center}
+.sheet-need svg,.sheet-host svg,.sheet-share svg,.ev-cal svg{width:18px;height:18px;flex:none}
+.sheet-share{display:flex;flex-wrap:wrap;gap:8px}
+.sheet-ok svg{width:34px;height:34px}
+@keyframes wb-sheet-in{from{opacity:0;transform:translateY(28px) scale(.97)}}
+@keyframes wb-sheet-out{to{opacity:0;transform:translateY(18px) scale(.98)}}
+@media (max-width:600px){
+  .sheet[open]{padding:0}
+  .sheet-in{width:100%;margin:auto 0 0;border-bottom-left-radius:0!important;border-bottom-right-radius:0!important;padding-bottom:calc(26px + env(safe-area-inset-bottom,0px))!important;animation-name:wb-sheet-up}
+  .sheet.closing .sheet-in{animation-name:wb-sheet-down}
+  .sheet-evs{grid-template-columns:1fr 1fr}
+  .sheet-ev{min-width:0}
+  .sheet-go{position:sticky;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:3;box-shadow:0 10px 30px -6px rgba(0,0,0,.35)}
+}
+@keyframes wb-sheet-up{from{transform:translateY(100%)}}
+@keyframes wb-sheet-down{to{transform:translateY(100%)}}
+.cd-n{display:inline-flex;justify-content:center}
+.cd-n i{display:inline-block;font-style:normal;overflow:hidden}
+.cd-n i.in{animation:wb-digit .55s cubic-bezier(.2,.85,.25,1.15)}
+@keyframes wb-digit{from{transform:translateY(-.6em);opacity:0;filter:blur(3px)}}
+.quota-bar{height:6px;border-radius:9px;overflow:hidden;background:rgba(127,127,127,.22)}
+.quota-bar i{display:block;height:100%;width:calc(var(--q)*100%);border-radius:inherit;background:currentColor;animation:wb-fill 1.6s cubic-bezier(.2,.85,.2,1) .25s both}
+@keyframes wb-fill{from{width:0}}
+.flash{animation:wb-flash 1.4s ease}
+@keyframes wb-flash{30%{box-shadow:0 0 0 4px var(--flash,rgba(255,200,120,.8))}}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.32s}
+@media (prefers-reduced-motion:reduce){.sheet-in,.sheet.closing .sheet-in,.cd-n i.in,.quota-bar i,.flash{animation:none!important}}
+`;
+  document.head.prepend(base);
+
+  /* ---- Icons ---- */
+  const S = (p) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${p}</svg>`;
+  const ICON = {
+    music: S('<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>'),
+    glass: S('<path d="M8 2h8l-1 8a3 3 0 0 1-6 0z"/><path d="M12 13v8M8 21h8"/>'),
+    food: S('<path d="M7 2v20M4 2v6a3 3 0 0 0 6 0V2M18 22V2c-2.5 0-4 3-4 7s1.5 5 4 5"/>'),
+    camera: S('<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7l2-3h4l2 3"/><circle cx="12" cy="13.5" r="3.5"/>'),
+    star: S('<path d="M12 3l2.4 5.6L20 9.2l-4.4 3.9L17 19l-5-3-5 3 1.4-5.9L4 9.2l5.6-.6z"/>'),
+    mail: S('<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>'),
+    card: S('<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/>'),
+    id: S('<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="11" r="2.5"/><path d="M5.5 17c.8-2 2-3 3.5-3s2.7 1 3.5 3M15 9h3M15 13h3"/>'),
+    lock: S('<rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/>'),
+    check: S('<path d="m5 12.5 4.5 4.5L19 7.5"/>'),
+    cal: S('<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M12 13.5v4M10 15.5h4"/>'),
+    chat: S('<path d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1-4.2A8 8 0 1 1 20 12z"/><path d="M9 10h6M9 14h4"/>'),
+    link: S('<path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/>'),
+    mic: S('<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4M8.5 21h7"/>'),
+    mask: S('<path d="M4 4h10v6a5 5 0 0 1-10 0z"/><path d="M7 8h.01M11 8h.01M7.5 11.5c1 .8 2 .8 3 0"/><path d="M14 9h6v6a5 5 0 0 1-8.6 3.5"/><path d="M16 12h.01M19 12h.01M16 15.5c1-.8 2-.8 3 0"/>'),
+    users: S('<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.3-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.8c1.9.7 3.1 2.4 3.5 5.2"/>'),
+    book: S('<path d="M12 6c-2-1.5-5-2-8-1.5v14c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5v-14c-3-.5-6 0-8 1.5z"/><path d="M12 6v14"/>'),
+    x: S('<path d="M6 6l12 12M18 6 6 18"/>')
+  };
+  window.WB_ICON = ICON;
+
+  /* ---- Bausteine ---- */
+  const fmt = (s) => s.replace(/[-:]/g, "").slice(0, 15);
+  const day = (s) => s.slice(0, 10).replace(/-/g, "");
+  const nextDay = (s) => { const d = new Date(s); d.setDate(d.getDate() + 1); return d.getFullYear() + String(d.getMonth() + 1).padStart(2, "0") + String(d.getDate()).padStart(2, "0"); };
+  const ortText = (ev) => [ev.ort, ev.ortZusatz].filter(Boolean).map(plain).join(", ");
+  const calDates = (ev) => ev.ganztags ? day(ev.start) + "/" + nextDay(ev.start) : fmt(ev.start) + "/" + fmt(ev.ende || ev.start);
+  const calUrl = (ev) => "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+    "&text=" + enc(`${ev.name} ${ev.jahr} · ${CONFIG.schule}`) +
+    "&dates=" + calDates(ev) + (ev.ganztags ? "" : "&ctz=Europe/Berlin") +
+    "&location=" + enc(ortText(ev)) +
+    "&details=" + enc(`Infos und Tickets: ${CONFIG.seitenUrl}${ev.seite || ""}`);
+  const ics = (ev) => {
+    const lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//FOS Holzkirchen//Events//DE", "BEGIN:VEVENT",
+      `UID:${ev.id}-${ev.jahr}@fos-holzkirchen-events`, `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, "").slice(0, 15)}Z`];
+    if (ev.ganztags) lines.push(`DTSTART;VALUE=DATE:${day(ev.start)}`, `DTEND;VALUE=DATE:${nextDay(ev.start)}`);
+    else lines.push(`DTSTART;TZID=Europe/Berlin:${fmt(ev.start)}`, `DTEND;TZID=Europe/Berlin:${fmt(ev.ende || ev.start)}`);
+    lines.push(`SUMMARY:${ev.name} ${ev.jahr} · ${CONFIG.schule}`, `LOCATION:${ortText(ev)}`,
+      `DESCRIPTION:Infos und Tickets: ${CONFIG.seitenUrl}${ev.seite || ""}`, "END:VEVENT", "END:VCALENDAR");
+    return URL.createObjectURL(new Blob([lines.join("\r\n")], { type: "text/calendar" }));
+  };
+  const waUrl = (ev) => "https://wa.me/?text=" + enc(`Kommst du mit zum ${ev.name} ${ev.jahr}? ${ev.datumText}. Infos und Tickets: ${CONFIG.seitenUrl}${ev.seite || ""}`);
+  const quota = (ev) => {
+    if (!ev || !ev.kontingent) return "";
+    const { gesamt, verkauft } = ev.kontingent, q = Math.min(1, verkauft / gesamt), frei = Math.max(0, gesamt - verkauft);
+    return `<div class="quota${q >= .8 ? " hot" : ""}" style="--q:${q.toFixed(3)}">
+      <div class="quota-bar" role="progressbar" aria-valuemin="0" aria-valuemax="${gesamt}" aria-valuenow="${verkauft}" aria-label="Verkaufte Tickets"><i></i></div>
+      <p class="quota-txt">${q >= 1 ? "Ausverkauft" : `Noch <b>${frei}</b> von ${gesamt} Tickets frei`}${q >= .8 && q < 1 ? " · <em>bald weg</em>" : ""}</p></div>`;
+  };
+  const prices = (ev, cls) => !ev.preise.length ? `<p class="price-note">Alle Preise und Ticketarten findest du direkt im Ticketshop.</p>` : `<ul class="${cls}">${ev.preise.map((p) =>
+    `<li><span>${esc(p.label)}${p.hinweis ? `<small>${ph(p.hinweis)}</small>` : ""}</span><b>${p.alt ? `<s>${ph(p.alt)}</s> ` : ""}${ph(p.preis)}</b></li>`).join("")}</ul>`;
+  const buyLabel = (ev) => ev.status === "live" ? "Ticket kaufen" : ev.status === "soldout" ? "Ausverkauft" : "Infos zum Vorverkauf";
+
+  /* ---- Event-Karten ---- */
+  const list = $("#events");
+  if (list) list.innerHTML = CONFIG.events.map((ev, i) => `
+    <article class="ev ev--${ev.id}" data-status="${ev.status}" data-glow>
+      <div class="ev-main">
+        <p class="ev-kicker">${esc(ev.kicker)}</p>
+        <h3 class="ev-name">${esc(ev.name)} <span class="ev-year">${esc(ev.jahr)}</span></h3>
+        <p class="ev-tag">${esc(ev.tagline)}</p>
+        <dl class="ev-facts">
+          <div><dt>Datum</dt><dd>${ph(ev.datumText)}${ev.vorlaeufig ? "<small>Vorläufiger Termin</small>" : ""}</dd></div>
+          <div><dt>Zeit</dt><dd>${ph(ev.zeitText)}</dd></div>
+          <div><dt>Ort</dt><dd>${ph(ev.ort)}${ev.ortZusatz ? `<small>${ph(ev.ortZusatz)}</small>` : ""}</dd></div>
+        </dl>
+      </div>
+      <div class="ev-side">
+        <span class="ev-status">${esc(ev.statusText)}</span>
+        ${prices(ev, "ev-prices")}
+        ${quota(ev)}
+        <div class="ev-actions">
+          <button type="button" class="btn ev-btn" data-buy="${ev.id}">${buyLabel(ev)} <span aria-hidden="true">→</span></button>
+          <a class="ev-cal" href="${calUrl(ev)}" target="_blank" rel="noopener">${ICON.cal}Im Kalender speichern</a>
+        </div>
+        <span class="ev-no">Nr. ${String(i + 1).padStart(2, "0")} · ${esc(ev.jahr)}</span>
+      </div>
+    </article>`).join("");
+
+  /* ---- Start: Highlights, Schritte, Teaser, Fakten ---- */
+  // Eine Eventseite darf eigene Highlights / FAQ mitbringen (ev.highlights, ev.faq)
+  const own = (k) => (single && CONFIG.events[0][k]) || CONFIG[k];
+  const hl = $("#highlights");
+  if (hl) hl.innerHTML = own("highlights").map(([ic, t, d]) =>
+    `<li class="hl"><span class="hl-ic">${ICON[ic] || ICON.star}</span><b>${esc(t)}</b><span>${esc(d)}</span></li>`).join("");
+  const st = $("#steps");
+  if (st) st.innerHTML = CONFIG.schritte.map(([t, d], i) =>
+    `<li class="step"><span class="step-n">${i + 1}</span><b>${esc(t)}</b><span>${esc(d)}</span></li>`).join("");
+  const te = $("#teasers");
+  if (te) te.innerHTML = CONFIG.events.map((ev) =>
+    `<a class="teaser" href="#events" data-goto="events" data-focus="${ev.id}" data-status="${ev.status}">
+       <span class="t-txt"><span class="t-name">${esc(ev.name)}</span><span class="t-meta">${esc(ev.datumKurz)} · ${esc(ev.statusText)}</span></span>
+       <span class="t-go" aria-hidden="true">→</span></a>`).join("");
+  // Querverweise auf einer Event-Seite: die anderen Events + zurück zur Startseite.
+  // data-crosslinks="../" = Pfad von dieser Seite zur Startseite
+  $$("[data-crosslinks]").forEach((box) => {
+    const base = box.dataset.crosslinks || "../";
+    const others = ALL.filter((ev) => !CONFIG.events.includes(ev) && ev.seite);
+    box.innerHTML = others.map((ev) =>
+      `<a class="teaser" href="${esc(base + ev.seite)}" data-status="${ev.status}">
+         <span class="t-txt"><span class="t-name">${esc(ev.name)} ${esc(ev.jahr)}</span><span class="t-meta">${esc(ev.datumKurz)} · ${esc(ev.statusText)}</span></span>
+         <span class="t-go" aria-hidden="true">→</span></a>`).join("") +
+      `<a class="teaser" href="${esc(base)}">
+         <span class="t-txt"><span class="t-name">Alle Events</span><span class="t-meta">Startseite der FOS-Events</span></span>
+         <span class="t-go" aria-hidden="true">→</span></a>`;
+  });
+  $$("[data-quota]").forEach((el) => { const ev = el.dataset.quota === "next" ? live : evById(el.dataset.quota); el.innerHTML = quota(ev); el.hidden = !el.innerHTML; });
+  $$("[data-next-name]").forEach((el) => (el.textContent = `${next.name} ${next.jahr}`));
+  $$("[data-next-date]").forEach((el) => (el.textContent = next.datumText));
+  $$("[data-next-time]").forEach((el) => (el.textContent = next.zeitText));
+  $$("[data-next-ort]").forEach((el) => (el.innerHTML = ph(next.ort)));
+  $$("[data-next-from]").forEach((el) => (el.innerHTML = next.preise.length ? "ab " + ph(next.preise[0].preis) : "Im Ticketshop"));
+  $$("[data-days]").forEach((el) => {
+    if (!nextT) { el.hidden = true; return; }
+    const d = Math.floor((nextT - Date.now()) / 864e5);
+    el.textContent = d > 1 ? `noch ${d} Tage` : d === 1 ? "morgen!" : "heute!";
+  });
+
+  /* ---- Ablauf mit Umschalter, Dresscode, FAQ ---- */
+  const sw = $("#ablauf-switch"), ab = $("#ablauf"), dc = $("#dresscode-event");
+  function showAblauf(id) {
+    const ev = evById(id) || CONFIG.events[0];
+    if (sw) $$("button", sw).forEach((b) => b.setAttribute("aria-pressed", b.dataset.ev === ev.id));
+    if (ab) ab.innerHTML = ev.ablauf.map(([t, w]) => `<li><time>${esc(t)}</time><span>${esc(w)}</span></li>`).join("") + (ev.ablaufFertig ? "" :
+      `<li class="ablauf-more"><time>…</time><span>Das weitere Programm geben wir rechtzeitig bekannt.</span></li>`);
+    if (dc) dc.innerHTML = `<b>${esc(ev.name)}:</b> ${ph(ev.dresscode)}`;
+  }
+  if (sw) {
+    sw.innerHTML = CONFIG.events.map((e) => `<button type="button" data-ev="${e.id}">${esc(e.name)}</button>`).join("");
+    sw.addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) showAblauf(b.dataset.ev); });
+  }
+  showAblauf(CONFIG.events[0].id);
+  if (sw && single) sw.hidden = true;
+  const tips = $("#dresscode-tips");
+  if (tips) tips.innerHTML = CONFIG.dresscodeTipps.map(([k, v]) => `<li><b>${esc(k)}</b><span>${esc(v)}</span></li>`).join("");
+  const faq = $("#faq");
+  if (faq) faq.innerHTML = own("faq").map(([q, a], i) =>
+    `<details${i === 0 ? " open" : ""}><summary>${esc(q)}</summary><p>${ph(a)}</p></details>`).join("");
+
+  /* ---- Kontakt & Links ---- */
+  // Elemente mit data-insta / data-mail-… verschwinden, solange die Angabe leer ist.
+  // data-opt="insta" bzw. data-opt="mail" markiert den ganzen Block, der dann mit ausgeblendet wird.
+  $$("[data-insta]").forEach((a) => { a.href = "https://instagram.com/" + CONFIG.instagram; a.target = "_blank"; a.rel = "noopener"; });
+  $$("[data-insta-text]").forEach((el) => (el.textContent = "@" + CONFIG.instagram));
+  $$("[data-mail-text]").forEach((el) => (el.textContent = CONFIG.mail));
+  if (!CONFIG.instagram) $$("[data-opt=insta], [data-insta]").forEach((el) => (el.hidden = true));
+  if (!CONFIG.mail) $$("[data-opt=mail], [data-copy-mail]").forEach((el) => (el.hidden = true));
+  if (CONFIG.instagram) $$("[data-opt=no-insta]").forEach((el) => (el.hidden = true));
+  const BASE = window.WB_BASE || "";
+  $$("[data-home]").forEach((a) => (a.href = BASE || "./"));
+  $$("[data-legal]").forEach((el) => (el.innerHTML = ph(CONFIG.verantwortlich[el.dataset.legal] || "")));
+  $$("[data-address]").forEach((el) => (el.textContent = CONFIG.adresse));
+  $$("[data-impressum]").forEach((a) => (a.href = BASE + "impressum/"));
+  $$("[data-datenschutz]").forEach((a) => (a.href = BASE + "datenschutz/"));
+  $$("[data-share-wa]").forEach((a) => { a.href = waUrl(live); a.target = "_blank"; a.rel = "noopener"; });
+  async function copy(text, btn, sel) {
+    const lbl = btn.querySelector(".lbl") || btn, old = lbl.textContent;
+    try { await navigator.clipboard.writeText(text); lbl.textContent = "Kopiert ✓"; }
+    catch { if (sel) getSelection().selectAllChildren(sel); lbl.textContent = "Markiert, jetzt kopieren"; }
+    setTimeout(() => (lbl.textContent = old), 1800);
+  }
+  document.addEventListener("click", (e) => {
+    const m = e.target.closest("[data-copy-mail]"); if (m) copy(CONFIG.mail, m, $("[data-mail-text]"));
+    const l = e.target.closest("[data-copy-link]"); if (l) copy(pageUrl, l);
+  });
+
+  /* ---- Countdown mit rollenden Ziffern ---- */
+  const cd = { d: $("#cd-d"), h: $("#cd-h"), m: $("#cd-m"), s: $("#cd-s") };
+  Object.values(cd).forEach((el) => el && el.classList.add("cd-n"));
+  function setDigits(el, txt) {
+    const old = el.dataset.v || "";
+    if (old === txt) return;
+    el.dataset.v = txt;
+    el.innerHTML = [...txt].map((c, i) => `<i${old && old.length === txt.length && old[i] !== c ? ' class="in"' : ""}>${c}</i>`).join("");
+  }
+  function tick() {
+    if (!cd.d) return;
+    const r = nextT ? Math.max(0, nextT - Date.now()) / 1000 : 0;
+    setDigits(cd.d, String(Math.floor(r / 86400)));
+    setDigits(cd.h, String(Math.floor(r / 3600) % 24).padStart(2, "0"));
+    setDigits(cd.m, String(Math.floor(r / 60) % 60).padStart(2, "0"));
+    setDigits(cd.s, String(Math.floor(r) % 60).padStart(2, "0"));
+  }
+  tick(); setInterval(tick, 1000);
+
+  /* ---- Konfetti / Funken beim Kauf ---- */
+  function burst(x, y, n = 110) {
+    if (still) return;
+    const cs = getComputedStyle(document.documentElement);
+    const cols = (cs.getPropertyValue("--burst") || "#ffd27a,#ffffff").split(",").map((s) => s.trim()).filter(Boolean);
+    const shape = cs.getPropertyValue("--burst-shape").trim() || "rect";
+    const c = document.createElement("canvas");
+    c.setAttribute("aria-hidden", "true");
+    c.style.cssText = "position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:2147483000";
+    (sheet.open ? sheet : document.body).appendChild(c);
+    const dpr = Math.min(devicePixelRatio || 1, 2), W = innerWidth, H = innerHeight;
+    c.width = W * dpr; c.height = H * dpr;
+    const g = c.getContext("2d"); g.scale(dpr, dpr);
+    const P = Array.from({ length: n }, () => {
+      const a = -Math.PI / 2 + (Math.random() - .5) * Math.PI * 1.5, v = 5 + Math.random() * 11;
+      return { x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v, r: 4 + Math.random() * 6, rot: Math.random() * 6, vr: (Math.random() - .5) * .35, c: cols[Math.random() * cols.length | 0], l: 1, w: Math.random() * 6.3 };
+    });
+    let f = 0;
+    (function loop() {
+      f++; g.clearRect(0, 0, W, H);
+      for (const p of P) {
+        p.vx *= .982; p.vy = p.vy * .982 + .28; p.w += .12; p.x += p.vx + Math.sin(p.w) * .6; p.y += p.vy; p.rot += p.vr; p.l -= .0085;
+        g.globalAlpha = Math.max(0, Math.min(1, p.l * 1.6)); g.fillStyle = g.strokeStyle = p.c;
+        g.save(); g.translate(p.x, p.y); g.rotate(p.rot);
+        if (shape === "circle") { g.beginPath(); g.arc(0, 0, p.r * .5, 0, 7); g.fill(); }
+        else if (shape === "flake") { g.lineWidth = 1.5; g.beginPath(); for (let k = 0; k < 3; k++) { g.rotate(Math.PI / 3); g.moveTo(-p.r, 0); g.lineTo(p.r, 0); } g.stroke(); }
+        else if (shape === "cap") { const s = p.r * 1.3; g.beginPath(); g.moveTo(0, -s * .5); g.lineTo(s, 0); g.lineTo(0, s * .5); g.lineTo(-s, 0); g.closePath(); g.fill(); g.fillRect(-s * .45, 0, s * .9, s * .55); g.fillRect(s * .8, 0, s * .12, s * .7); }
+        else if (shape === "spark") { g.beginPath(); g.moveTo(0, -p.r); g.lineTo(p.r * .28, 0); g.lineTo(0, p.r); g.lineTo(-p.r * .28, 0); g.closePath(); g.fill(); }
+        else { g.scale(1, Math.cos(p.w)); g.fillRect(-p.r / 2, -p.r / 4, p.r, p.r / 2); }
+        g.restore();
+      }
+      if (f < 150) requestAnimationFrame(loop); else c.remove();
+    })();
+  }
+
+  /* ---- Kauf-Fenster ---- */
+  const sheet = document.createElement("dialog");
+  sheet.className = "sheet"; sheet.id = "buy"; sheet.setAttribute("aria-labelledby", "buy-title");
+  sheet.innerHTML = `
+  <div class="sheet-in">
+    <button type="button" class="sheet-x" data-close aria-label="Schließen">${ICON.x}</button>
+    <div class="sheet-step" data-step="pick">
+      <p class="sheet-kicker">Ticket kaufen</p>
+      <h2 class="sheet-title" id="buy-title">Für welchen Abend?</h2>
+      <div class="sheet-evs" role="radiogroup" aria-label="Event wählen">
+        ${CONFIG.events.map((e) => `<button type="button" role="radio" class="sheet-ev" data-pick="${e.id}" data-status="${e.status}" aria-checked="false">
+          <b>${esc(e.name)} ${esc(e.jahr)}</b><span>${esc(e.datumKurz)}</span><em>${esc(e.statusText)}</em></button>`).join("")}
+      </div>
+      <div class="sheet-detail" aria-live="polite"></div>
+      <div class="sheet-need"><p>Das brauchst du</p><ul>
+        <li>${ICON.mail}<span>Eine E-Mail-Adresse für dein Ticket</span></li>
+        <li>${ICON.card}<span>Bezahlung direkt im Ticketshop</span></li>
+        ${single && CONFIG.events[0].ausweis === false ? "" : `<li>${ICON.id}<span>Deinen Ausweis am Einlass</span></li>`}</ul></div>
+      <a class="btn sheet-go" href="#" target="_blank" rel="noopener"><span class="lbl">Weiter zur Ticketseite</span> <span aria-hidden="true">→</span></a>
+      <p class="sheet-host">${ICON.lock}<span>Weiter zu <b class="sheet-host-name"></b>, dort bezahlst du sicher.</span></p>
+    </div>
+    <div class="sheet-step sheet-done" data-step="done" hidden>
+      <div class="sheet-ok">${ICON.check}</div>
+      <h2 class="sheet-title">Ab zur Ticketseite!</h2>
+      <p class="sheet-sub">Die Ticketseite ist in einem neuen Tab geöffnet. Falls nicht, <a class="sheet-retry" href="#" target="_blank" rel="noopener">tipp hier</a>.</p>
+      <p class="sheet-kicker">Wer kommt mit?</p>
+      <div class="sheet-share">
+        <a class="chip-s sheet-wa" href="#" target="_blank" rel="noopener">${ICON.chat}<span>Per WhatsApp einladen</span></a>
+        <a class="chip-s sheet-cal" href="#" target="_blank" rel="noopener">${ICON.cal}<span>In den Kalender</span></a>
+        <button type="button" class="chip-s" data-copy-link>${ICON.link}<span class="lbl">Link kopieren</span></button>
+      </div>
+    </div>
+  </div>`;
+  document.body.appendChild(sheet);
+  if (single) {
+    $(".sheet-evs", sheet).hidden = true;
+    $("#buy-title", sheet).textContent = `Dein Ticket für den ${CONFIG.events[0].name}`;
+  }
+  const detail = $(".sheet-detail", sheet), go = $(".sheet-go", sheet);
+  let current = live;
+  function pick(id) {
+    const ev = evById(id) || live; current = ev;
+    $$(".sheet-ev", sheet).forEach((b) => b.setAttribute("aria-checked", b.dataset.pick === ev.id));
+    detail.innerHTML = prices(ev, "sheet-prices") + quota(ev) + (ev.status === "soon"
+      ? `<p class="sheet-note">Der Vorverkauf startet bald. Im Ticketshop siehst du, sobald Tickets verfügbar sind${CONFIG.instagram ? `, und auf Instagram (<b>@${esc(CONFIG.instagram)}</b>) sagen wir Bescheid` : ""}.</p>` : "");
+    go.href = urlOf(ev);
+    $(".lbl", go).textContent = ev.status === "live" ? "Weiter zur Ticketseite" : "Ticketseite ansehen";
+    $(".sheet-host-name", sheet).textContent = host(urlOf(ev));
+    $(".sheet-retry", sheet).href = urlOf(ev);
+    $(".sheet-wa", sheet).href = waUrl(ev);
+    $(".sheet-cal", sheet).href = calUrl(ev);
+  }
+  function step(name) { $$(".sheet-step", sheet).forEach((s) => (s.hidden = s.dataset.step !== name)); }
+  async function openSheet(id) {
+    if (window.WB.beforeOpen) await window.WB.beforeOpen(id);
+    pick(id); step("pick");
+    document.documentElement.classList.add("sheet-open");
+    if (sheet.showModal) sheet.showModal(); else sheet.setAttribute("open", "");
+    document.dispatchEvent(new CustomEvent("wb:open", { detail: id }));
+  }
+  function closeSheet() {
+    if (!sheet.open) return;
+    sheet.classList.add("closing");
+    setTimeout(() => {
+      sheet.classList.remove("closing");
+      if (sheet.close) sheet.close(); else sheet.removeAttribute("open");
+    }, still ? 0 : 220);
+  }
+  sheet.addEventListener("close", () => { document.documentElement.classList.remove("sheet-open"); document.dispatchEvent(new CustomEvent("wb:close")); });
+  sheet.addEventListener("cancel", (e) => { e.preventDefault(); closeSheet(); });
+  sheet.addEventListener("click", (e) => {
+    if (e.target === sheet || e.target.closest("[data-close]")) return closeSheet();
+    const p = e.target.closest("[data-pick]"); if (p) pick(p.dataset.pick);
+  });
+  go.addEventListener("click", (e) => {
+    burst(e.clientX || innerWidth / 2, e.clientY || innerHeight / 2);
+    setTimeout(() => step("done"), 380);
+  });
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-buy]");
+    if (b && !sheet.contains(b)) { e.preventDefault(); openSheet(b.dataset.buy); }
+  });
+
+  /* ---- Lichtpunkt unter dem Mauszeiger & magnetische Buttons ---- */
+  if (fine && !still) {
+    let raf = 0, last;
+    document.addEventListener("pointermove", (e) => {
+      last = e; if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        const el = last.target.closest && last.target.closest("[data-glow]");
+        if (el) { const r = el.getBoundingClientRect(); el.style.setProperty("--mx", (last.clientX - r.left) + "px"); el.style.setProperty("--my", (last.clientY - r.top) + "px"); }
+        const m = last.target.closest && last.target.closest(".magnet");
+        $$(".magnet.pull").forEach((x) => { if (x !== m) { x.classList.remove("pull"); x.style.translate = ""; } });
+        if (m) { const r = m.getBoundingClientRect(); m.classList.add("pull"); m.style.translate = `${((last.clientX - r.left - r.width / 2) * .18).toFixed(1)}px ${((last.clientY - r.top - r.height / 2) * .28).toFixed(1)}px`; }
+      });
+    });
+  }
+
+  /* ---- Reiter (mit Tastatur & weichem Übergang) ---- */
+  const tabs = ["start", "events", "infos", "kontakt"], alias = { tickets: "events" };
+  $$("[data-panel]").forEach((p) => { p.id = p.id || "p-" + p.dataset.panel; p.setAttribute("role", "tabpanel"); p.tabIndex = -1; });
+  $$("[data-tab]").forEach((b) => b.setAttribute("aria-controls", "p-" + b.dataset.tab));
+  function show(name) {
+    $$("[data-panel]").forEach((p) => {
+      const on = p.dataset.panel === name;
+      p.hidden = !on;
+      if (on) { p.classList.remove("enter"); void p.offsetWidth; p.classList.add("enter"); }
+    });
+    $$("[data-tab]").forEach((b) => { const on = b.dataset.tab === name; b.setAttribute("aria-selected", on); b.tabIndex = on ? 0 : -1; });
+    document.documentElement.dataset.tab = name;
+  }
+  function go_(name, user, focus) {
+    name = alias[name] || name;
+    if (!tabs.includes(name)) name = "start";
+    const apply = () => { show(name); if (user) window.scrollTo(0, 0); };
+    apply();
+    if (user) try { history.replaceState(null, "", "#" + name); } catch {}
+    if (focus) setTimeout(() => {
+      const card = $(".ev--" + focus);
+      if (card) { card.scrollIntoView({ behavior: still ? "auto" : "smooth", block: "center" }); card.classList.remove("flash"); void card.offsetWidth; card.classList.add("flash"); }
+    }, 360);
+  }
+  document.addEventListener("click", (e) => {
+    // <html data-tab="…"> merkt sich nur den aktiven Reiter und darf hier nicht zählen
+    const t = e.target.closest("[data-tab],[data-goto]");
+    if (!t || t === document.documentElement || sheet.contains(t)) return;
+    e.preventDefault();
+    go_(t.dataset.tab || t.dataset.goto, true, t.dataset.focus);
+  });
+  document.addEventListener("keydown", (e) => {
+    const t = e.target.closest && e.target.closest("[data-tab]");
+    if (!t || t === document.documentElement || !["ArrowLeft", "ArrowRight", "Home", "End"].includes(e.key)) return;
+    const all = $$("[data-tab]", t.parentElement), i = all.indexOf(t);
+    const n = e.key === "Home" ? 0 : e.key === "End" ? all.length - 1 : (i + (e.key === "ArrowRight" ? 1 : -1) + all.length) % all.length;
+    all[n].focus(); go_(all[n].dataset.tab, true); e.preventDefault();
+  });
+  window.addEventListener("hashchange", () => { const h = location.hash.slice(1); if (h === "kaufen") openSheet(); else go_(h); });
+
+  window.WB = { burst, openSheet, closeSheet, config: CONFIG, all: ALL, next, live, still, fine, esc, ph, calUrl, ics, ortText, pageUrl };
+  const h0 = location.hash.slice(1);
+  go_(h0 === "kaufen" ? "start" : h0 || "start");
+  if (h0 === "kaufen") setTimeout(() => openSheet(), 300);
+})();
+</script>
+<script>
+(() => {
+  const { still, next: ev, burst } = window.WB;
+  const cfg = ev.anmeldung || {};
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const form = $("#form"), steps = $$(".step", form), prog = $("#prog");
+  const nextBtn = $("#next"), prevBtn = $("#prev"), fail = $("#fail");
+  $$("[data-due]").forEach((el) => (el.textContent = ev.anmeldeschluss.replace(/\s*\d{4}$/, "")));
+
+  /* Anmeldeschluss: ab dem Tag danach ist die Anmeldung zu */
+  const MON = { Januar: 0, Februar: 1, März: 2, April: 3, Mai: 4, Juni: 5, Juli: 6, August: 7, September: 8, Oktober: 9, November: 10, Dezember: 11 };
+  const m = ev.anmeldeschluss.match(/(\d+)\.\s*(\S+)\s+(\d{4})/);
+  const deadline = m ? new Date(+m[3], MON[m[2]], +m[1] + 1) : null;
+  if (deadline && Date.now() >= deadline) { form.hidden = true; $("#closed").hidden = false; return; }
+  // Solange kein Google-Formular verbunden ist, ist die Anmeldung noch zu (Test: ?vorschau an die Adresse hängen)
+  const ready = cfg.formUrl && cfg.felder && Object.keys(cfg.felder).length;
+  if (!ready && !/vorschau/.test(location.search)) {
+    form.hidden = true; $("#closed").hidden = false;
+    $("#closedTitle").textContent = "Gleich geht der Vorhang auf";
+    $("#closedText").textContent = "Die Anmeldung für Acts öffnet in Kürze. Schau bald wieder vorbei oder folg uns auf Instagram, dort sagen wir Bescheid.";
+    return;
+  }
+
+  /* Entwurf im Browser merken, falls man die Seite zwischendurch schließt */
+  const KEY = "gala-act-entwurf";
+  const store = { get() { try { return JSON.parse(localStorage.getItem(KEY) || "null"); } catch { return null; } },
+    set(v) { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch {} }, clear() { try { localStorage.removeItem(KEY); } catch {} } };
+
+  /* Mitwirkende */
+  const people = $("#people");
+  function addPerson(val = "") {
+    const row = document.createElement("div");
+    row.className = "person";
+    row.innerHTML = `<input type="text" name="person" placeholder="Name, Klasse" aria-label="Name einer mitwirkenden Person"><button type="button" class="rm" aria-label="Person entfernen">×</button>`;
+    $("input", row).value = val;
+    people.appendChild(row);
+    return $("input", row);
+  }
+  $("#addPerson").addEventListener("click", () => addPerson().focus());
+  people.addEventListener("click", (e) => { const b = e.target.closest(".rm"); if (b) { b.parentElement.remove(); save(); } });
+
+  /* Werte lesen und schreiben */
+  const val = (n) => { const els = form.elements[n]; if (!els) return ""; if (els.length !== undefined && !els.tagName) { const c = [...els].filter((x) => x.checked).map((x) => x.value); return els[0].type === "radio" ? c[0] || "" : c; } if (els.type === "checkbox") return els.checked ? els.value : ""; return els.value.trim(); };
+  const list = (n) => [].concat(val(n) || []);
+  const persons = () => $$("input[name=person]", people).map((i) => i.value.trim()).filter(Boolean);
+  function data() {
+    const o = {};
+    for (const el of form.elements) if (el.name && el.name !== "person" && el.name !== "website") o[el.name] = val(el.name);
+    o.person = persons();
+    return o;
+  }
+  function restore(o) {
+    if (!o) return;
+    for (const [k, v] of Object.entries(o)) {
+      if (k === "person") { v.forEach((p) => addPerson(p)); continue; }
+      const els = form.elements[k]; if (!els) continue;
+      if (els.length !== undefined && !els.tagName) [...els].forEach((x) => (x.checked = [].concat(v).includes(x.value)));
+      else if (els.type === "checkbox") els.checked = !!v;
+      else els.value = v;
+    }
+  }
+  restore(store.get());
+  if (!people.children.length) addPerson();
+
+  /* Abhängige Felder (z. B. Klasse nur bei Schüler:innen) */
+  function deps() {
+    $$("[data-if]", form).forEach((el) => { const [k, v] = el.dataset.if.split("="); el.hidden = val(k) !== v; });
+    $("#dauerOut").textContent = val("dauer") + " Min.";
+    $$("[data-count]").forEach((c) => { const n = val(c.dataset.count).length, max = form.elements[c.dataset.count].maxLength; c.textContent = n > max * .6 ? `${n} / ${max}` : ""; });
+  }
+  let st;
+  function save() { clearTimeout(st); st = setTimeout(() => store.set(data()), 250); }
+  form.addEventListener("input", (e) => { deps(); save(); const f = e.target.closest(".f.bad"); if (f) check(f); });
+  form.addEventListener("change", () => { deps(); save(); });
+  deps();
+
+  /* Prüfen */
+  const mailOk = (s) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(s);
+  const telOk = (s) => s.replace(/[^\d]/g, "").length >= 6;
+  function check(f) {
+    if (f.closest("[hidden]")) { f.classList.remove("bad"); return true; }
+    const k = f.dataset.req; let ok = true;
+    if (k === "kontakt") {
+      const t = val("telefon"), e = val("email"), err = $("#kontaktErr");
+      ok = (t || e) && (!t || telOk(t)) && (!e || mailOk(e));
+      err.textContent = !t && !e ? "Bitte gib eine Handynummer oder eine E-Mail-Adresse an." : t && !telOk(t) ? "Die Handynummer sieht unvollständig aus." : "Die E-Mail-Adresse sieht nicht richtig aus.";
+    } else if (k === "leute") ok = persons().length > 0;
+    else if (k === "beschreibung") ok = val(k).length >= 10;
+    else { const v = val(k); ok = Array.isArray(v) ? v.length > 0 : !!v; }
+    f.classList.toggle("bad", !ok);
+    return ok;
+  }
+  function checkStep(i) {
+    const bad = $$("[data-req]", steps[i]).filter((f) => !check(f));
+    if (bad[0]) { const inp = $("input:not([type=hidden]), textarea", bad[0]); bad[0].scrollIntoView({ block: "center", behavior: still ? "auto" : "smooth" }); if (inp && inp.type !== "radio" && inp.type !== "checkbox") inp.focus({ preventScroll: true }); }
+    return !bad.length;
+  }
+
+  /* Zusammenfassung */
+  const esc = window.WB.esc;
+  function summary() {
+    const d = data(), rows = (pairs) => pairs.filter(([, v]) => v && (!Array.isArray(v) || v.length)).map(([k, v]) => `<dt>${k}</dt><dd>${esc(Array.isArray(v) ? v.join(", ") : v)}</dd>`).join("");
+    const block = (i, title, pairs) => `<section><header><h3>${title}</h3><button type="button" class="txt-btn" data-edit="${i}">Bearbeiten</button></header><dl>${rows(pairs)}</dl></section>`;
+    $("#sum").innerHTML =
+      block(0, "Über dich", [["Name", d.name], ["Rolle", d.rolle === "Schüler:in" ? `Schüler:in, ${d.klasse}` : d.rolle], ["Handy", d.telefon], ["E-Mail", d.email], ["Am liebsten per", d.erreichbar]]) +
+      block(1, "Dein Act", [["Titel", d.titel], ["Sparte", d.sparte], ["Beschreibung", d.beschreibung]]) +
+      block(2, "Mitwirkende", [["Auf der Bühne", d.allein === "ja" ? "Nur ich" : [d.name, ...d.person].join("\n")]]) +
+      block(3, "Bühne & Technik", [["Dauer", d.dauer + " Minuten"], ["Technik", d.technik], ["Zur Technik", d.technikMehr], ["Bringt mit", d.mitbringen]]) +
+      block(4, "Kosten", [["Zuschuss", d.zuschussJa === "ja" ? `${d.zuschuss} € für: ${d.zuschussWofuer}` : "Nein"]]) +
+      block(5, "Zum Schluss", [["Nachricht", d.nachricht || "–"]]);
+  }
+  $("#sum").addEventListener("click", (e) => { const b = e.target.closest("[data-edit]"); if (b) go(+b.dataset.edit, true); });
+
+  /* Schritte */
+  let cur = 0;
+  prog.innerHTML = steps.map(() => "<i></i>").join("");
+  function go(i, backwards, quiet) {
+    cur = Math.max(0, Math.min(steps.length - 1, i));
+    steps.forEach((s, k) => { s.hidden = k !== cur; s.classList.toggle("back-in", !!backwards); });
+    $$("i", prog).forEach((b, k) => b.classList.toggle("on", k <= cur));
+    $("#stepNo").textContent = `Schritt ${cur + 1} von ${steps.length}`;
+    $("#stepName").textContent = steps[cur].dataset.step;
+    prevBtn.style.visibility = cur ? "visible" : "hidden";
+    const last = cur === steps.length - 1;
+    nextBtn.innerHTML = last ? 'Anmeldung absenden <span aria-hidden="true">→</span>' : 'Weiter <span aria-hidden="true">→</span>';
+    if (last) summary();
+    fail.hidden = true;
+    if (!quiet) form.scrollIntoView({ block: "start", behavior: still ? "auto" : "smooth" });
+  }
+  prevBtn.addEventListener("click", () => go(cur - 1, true));
+  nextBtn.addEventListener("click", () => {
+    if (cur < steps.length - 1) { if (checkStep(cur)) go(cur + 1); return; }
+    for (let i = 0; i < steps.length - 1; i++) if (!$$("[data-req]", steps[i]).every((f) => { const h = steps[i].hidden; steps[i].hidden = false; const ok = check(f); steps[i].hidden = h; return ok; })) { go(i, true); checkStep(i); return; }
+    send();
+  });
+  form.addEventListener("keydown", (e) => { if (e.key === "Enter" && e.target.tagName === "INPUT" && e.target.type !== "checkbox" && e.target.type !== "radio") { e.preventDefault(); nextBtn.click(); } });
+
+  /* Absenden an das Google-Formular */
+  function payload() {
+    const d = data();
+    return {
+      name: d.name,
+      rolleKlasse: d.rolle === "Schüler:in" ? `Schüler:in, ${d.klasse}` : d.rolle,
+      telefon: d.telefon,
+      email: d.email,
+      erreichbar: d.erreichbar.join(", "),
+      titel: d.titel,
+      sparte: d.sparte.join(", "),
+      beschreibung: d.beschreibung,
+      mitwirkende: d.allein === "ja" ? `1 Person: ${d.name}` : `${d.person.length + 1} Personen: ${[d.name, ...d.person].join("; ")}`,
+      dauer: d.dauer,
+      technik: [d.technik.join(", "), d.technikMehr].filter(Boolean).join("\n"),
+      mitbringen: d.mitbringen,
+      zuschuss: d.zuschussJa === "ja" ? d.zuschuss : "0",
+      zuschussWofuer: d.zuschussJa === "ja" ? d.zuschussWofuer : "",
+      nachricht: d.nachricht,
+      einwilligung: "Ja, erteilt am " + new Date().toLocaleString("de-DE")
+    };
+  }
+  async function send() {
+    if (val("website")) return finish();             // Spam-Schutz: unsichtbares Feld wurde ausgefüllt
+    const p = payload();
+    if (!ready) { console.info("Vorschau: würde senden", p); return finish(p.name); }
+    const body = new URLSearchParams();
+    for (const [k, id] of Object.entries(cfg.felder)) if (p[k] !== undefined) body.append(id, p[k]);
+    nextBtn.disabled = true; nextBtn.textContent = "Wird gesendet …";
+    try {
+      // Google Formulare beantworten keine Anfragen von fremden Seiten, deshalb „no-cors“:
+      // Die Antwort ist nicht lesbar, ein Netzwerkfehler würde aber hier abgefangen.
+      await fetch(cfg.formUrl.replace(/\/viewform.*$/, "/formResponse"), { method: "POST", mode: "no-cors", body });
+      finish(p.name);
+    } catch {
+      nextBtn.disabled = false; go(cur);
+      fail.hidden = false;
+      fail.innerHTML = `Das Senden hat nicht geklappt. Prüf bitte deine Internetverbindung und versuch es noch einmal.${cfg.formUrl ? ` Falls es weiter nicht geht, nutz <a href="${esc(cfg.formUrl)}" target="_blank" rel="noopener">das Formular direkt</a>.` : ""}`;
+    }
+  }
+  function finish(name) {
+    store.clear();
+    steps.forEach((s) => (s.hidden = true));
+    $("#nav").hidden = prog.hidden = true; $(".step-meta").hidden = true; fail.hidden = true;
+    $("#doneName").textContent = (name || "").split(" ")[0] || "Star";
+    $("#done").hidden = false;
+    form.scrollIntoView({ block: "start", behavior: still ? "auto" : "smooth" });
+    const r = $("#done .ok").getBoundingClientRect();
+    setTimeout(() => burst(r.left + r.width / 2, r.top + r.height / 2, 140), 250);
+  }
+  $("#again").addEventListener("click", () => {
+    const keep = { name: val("name"), rolle: val("rolle"), klasse: val("klasse"), telefon: val("telefon"), email: val("email"), erreichbar: val("erreichbar") };
+    form.reset(); people.innerHTML = ""; restore(keep); addPerson(); deps();
+    nextBtn.disabled = false; $("#done").hidden = true; $("#nav").hidden = prog.hidden = false; $(".step-meta").hidden = false;
+    go(1);
+  });
+
+  go(0, false, true);
+})();
+</script>
+</body>
+</html>
