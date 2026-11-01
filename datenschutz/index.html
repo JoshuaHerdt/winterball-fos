@@ -326,12 +326,17 @@ const CONFIG = {
       vorverkauf: "Online ab 25. November 2026, an der Schule ab dem ersten Schultag im Januar.",
       ticketUrl: null,
       dresscode: "Wird noch bekannt gegeben",
-      anmeldungUrl: "",                            // Link zur Act-Anmeldung (leer = „Anmeldung öffnet bald“), später "anmeldung/"
+      anmeldungUrl: "anmeldung/",                  // Link zur Act-Anmeldung (leer = „Anmeldung öffnet bald“)
       // Act-Anmeldung (galaabend/anmeldung/): schickt die Angaben an ein Google-Formular.
       // formUrl = Link zum Formular (…/viewform), felder = Zuordnung unserer Felder zu den Formularfragen (entry.…)
       anmeldung: {
-        formUrl: "",
-        felder: {}
+        formUrl: "https://docs.google.com/forms/d/e/1FAIpQLSczVK-xFuKNRg7pNem2YCwZ6mgtBWafMitnMy3DT9OUvDqyaQ/viewform",
+        felder: {
+          name: "entry.229047664", rolleKlasse: "entry.248625038", telefon: "entry.631563085", email: "entry.2127110062",
+          erreichbar: "entry.1366109854", titel: "entry.1780089570", sparte: "entry.1892016127", beschreibung: "entry.1635024999",
+          mitwirkende: "entry.1263199066", dauer: "entry.1138693358", technik: "entry.17451326", mitbringen: "entry.1468615856",
+          zuschuss: "entry.1645096892", zuschussWofuer: "entry.91655807", nachricht: "entry.478751171", einwilligung: "entry.1288838015"
+        }
       },
       anmeldeschluss: "23. Dezember 2026",
       ablaufFertig: true,                          // kompletter Ablauf, kein „weiteres Programm folgt“
