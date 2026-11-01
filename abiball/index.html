@@ -333,8 +333,7 @@ footer { border-top: 1px solid var(--ink); font-size: 14px; color: var(--ink-2);
   .duo { grid-template-columns: 1fr; gap: 20px; }
   .band figcaption { padding-left: 20px; padding-right: 20px; }
   .ev { padding: 32px 0 40px; }
-  .ev-facts { grid-template-columns: 1fr 1fr; gap: 14px 24px; }
-  .ev-facts div:last-child { grid-column: 1 / -1; }
+  .ev-facts { grid-template-columns: 1fr; gap: 14px 24px; }
   .ev-actions .btn { flex: 1 1 100%; }
   .row { grid-template-columns: 1fr auto; gap: 6px 16px; }
   .row .k { grid-column: 1 / -1; }
@@ -491,7 +490,6 @@ footer { border-top: 1px solid var(--ink); font-size: 14px; color: var(--ink-2);
           <h3>Ablauf</h3>
           <div class="seg" id="ablauf-switch" role="group" aria-label="Event wählen"></div>
           <ol id="ablauf"></ol>
-          <p class="small">Beispielablauf, die genauen Zeiten folgen.</p>
         </div>
         <div>
           <h3>Dresscode</h3>
@@ -847,7 +845,7 @@ html.sheet-open{overflow:hidden}
 a,button,label,summary,[role=tab]{touch-action:manipulation}
 /* Auf Touch-Geräten: größere Tippflächen für Textlinks, ohne das Layout zu verschieben */
 @media (pointer:coarse){
-  .link,a.chip,button.chip,.chip-s,.ev-cal,.back,.txt-btn,.inline-link{padding-top:10px!important;padding-bottom:10px!important;margin-top:-10px;margin-bottom:-10px;background-origin:content-box}
+  .link,a.chip,button.chip,.chip-s,.ev-cal,.back,.brand,.txt-btn,.inline-link{padding-top:10px!important;padding-bottom:10px!important;margin-top:-10px;margin-bottom:-10px;background-origin:content-box}
   footer .f-col{gap:0!important}
   footer .f-col a,footer .f-col button{padding-top:8px!important;padding-bottom:8px!important;background-origin:content-box}
 }
@@ -1017,7 +1015,7 @@ a,button,label,summary,[role=tab]{touch-action:manipulation}
   // data-opt="insta" bzw. data-opt="mail" markiert den ganzen Block, der dann mit ausgeblendet wird.
   $$("[data-insta]").forEach((a) => { a.href = "https://instagram.com/" + CONFIG.instagram; a.target = "_blank"; a.rel = "noopener"; });
   $$("[data-insta-text]").forEach((el) => (el.textContent = "@" + CONFIG.instagram));
-  $$("[data-mail-text]").forEach((el) => (el.textContent = CONFIG.mail));
+  $$("[data-mail-text]").forEach((el) => (el.innerHTML = esc(CONFIG.mail).replace("@", "@<wbr>")));   // Umbruch nach dem @
   if (!CONFIG.instagram) $$("[data-opt=insta], [data-insta]").forEach((el) => (el.hidden = true));
   if (!CONFIG.mail) $$("[data-opt=mail], [data-copy-mail]").forEach((el) => (el.hidden = true));
   if (CONFIG.instagram) $$("[data-opt=no-insta]").forEach((el) => (el.hidden = true));

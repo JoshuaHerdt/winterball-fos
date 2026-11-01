@@ -235,7 +235,7 @@ main { overflow-x: clip; }
   background: radial-gradient(60% 90% at 100% 0, rgba(201, 162, 74, .2), transparent 60%), linear-gradient(180deg, var(--navy-2), var(--navy)); }
 .casting h2 { font: 400 clamp(40px, 5vw, 70px)/1 var(--f-show); color: var(--gold-hi); margin-top: 12px; }
 .casting > div > p { color: var(--mist); max-width: 46ch; margin: 18px 0 0; }
-.casting .cta { margin-top: 28px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; }
+.casting .cta { margin-top: 28px; display: flex; flex-wrap: wrap; align-items: center; gap: 20px 22px; }
 .casting .due { display: inline-flex; align-items: center; gap: 10px; margin-top: 22px; padding: 10px 16px 8px; border-radius: 999px; background: rgba(7, 13, 31, .6); border: 1px solid var(--line); font-size: 14px; }
 .casting .due b { color: var(--gold-hi); }
 .need ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
@@ -440,9 +440,8 @@ footer { margin-top: 0; border-top: 1px solid var(--line-2); font-size: 15px; co
   .closing { margin-top: 88px; }
   .closing .cta .btn { flex: 1 1 100%; }
   .ev { grid-template-columns: 1fr; padding: 28px 22px; gap: 28px; }
-  .ev-facts { grid-template-columns: 1fr 1fr; gap: 14px 24px; }
-  .ev-facts div:last-child { grid-column: 1 / -1; }
-  .ev-actions .btn { flex: 1 1 100%; }
+  .ev-facts { grid-template-columns: 1fr; gap: 14px 24px; }
+  .ev-actions .btn { flex: 1 1 100%; white-space: nowrap; letter-spacing: .04em; padding-inline: 18px; }
   .ev-no { display: none; }
   .sale { grid-template-columns: 1fr; gap: 12px; }
   .box { padding: 26px 22px; }
@@ -595,7 +594,7 @@ footer { margin-top: 0; border-top: 1px solid var(--line-2); font-size: 15px; co
           <p>Singen, tanzen, zaubern, Sketche spielen oder etwas ganz anderes: Melde deinen Act an. Auch Lehrkräfte sind ausdrücklich eingeladen. Nach der Anmeldung meldet sich das Orga-Team innerhalb von ein bis zwei Wochen bei dir.</p>
           <span class="due">Anmeldeschluss: <b data-due></b></span>
           <div class="cta">
-            <a class="btn" id="signup" href="#" target="_blank" rel="noopener" hidden>Act anmelden <span class="arr" aria-hidden="true">→</span></a>
+            <a class="btn" id="signup" href="#" hidden>Act anmelden <span class="arr" aria-hidden="true">→</span></a>
             <a class="btn btn-ghost" id="signup-soon" data-insta href="#" hidden>Anmeldung öffnet bald · Instagram ↗</a>
             <a class="link" href="#infos" data-goto="infos">Häufige Fragen</a>
           </div>
@@ -1014,7 +1013,7 @@ html.sheet-open{overflow:hidden}
 a,button,label,summary,[role=tab]{touch-action:manipulation}
 /* Auf Touch-Geräten: größere Tippflächen für Textlinks, ohne das Layout zu verschieben */
 @media (pointer:coarse){
-  .link,a.chip,button.chip,.chip-s,.ev-cal,.back,.txt-btn,.inline-link{padding-top:10px!important;padding-bottom:10px!important;margin-top:-10px;margin-bottom:-10px;background-origin:content-box}
+  .link,a.chip,button.chip,.chip-s,.ev-cal,.back,.brand,.txt-btn,.inline-link{padding-top:10px!important;padding-bottom:10px!important;margin-top:-10px;margin-bottom:-10px;background-origin:content-box}
   footer .f-col{gap:0!important}
   footer .f-col a,footer .f-col button{padding-top:8px!important;padding-bottom:8px!important;background-origin:content-box}
 }
@@ -1184,7 +1183,7 @@ a,button,label,summary,[role=tab]{touch-action:manipulation}
   // data-opt="insta" bzw. data-opt="mail" markiert den ganzen Block, der dann mit ausgeblendet wird.
   $$("[data-insta]").forEach((a) => { a.href = "https://instagram.com/" + CONFIG.instagram; a.target = "_blank"; a.rel = "noopener"; });
   $$("[data-insta-text]").forEach((el) => (el.textContent = "@" + CONFIG.instagram));
-  $$("[data-mail-text]").forEach((el) => (el.textContent = CONFIG.mail));
+  $$("[data-mail-text]").forEach((el) => (el.innerHTML = esc(CONFIG.mail).replace("@", "@<wbr>")));   // Umbruch nach dem @
   if (!CONFIG.instagram) $$("[data-opt=insta], [data-insta]").forEach((el) => (el.hidden = true));
   if (!CONFIG.mail) $$("[data-opt=mail], [data-copy-mail]").forEach((el) => (el.hidden = true));
   if (CONFIG.instagram) $$("[data-opt=no-insta]").forEach((el) => (el.hidden = true));

@@ -235,6 +235,7 @@ footer { border-top: 1px solid var(--line); font-size: 14px; color: var(--ink-2)
     <nav class="f-col" aria-label="Events">
       <b>Events</b>
       <a href="../winterball/">Winterball 2026</a>
+      <a href="../galaabend/">Galaabend 2027</a>
       <a href="../abiball/">Abiball 2027</a>
       <a data-home href="../">Alle Events</a>
       <button type="button" data-buy>Ticketshop</button>
@@ -538,7 +539,7 @@ html.sheet-open{overflow:hidden}
 a,button,label,summary,[role=tab]{touch-action:manipulation}
 /* Auf Touch-Geräten: größere Tippflächen für Textlinks, ohne das Layout zu verschieben */
 @media (pointer:coarse){
-  .link,a.chip,button.chip,.chip-s,.ev-cal,.back,.txt-btn,.inline-link{padding-top:10px!important;padding-bottom:10px!important;margin-top:-10px;margin-bottom:-10px;background-origin:content-box}
+  .link,a.chip,button.chip,.chip-s,.ev-cal,.back,.brand,.txt-btn,.inline-link{padding-top:10px!important;padding-bottom:10px!important;margin-top:-10px;margin-bottom:-10px;background-origin:content-box}
   footer .f-col{gap:0!important}
   footer .f-col a,footer .f-col button{padding-top:8px!important;padding-bottom:8px!important;background-origin:content-box}
 }
@@ -708,7 +709,7 @@ a,button,label,summary,[role=tab]{touch-action:manipulation}
   // data-opt="insta" bzw. data-opt="mail" markiert den ganzen Block, der dann mit ausgeblendet wird.
   $$("[data-insta]").forEach((a) => { a.href = "https://instagram.com/" + CONFIG.instagram; a.target = "_blank"; a.rel = "noopener"; });
   $$("[data-insta-text]").forEach((el) => (el.textContent = "@" + CONFIG.instagram));
-  $$("[data-mail-text]").forEach((el) => (el.textContent = CONFIG.mail));
+  $$("[data-mail-text]").forEach((el) => (el.innerHTML = esc(CONFIG.mail).replace("@", "@<wbr>")));   // Umbruch nach dem @
   if (!CONFIG.instagram) $$("[data-opt=insta], [data-insta]").forEach((el) => (el.hidden = true));
   if (!CONFIG.mail) $$("[data-opt=mail], [data-copy-mail]").forEach((el) => (el.hidden = true));
   if (CONFIG.instagram) $$("[data-opt=no-insta]").forEach((el) => (el.hidden = true));
