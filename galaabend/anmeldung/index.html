@@ -831,6 +831,9 @@ a,button,label,summary,[role=tab]{touch-action:manipulation}
   }
   showAblauf(CONFIG.events[0].id);
   if (sw && single) sw.hidden = true;
+  // Dresscode an beliebiger Stelle: data-dresscode (Name) und data-dc-tips (Tipps)
+  $$("[data-dresscode]").forEach((el) => (el.innerHTML = ph(next.dresscode)));
+  $$("[data-dc-tips]").forEach((el) => (el.innerHTML = CONFIG.dresscodeTipps.map(([k, v]) => `<li><b>${esc(k)}</b><span>${esc(v)}</span></li>`).join("")));
   const tips = $("#dresscode-tips");
   if (tips) tips.innerHTML = CONFIG.dresscodeTipps.map(([k, v]) => `<li><b>${esc(k)}</b><span>${esc(v)}</span></li>`).join("");
   const faq = $("#faq");

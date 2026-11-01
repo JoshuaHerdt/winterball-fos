@@ -151,6 +151,15 @@ html.pointing.revealed .title .w { animation: none; }
 
 .sec { margin-top: 84px; }
 .sec-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: 30px; }
+.sec-text { margin: 0; max-width: 52ch; color: var(--mist); font-size: 16px; line-height: 1.6; }
+.dc { margin-top: 18px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 28px 40px; align-items: center; padding: 28px 30px; border: 1px solid var(--line); border-radius: 22px; background: var(--glass); }
+.dc-main .eyebrow { margin: 0; }
+.dc-name { margin: 8px 0 0; font: italic 400 clamp(32px, 3.4vw, 44px)/1.05 var(--f-display); color: var(--gold-hi); }
+.dc-sub { margin: 6px 0 0; color: var(--mist); font-size: 15px; }
+.dc-tips { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.dc-tips li { display: grid; gap: 4px; padding-left: 16px; border-left: 1px solid var(--line); }
+.dc-tips b { font-weight: 500; letter-spacing: .14em; text-transform: uppercase; font-size: 12px; color: var(--gold); }
+.dc-tips span { color: var(--snow); font-size: 15px; }
 #highlights { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
 .hl { position: relative; border: 1px solid var(--line); border-radius: 22px; background: var(--glass); padding: 26px 24px; display: grid; gap: 6px; align-content: start; transition: transform .5s cubic-bezier(.2, .8, .2, 1), border-color .4s; }
 .hl:hover { transform: translateY(-6px); border-color: rgba(226, 182, 107, .6); }
@@ -304,6 +313,11 @@ footer { position: relative; z-index: 1; border-top: 1px solid rgba(238, 242, 25
 @media (max-width: 1000px) {
   #highlights { grid-template-columns: 1fr 1fr; }
   .finale { grid-template-columns: 1fr; }
+  .dc { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .dc { padding: 22px 20px; }
+  .dc-tips { grid-template-columns: 1fr; gap: 14px; }
 }
 @media (max-width: 440px) {
   .hero .eyebrow { letter-spacing: .2em; gap: 10px; }
@@ -428,8 +442,17 @@ footer { position: relative; z-index: 1; border-top: 1px solid rgba(238, 242, 25
       <section class="sec" aria-labelledby="h-hl">
         <div class="sec-head">
           <div><p class="eyebrow">Der Abend</p><h2 class="h3" id="h-hl">Was dich erwartet</h2></div>
+          <p class="sec-text">Einmal im Jahr wird die Aula der FOS zum Ballsaal. Am Freitag, 18. Dezember, öffnen um 17:30 Uhr die Türen, um 18:00 Uhr beginnt die Ballnacht: mit Musik, Tanz und dem ganzen Jahrgang in Abendgarderobe. Organisiert wird der Abend von Schüler:innen der FOS Holzkirchen.</p>
         </div>
         <ul id="highlights"></ul>
+        <div class="dc">
+          <div class="dc-main">
+            <p class="eyebrow">Dresscode</p>
+            <p class="dc-name" data-dresscode></p>
+            <p class="dc-sub">Wir freuen uns auf euren schönsten Auftritt.</p>
+          </div>
+          <ul class="dc-tips" data-dc-tips></ul>
+        </div>
       </section>
 
       <section class="sec" aria-labelledby="h-steps">
@@ -1004,6 +1027,9 @@ a,button,label,summary,[role=tab]{touch-action:manipulation}
   }
   showAblauf(CONFIG.events[0].id);
   if (sw && single) sw.hidden = true;
+  // Dresscode an beliebiger Stelle: data-dresscode (Name) und data-dc-tips (Tipps)
+  $$("[data-dresscode]").forEach((el) => (el.innerHTML = ph(next.dresscode)));
+  $$("[data-dc-tips]").forEach((el) => (el.innerHTML = CONFIG.dresscodeTipps.map(([k, v]) => `<li><b>${esc(k)}</b><span>${esc(v)}</span></li>`).join("")));
   const tips = $("#dresscode-tips");
   if (tips) tips.innerHTML = CONFIG.dresscodeTipps.map(([k, v]) => `<li><b>${esc(k)}</b><span>${esc(v)}</span></li>`).join("");
   const faq = $("#faq");
