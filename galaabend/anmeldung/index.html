@@ -231,15 +231,8 @@ footer { border-top: 1px solid var(--line-2); font-size: 14px; color: var(--mist
           <em class="err">Bitte wähl eins aus.</em>
         </fieldset>
         <label class="f" data-req="klasse" data-if="rolle=Schüler:in"><span>Deine Klasse</span><input type="text" name="klasse" placeholder="z. B. 12BS" autocapitalize="characters"><em class="err">Bitte gib deine Klasse an.</em></label>
-        <div class="f" data-req="kontakt">
-          <span>So erreichen wir dich</span>
-          <small>Mindestens eins von beidem.</small>
-          <div class="two">
-            <input type="tel" name="telefon" autocomplete="tel" inputmode="tel" placeholder="Handynummer" aria-label="Handynummer">
-            <input type="email" name="email" autocomplete="email" placeholder="E-Mail-Adresse" aria-label="E-Mail-Adresse">
-          </div>
-          <em class="err" id="kontaktErr">Bitte gib eine Handynummer oder eine E-Mail-Adresse an.</em>
-        </div>
+        <label class="f" data-req="email"><span>Deine E-Mail-Adresse</span><input type="email" name="email" autocomplete="email" inputmode="email" placeholder="name@beispiel.de"><small>Dorthin schicken wir dir gleich eine Bestätigung.</small><em class="err" id="mailErr">Bitte gib deine E-Mail-Adresse an.</em></label>
+        <label class="f" data-req="telefon"><span>Deine Handynummer <span class="opt">(optional, aber super)</span></span><input type="tel" name="telefon" autocomplete="tel" inputmode="tel" placeholder="z. B. 0151 2345678"><small>Damit können wir Kleinigkeiten schnell per WhatsApp oder Anruf klären.</small><em class="err">Die Handynummer sieht unvollständig aus.</em></label>
         <fieldset class="f"><legend>Am liebsten per … <span class="opt">(optional)</span></legend>
           <div class="chips">
             <label class="chip"><input type="checkbox" name="erreichbar" value="WhatsApp"><span>WhatsApp</span></label>
@@ -376,7 +369,7 @@ footer { border-top: 1px solid var(--line-2); font-size: 14px; color: var(--mist
       <div class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></div>
       <p class="label">Anmeldung angekommen</p>
       <h2>Applaus, <span id="doneName"></span>!</h2>
-      <p>Danke für deine Anmeldung. Das Orga-Team schaut sich deinen Act an und meldet sich innerhalb von ein bis zwei Wochen bei dir. Bis dahin: Fang ruhig schon an zu üben.</p>
+      <p>Danke für deine Anmeldung. In ein paar Minuten bekommst du eine Bestätigung per E-Mail (schau zur Not im Spam-Ordner). Das Orga-Team schaut sich deinen Act an und meldet sich innerhalb von ein bis zwei Wochen bei dir.</p>
       <div class="row">
         <a class="btn" href="../">Zum Galaabend <span aria-hidden="true">→</span></a>
         <button type="button" class="btn btn-ghost" id="again">Noch einen Act anmelden</button>
@@ -1092,11 +1085,12 @@ html.sheet-open{overflow:hidden}
   function check(f) {
     if (f.closest("[hidden]")) { f.classList.remove("bad"); return true; }
     const k = f.dataset.req; let ok = true;
-    if (k === "kontakt") {
-      const t = val("telefon"), e = val("email"), err = $("#kontaktErr");
-      ok = (t || e) && (!t || telOk(t)) && (!e || mailOk(e));
-      err.textContent = !t && !e ? "Bitte gib eine Handynummer oder eine E-Mail-Adresse an." : t && !telOk(t) ? "Die Handynummer sieht unvollständig aus." : "Die E-Mail-Adresse sieht nicht richtig aus.";
-    } else if (k === "leute") ok = persons().length > 0;
+    if (k === "email") {
+      const e = val("email");
+      ok = mailOk(e);
+      $("#mailErr").textContent = e ? "Die E-Mail-Adresse sieht nicht richtig aus." : "Bitte gib deine E-Mail-Adresse an.";
+    } else if (k === "telefon") ok = !val("telefon") || telOk(val("telefon"));
+    else if (k === "leute") ok = persons().length > 0;
     else if (k === "beschreibung") ok = val(k).length >= 10;
     else { const v = val(k); ok = Array.isArray(v) ? v.length > 0 : !!v; }
     f.classList.toggle("bad", !ok);
@@ -1114,7 +1108,7 @@ html.sheet-open{overflow:hidden}
     const d = data(), rows = (pairs) => pairs.filter(([, v]) => v && (!Array.isArray(v) || v.length)).map(([k, v]) => `<dt>${k}</dt><dd>${esc(Array.isArray(v) ? v.join(", ") : v)}</dd>`).join("");
     const block = (i, title, pairs) => `<section><header><h3>${title}</h3><button type="button" class="txt-btn" data-edit="${i}">Bearbeiten</button></header><dl>${rows(pairs)}</dl></section>`;
     $("#sum").innerHTML =
-      block(0, "Über dich", [["Name", d.name], ["Rolle", d.rolle === "Schüler:in" ? `Schüler:in, ${d.klasse}` : d.rolle], ["Handy", d.telefon], ["E-Mail", d.email], ["Am liebsten per", d.erreichbar]]) +
+      block(0, "Über dich", [["Name", d.name], ["Rolle", d.rolle === "Schüler:in" ? `Schüler:in, ${d.klasse}` : d.rolle], ["E-Mail", d.email], ["Handy", d.telefon], ["Am liebsten per", d.erreichbar]]) +
       block(1, "Dein Act", [["Titel", d.titel], ["Sparte", d.sparte], ["Beschreibung", d.beschreibung]]) +
       block(2, "Mitwirkende", [["Auf der Bühne", d.allein === "ja" ? "Nur ich" : [d.name, ...d.person].join("\n")]]) +
       block(3, "Bühne & Technik", [["Dauer", d.dauer + " Minuten"], ["Technik", d.technik], ["Zur Technik", d.technikMehr], ["Bringt mit", d.mitbringen]]) +
