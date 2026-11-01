@@ -300,6 +300,7 @@ const CONFIG = {
       ende: "2027-02-05T22:00:00",
       datumText: "Fr, 5. Februar 2027",
       datumKurz: "05.02.2027",
+      vorlaeufig: true,                            // Termin noch nicht endgültig (wird als „vorläufig“ angezeigt)
       zeitText: "Einlass 18:00 · Beginn 18:30",
       ort: "Aula der FOS Holzkirchen",
       ortZusatz: "Jörg-Hube-Straße 2, 83607 Holzkirchen",
@@ -329,13 +330,15 @@ const CONFIG = {
         ["mic", "Musik & Tanz", "Bands, Gesang, Instrumentalstücke und Choreos."],
         ["mask", "Comedy & Theater", "Sketche, Parodien, Zauberei und andere Bühnenideen."],
         ["users", "Lehrkräfte auf der Bühne", "Auch unsere Lehrkräfte treten auf. Lasst euch überraschen."],
-        ["book", "Eine Geschichte", "Eine durchgehende Rahmenhandlung verbindet alle Acts zu einem Abend."]
+        ["book", "Eine Reise", "Ein Urlaub, der nicht nach Plan läuft. Mehr verraten wir noch nicht."]
       ],
       faq: [
         ["Was ist der Galaabend?",
          "Eine Bühnenshow von Schüler:innen, für Schüler:innen, Lehrkräfte, Eltern und Freunde. Keine Party und kein Ball, sondern rund drei Stunden Programm mit Pause: Musik, Tanz, Comedy, Theater und mehr, verbunden durch eine durchgehende Geschichte."],
         ["Was kostet ein Ticket?",
          "Ein Ticket kostet 5 €. Wer zwei Tickets kauft, bekommt ein drittes gratis dazu. Das Gratisticket ist für eine Person von außerhalb der Schule gedacht, zum Beispiel Familie oder Freunde."],
+        ["Steht der Termin schon fest?",
+         "Geplant ist Freitag, der 5. Februar 2027. Der Termin ist noch vorläufig. Sobald er endgültig feststeht, steht es hier und auf Instagram."],
         ["Ab wann gibt es Tickets?",
          "Online ab dem 25. November 2026, an der Schule zusätzlich ab dem ersten Schultag im Januar."],
         ["Gibt es feste Sitzplätze?",
@@ -543,7 +546,7 @@ html.sheet-open{overflow:hidden}
         <h3 class="ev-name">${esc(ev.name)} <span class="ev-year">${esc(ev.jahr)}</span></h3>
         <p class="ev-tag">${esc(ev.tagline)}</p>
         <dl class="ev-facts">
-          <div><dt>Datum</dt><dd>${ph(ev.datumText)}</dd></div>
+          <div><dt>Datum</dt><dd>${ph(ev.datumText)}${ev.vorlaeufig ? "<small>Vorläufiger Termin</small>" : ""}</dd></div>
           <div><dt>Zeit</dt><dd>${ph(ev.zeitText)}</dd></div>
           <div><dt>Ort</dt><dd>${ph(ev.ort)}${ev.ortZusatz ? `<small>${ph(ev.ortZusatz)}</small>` : ""}</dd></div>
         </dl>
