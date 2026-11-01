@@ -547,10 +547,15 @@ const CONFIG = {
       zeitText: "Einlass 17:30 · Beginn 18:00",
       ort: "Aula der FOS Holzkirchen",
       ortZusatz: "Jörg-Hube-Straße 2, 83607 Holzkirchen",
-      preise: [],                                  // leer = „Alle Preise im Ticketshop“
+      preise: [                                    // erster Eintrag = Preis in den Eckdaten
+        { label: "Ticket", preis: "15 €" },
+        { label: "Kombiticket Winterball + Abiball", preis: "45 €", hinweis: "Für beide Abende, du sparst 5 €" }
+      ],
+      preisInfo: "Kombi mit Abiball: 45 €",        // kleine Zeile unter dem Preis in den Eckdaten
       kontingent: null,                            // { gesamt: 300, verkauft: 120 } – nur echte Zahlen
       status: "live",                              // live | soon | soldout
       statusText: "Vorverkauf läuft",
+      statusInfo: "Online im Ticketshop",          // kleine Zeile unter dem Ticketstatus in den Eckdaten
       ticketUrl: null,                             // null = CONFIG.ticketUrl
       dresscode: "Abendgarderobe",
       ablauf: [
@@ -576,11 +581,13 @@ const CONFIG = {
       preise: [
         { label: "Ticket", preis: "5 €", hinweis: "Zwei kaufen, ein drittes Ticket gratis für Familie oder Freunde" }
       ],
+      preisInfo: "2 kaufen, 3. gratis dazu",
       kontingent: null,
       plaetze: 420,
       ausweis: false,                              // kein Ausweis am Einlass nötig
       status: "soon",
       statusText: "Vorverkauf ab 25. November",
+      statusInfo: "Online, ab Januar auch an der Schule",
       vorverkauf: "Online ab 25. November 2026, an der Schule ab dem ersten Schultag im Januar.",
       ticketUrl: null,
       dresscode: "Wird noch bekannt gegeben",
@@ -645,7 +652,11 @@ const CONFIG = {
       ort: "Wird bekannt gegeben",
       ortZusatz: "",
       abimotto: "",                                // Abimotto (leer = ausgeblendet)
-      preise: [],
+      preise: [
+        { label: "Ticket", preis: "35 €" },
+        { label: "Kombiticket Winterball + Abiball", preis: "45 €", hinweis: "Für beide Abende, du sparst 5 €" }
+      ],
+      preisInfo: "Kombi mit Winterball: 45 €",
       kontingent: null,
       status: "soon",
       statusText: "Vorverkauf startet bald",
@@ -668,6 +679,8 @@ const CONFIG = {
   faq: [
     ["Wie bekomme ich mein Ticket?",
      "Tipp auf „Ticket kaufen“ und du landest direkt im Ticketshop. Nach dem Kauf bekommst du dein Ticket per E-Mail. Am Einlass zeigst du es auf dem Handy oder ausgedruckt vor."],
+    ["Was kosten die Tickets?",
+     "Ein Ticket für den Winterball kostet 15 €, für den Abiball 35 €. Mit dem Kombiticket für beide Abende zahlst du 45 € und sparst 5 €."],
     ["Wo findet das Event statt?",
      "Winterball und Galaabend finden in der Aula der FOS Holzkirchen statt (Jörg-Hube-Straße 2, 83607 Holzkirchen). Den Ort für den Abiball geben wir rechtzeitig hier auf der Seite bekannt."],
     ["Brauche ich einen Ausweis?",
@@ -757,6 +770,30 @@ html.sheet-open{overflow:hidden}
 .flash{animation:wb-flash 1.4s ease}
 @keyframes wb-flash{30%{box-shadow:0 0 0 4px var(--flash,rgba(255,200,120,.8))}}
 ::view-transition-old(root),::view-transition-new(root){animation-duration:.32s}
+/* Eckdaten (Wann · Wo · Preis · Tickets): auf allen Seiten gleich aufgebaut, Farben kommen von der Seite */
+.kf{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:0;text-align:left;border-top:1px solid var(--kf-line,rgba(127,127,127,.3));border-bottom:1px solid var(--kf-line,rgba(127,127,127,.3))}
+.kf-i{min-width:0;padding:16px 18px 14px}
+.kf-i:first-child{padding-left:0}.kf-i:last-child{padding-right:0}
+.kf-i+.kf-i{border-left:1px solid var(--kf-line,rgba(127,127,127,.3))}
+.kf dt{margin:0 0 5px;font-size:11px;font-weight:600;line-height:1.2;letter-spacing:.16em;text-transform:uppercase;color:var(--kf-label,inherit);opacity:var(--kf-label-o,.75)}
+.kf dd{margin:0;font-size:var(--kf-size,16px);font-weight:500;line-height:1.35;color:var(--kf-value,inherit)}
+.kf dd small{display:block;margin-top:3px;font-size:13px;font-weight:400;opacity:.72}
+.kf-tbc{display:inline-block;margin-left:6px;padding:1px 7px;border:1px solid currentColor;border-radius:99px;font-size:10px;font-style:normal;font-weight:600;letter-spacing:.08em;text-transform:uppercase;vertical-align:2px;opacity:.8;white-space:nowrap}
+/* 2 × 2: schmale Spalten (kf--2), Karten (kf--compact) und alle Handys */
+.kf--2,.kf--compact{grid-template-columns:1fr 1fr}
+.kf--2 .kf-i:nth-child(odd),.kf--compact .kf-i:nth-child(odd){padding-left:0;padding-right:16px;border-left:0}
+.kf--2 .kf-i:nth-child(even),.kf--compact .kf-i:nth-child(even){padding-left:16px;padding-right:0}
+.kf--2 .kf-i:nth-child(n+3),.kf--compact .kf-i:nth-child(n+3){border-top:1px solid var(--kf-line,rgba(127,127,127,.3))}
+.kf--compact{border-bottom:0}.kf--compact .kf-i{padding-top:10px;padding-bottom:9px}
+.kf--compact dd{font-size:15px}.kf--compact .kf-wo small{display:none}
+@media (max-width:720px){
+  .kf{grid-template-columns:1fr 1fr}
+  .kf .kf-i:nth-child(odd){padding-left:0;padding-right:14px;border-left:0}
+  .kf .kf-i:nth-child(even){padding-left:14px;padding-right:0}
+  .kf .kf-i:nth-child(n+3){border-top:1px solid var(--kf-line,rgba(127,127,127,.3))}
+}
+/* Kein Doppeltipp-Zoom auf Buttons und Links (z. B. beim schnellen Tippen) */
+a,button,label,summary,[role=tab]{touch-action:manipulation}
 /* Auf Touch-Geräten: größere Tippflächen für Textlinks, ohne das Layout zu verschieben */
 @media (pointer:coarse){
   .link,a.chip,button.chip,.chip-s,.ev-cal,.back,.txt-btn,.inline-link{padding-top:10px!important;padding-bottom:10px!important;margin-top:-10px;margin-bottom:-10px;background-origin:content-box}
@@ -819,8 +856,17 @@ html.sheet-open{overflow:hidden}
       <div class="quota-bar" role="progressbar" aria-valuemin="0" aria-valuemax="${gesamt}" aria-valuenow="${verkauft}" aria-label="Verkaufte Tickets"><i></i></div>
       <p class="quota-txt">${q >= 1 ? "Ausverkauft" : `Noch <b>${frei}</b> von ${gesamt} Tickets frei`}${q >= .8 && q < 1 ? " · <em>bald weg</em>" : ""}</p></div>`;
   };
+  const nb = (t) => t.replace(/(\d) (€|Uhr)/g, "$1&nbsp;$2");          // „45 €“ nie umbrechen
   const prices = (ev, cls) => !ev.preise.length ? `<p class="price-note">Alle Preise und Ticketarten findest du direkt im Ticketshop.</p>` : `<ul class="${cls}">${ev.preise.map((p) =>
-    `<li><span>${esc(p.label)}${p.hinweis ? `<small>${ph(p.hinweis)}</small>` : ""}</span><b>${p.alt ? `<s>${ph(p.alt)}</s> ` : ""}${ph(p.preis)}</b></li>`).join("")}</ul>`;
+    `<li><span>${esc(p.label)}${p.hinweis ? `<small>${ph(p.hinweis)}</small>` : ""}</span><b>${p.alt ? `<s>${ph(p.alt)}</s> ` : ""}${nb(ph(p.preis))}</b></li>`).join("")}</ul>`;
+  // Eckdaten: immer Wann · Wo · Preis · Tickets, in dieser Reihenfolge
+  // kurz = ohne Jahreszahl (z. B. auf den Karten der Startseite, wo das Jahr schon im Titel steht)
+  const keyfacts = (ev, kurz) => [
+    ["wann", "Wann", ph(kurz ? ev.datumText.replace(/\s*\d{4}$/, "") : ev.datumText) + (ev.vorlaeufig ? '<em class="kf-tbc">vorläufig</em>' : ""), ph(ev.zeitText)],
+    ["wo", "Wo", ph(ev.ort), ev.ortZusatz ? ph(ev.ortZusatz) : ""],
+    ["preis", "Preis", ev.preise.length ? ph(ev.preise[0].preis) : "Preis folgt", ev.preisInfo ? ph(ev.preisInfo) : ""],
+    ["tickets", "Tickets", esc(ev.statusText), ev.statusInfo ? ph(ev.statusInfo) : ""]
+  ].map(([c, k, v, sub]) => `<div class="kf-i kf-${c}"><dt>${k}</dt><dd>${nb(v)}${sub ? `<small>${nb(sub)}</small>` : ""}</dd></div>`).join("");
   const buyLabel = (ev) => ev.status === "live" ? "Ticket kaufen" : ev.status === "soldout" ? "Ausverkauft" : "Infos zum Vorverkauf";
 
   /* ---- Event-Karten ---- */
@@ -832,9 +878,8 @@ html.sheet-open{overflow:hidden}
         <h3 class="ev-name">${esc(ev.name)} <span class="ev-year">${esc(ev.jahr)}</span></h3>
         <p class="ev-tag">${esc(ev.tagline)}</p>
         <dl class="ev-facts">
-          <div><dt>Datum</dt><dd>${ph(ev.datumText)}${ev.vorlaeufig ? "<small>Vorläufiger Termin</small>" : ""}</dd></div>
-          <div><dt>Zeit</dt><dd>${ph(ev.zeitText)}</dd></div>
-          <div><dt>Ort</dt><dd>${ph(ev.ort)}${ev.ortZusatz ? `<small>${ph(ev.ortZusatz)}</small>` : ""}</dd></div>
+          <div><dt>Wann</dt><dd>${ph(ev.datumText)}${ev.vorlaeufig ? '<em class="kf-tbc">vorläufig</em>' : ""}<small>${ph(ev.zeitText)}</small></dd></div>
+          <div><dt>Wo</dt><dd>${ph(ev.ort)}${ev.ortZusatz ? `<small>${ph(ev.ortZusatz)}</small>` : ""}</dd></div>
         </dl>
       </div>
       <div class="ev-side">
@@ -875,6 +920,10 @@ html.sheet-open{overflow:hidden}
       `<a class="teaser" href="${esc(base)}">
          <span class="t-txt"><span class="t-name">Alle Events</span><span class="t-meta">Startseite der FOS-Events</span></span>
          <span class="t-go" aria-hidden="true">→</span></a>`;
+  });
+  $$("[data-keyfacts]").forEach((el) => {
+    const ev = el.dataset.keyfacts === "next" ? next : ALL.find((e) => e.id === el.dataset.keyfacts);
+    if (ev) { el.classList.add("kf"); el.innerHTML = keyfacts(ev); }
   });
   $$("[data-quota]").forEach((el) => { const ev = el.dataset.quota === "next" ? live : evById(el.dataset.quota); el.innerHTML = quota(ev); el.hidden = !el.innerHTML; });
   $$("[data-next-name]").forEach((el) => (el.textContent = `${next.name} ${next.jahr}`));
@@ -1129,7 +1178,7 @@ html.sheet-open{overflow:hidden}
   });
   window.addEventListener("hashchange", () => { const h = location.hash.slice(1); if (h === "kaufen") openSheet(); else go_(h); });
 
-  window.WB = { burst, openSheet, closeSheet, config: CONFIG, all: ALL, next, live, still, fine, esc, ph, calUrl, ics, ortText, pageUrl };
+  window.WB = { burst, openSheet, closeSheet, config: CONFIG, all: ALL, next, live, still, fine, esc, ph, calUrl, ics, ortText, pageUrl, keyfacts };
   const h0 = location.hash.slice(1);
   go_(h0 === "kaufen" ? "start" : h0 || "start");
   if (h0 === "kaufen") setTimeout(() => openSheet(), 300);

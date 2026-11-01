@@ -149,9 +149,12 @@ main { overflow-x: clip; }
 .subtitle { margin: 0; font: 300 clamp(20px, 2.4vw, 28px)/1.2 var(--f-sans); letter-spacing: .3em; text-transform: uppercase; color: var(--cream); }
 .subtitle b { font-weight: 600; color: var(--gold-hi); }
 .claim { margin: 18px 0 0; font: italic 300 17px/1.4 var(--f-sans); color: var(--mist); }
-.ticker { position: relative; z-index: 3; margin: 32px 0 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; animation: rise 1s cubic-bezier(.2, .7, .2, 1) 1.5s both; }
-.ticker span { padding: 9px 16px 7px; border-radius: 999px; border: 1px solid var(--line-2); background: rgba(7, 13, 31, .72); font-size: 14px; letter-spacing: .06em; }
-.ticker b { color: var(--gold-hi); font-weight: 600; }
+.ticker { position: relative; z-index: 3; width: min(880px, 100%); margin: 32px auto 0; padding: 0 22px; border: 1px solid var(--line-2) !important; border-radius: 18px; background: rgba(7, 13, 31, .78); animation: rise 1s cubic-bezier(.2, .7, .2, 1) 1.5s both;
+  --kf-line: var(--line); --kf-label: var(--gold); --kf-label-o: 1; --kf-value: var(--cream); }
+.ticker .kf-i:first-child { padding-left: 0; }
+.ticker dt { letter-spacing: .18em; }
+.ticker .kf-preis dd { color: var(--gold-hi); }
+.ticker dd small { color: var(--mist); opacity: 1; }
 .tbc { font-style: normal; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--mist); margin-left: 4px; }
 .stage .cta { position: relative; z-index: 3; margin-top: 28px; display: flex; justify-content: center; align-items: center; gap: 18px 26px; flex-wrap: wrap; animation: rise 1s cubic-bezier(.2, .7, .2, 1) 1.7s both; }
 .stage-in { display: grid; justify-items: center; }
@@ -198,10 +201,10 @@ main { overflow-x: clip; }
 .chips span { padding: 9px 16px 7px; border-radius: 999px; border: 1px solid var(--line); font-size: 14px; color: var(--cream); background: rgba(18, 37, 79, .4); }
 
 /* Bordkarte (Rahmenhandlung, bewusst geheimnisvoll) */
-.pass { display: grid; grid-template-columns: 1fr 104px; max-width: 520px; border-radius: 14px; overflow: hidden; background: var(--cream); color: #1b1f2c; box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .9); transform: rotate(1deg); }
+.pass { display: grid; grid-template-columns: minmax(0, 1fr) 104px; max-width: 520px; border-radius: 14px; overflow: hidden; background: var(--cream); color: #1b1f2c; box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .9); transform: rotate(1deg); }
 .pass-main { padding: 20px 22px 18px; }
 .pass-k { margin: 0 0 10px; font-size: 11px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: #8a6a22; }
-.pass-route { display: flex; align-items: center; gap: 14px; font: 400 26px/1 var(--f-show); color: var(--blue); }
+.pass-route { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; font: 400 26px/1 var(--f-show); color: var(--blue); }
 .pass-route span { font-size: 18px; color: #8a6a22; }
 .pass-q { display: inline-block; min-width: 4ch; font-variant-numeric: tabular-nums; }
 .pass dl { margin: 16px 0 0; display: grid; grid-template-columns: repeat(4, auto); gap: 6px 18px; justify-content: start; }
@@ -261,6 +264,8 @@ main { overflow-x: clip; }
 .clap { appearance: none; cursor: pointer; border: 1px solid var(--line-2); background: rgba(18, 37, 79, .5); color: var(--cream); font: 600 13px/1 var(--f-sans); letter-spacing: .14em; text-transform: uppercase; padding: 12px 18px 10px; border-radius: 999px; display: inline-flex; gap: 10px; align-items: center; transition: transform .1s, border-color .2s; }
 .clap:hover { border-color: var(--gold-hi); }
 .clap:active { transform: scale(.95); }
+/* Schnelles Tippen soll am Handy nicht zoomen oder Text markieren */
+.applause, .clap { touch-action: manipulation; -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; }
 .clap svg { width: 18px; height: 18px; fill: none; stroke: var(--gold-hi); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .meter { width: 220px; height: 6px; border-radius: 9px; background: rgba(169, 180, 204, .2); overflow: hidden; }
 .meter i { display: block; height: 100%; width: calc(var(--a, 0) * 100%); background: linear-gradient(90deg, var(--blue-hi), var(--gold-hi)); border-radius: inherit; transition: width .25s; }
@@ -392,7 +397,9 @@ footer { margin-top: 0; border-top: 1px solid var(--line-2); font-size: 15px; co
   .wrap { padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
   .top { background: var(--night); }
   .top .wrap { grid-template-columns: 1fr auto; height: 60px; }
-  .days, .back { display: none; }
+  .days { display: none; }
+  .top-right { gap: 14px; }
+  .back { font-size: 12px; letter-spacing: .06em; }
   .tabs { position: fixed; z-index: 60; left: 0; right: 0; bottom: 0; gap: 0; border-radius: 0; border: 0; border-top: 1px solid var(--line-2); justify-content: space-around; background: var(--night); padding: 6px max(8px, env(safe-area-inset-right, 0px)) calc(6px + env(safe-area-inset-bottom, 0px)) max(8px, env(safe-area-inset-left, 0px)); }
   .tabs button { flex: 1; padding: 14px 0 12px; font-size: 12px; letter-spacing: .08em; }
   .stage { min-height: 0; padding: 90px 16px 120px; }
@@ -405,8 +412,7 @@ footer { margin-top: 0; border-top: 1px solid var(--line-2); font-size: 15px; co
   .title { font-size: clamp(50px, 15.5vw, 84px); }
   .subtitle { font-size: 17px; letter-spacing: .22em; }
   .claim { font-size: 15px; }
-  .ticker { gap: 8px; }
-  .ticker span { font-size: 13px; padding: 8px 12px 6px; }
+  .ticker { padding: 0 16px; }
   .stage .cta .btn { flex: 1 1 100%; }
   .count { grid-template-columns: 1fr; gap: 18px; padding: 22px 18px; margin-top: -48px; text-align: center; }
   .count h2 { font-size: 22px; }
@@ -418,8 +424,9 @@ footer { margin-top: 0; border-top: 1px solid var(--line-2); font-size: 15px; co
   .hl { grid-template-columns: 48px 1fr; column-gap: 16px; padding: 20px; }
   .hl-ic { grid-row: span 2; margin: 0; }
   .playbill { transform: none; padding: 34px 26px 28px; }
-  .pass { grid-template-columns: 1fr 76px; transform: none; }
-  .pass-route { font-size: 20px; gap: 10px; }
+  .pass { grid-template-columns: minmax(0, 1fr) 76px; transform: none; }
+  .pass-main { padding: 18px 16px 16px; }
+  .pass-route { font-size: 19px; gap: 4px 10px; }
   .pass dl { grid-template-columns: repeat(2, auto); }
   .ticket { grid-template-columns: 1fr; }
   .t-main { padding: 30px 24px; }
@@ -450,6 +457,10 @@ footer { margin-top: 0; border-top: 1px solid var(--line-2); font-size: 15px; co
   .sheet-step { gap: 14px; }
   .sheet-title { font-size: 28px; margin-top: -8px; }
   .sheet-go { position: sticky; bottom: 10px; z-index: 2; }
+}
+@media (max-width: 560px) {
+  /* Kopfzeile: Marke + „Alle Events“; Tickets gibt es unten in der Reiterleiste */
+  .top .btn { display: none; }
 }
 @media (max-width: 420px) {
   .count-n b { font-size: 32px; }
@@ -498,11 +509,7 @@ footer { margin-top: 0; border-top: 1px solid var(--line-2); font-size: 15px; co
           <p class="subtitle">Der <b>Galaabend</b> 2027</p>
           <p class="claim">Eine Schule. Ein Abend.</p>
         </div>
-        <p class="ticker">
-          <span><b data-next-date></b> <em class="tbc" data-tbc>vorläufig</em></span>
-          <span>Aula der FOS</span>
-          <span>Einlass <b>18:00</b> · Beginn <b>18:30</b></span>
-        </p>
+        <dl class="ticker" data-keyfacts="next"></dl>
         <div class="cta">
           <button class="btn" type="button" data-buy data-when="live">Ticket sichern <span class="arr" aria-hidden="true">→</span></button>
           <button class="btn" type="button" data-buy data-when="soon">Tickets ab 25.11. <span class="arr" aria-hidden="true">→</span></button>
@@ -758,10 +765,15 @@ const CONFIG = {
       zeitText: "Einlass 17:30 · Beginn 18:00",
       ort: "Aula der FOS Holzkirchen",
       ortZusatz: "Jörg-Hube-Straße 2, 83607 Holzkirchen",
-      preise: [],                                  // leer = „Alle Preise im Ticketshop“
+      preise: [                                    // erster Eintrag = Preis in den Eckdaten
+        { label: "Ticket", preis: "15 €" },
+        { label: "Kombiticket Winterball + Abiball", preis: "45 €", hinweis: "Für beide Abende, du sparst 5 €" }
+      ],
+      preisInfo: "Kombi mit Abiball: 45 €",        // kleine Zeile unter dem Preis in den Eckdaten
       kontingent: null,                            // { gesamt: 300, verkauft: 120 } – nur echte Zahlen
       status: "live",                              // live | soon | soldout
       statusText: "Vorverkauf läuft",
+      statusInfo: "Online im Ticketshop",          // kleine Zeile unter dem Ticketstatus in den Eckdaten
       ticketUrl: null,                             // null = CONFIG.ticketUrl
       dresscode: "Abendgarderobe",
       ablauf: [
@@ -787,11 +799,13 @@ const CONFIG = {
       preise: [
         { label: "Ticket", preis: "5 €", hinweis: "Zwei kaufen, ein drittes Ticket gratis für Familie oder Freunde" }
       ],
+      preisInfo: "2 kaufen, 3. gratis dazu",
       kontingent: null,
       plaetze: 420,
       ausweis: false,                              // kein Ausweis am Einlass nötig
       status: "soon",
       statusText: "Vorverkauf ab 25. November",
+      statusInfo: "Online, ab Januar auch an der Schule",
       vorverkauf: "Online ab 25. November 2026, an der Schule ab dem ersten Schultag im Januar.",
       ticketUrl: null,
       dresscode: "Wird noch bekannt gegeben",
@@ -856,7 +870,11 @@ const CONFIG = {
       ort: "Wird bekannt gegeben",
       ortZusatz: "",
       abimotto: "",                                // Abimotto (leer = ausgeblendet)
-      preise: [],
+      preise: [
+        { label: "Ticket", preis: "35 €" },
+        { label: "Kombiticket Winterball + Abiball", preis: "45 €", hinweis: "Für beide Abende, du sparst 5 €" }
+      ],
+      preisInfo: "Kombi mit Winterball: 45 €",
       kontingent: null,
       status: "soon",
       statusText: "Vorverkauf startet bald",
@@ -879,6 +897,8 @@ const CONFIG = {
   faq: [
     ["Wie bekomme ich mein Ticket?",
      "Tipp auf „Ticket kaufen“ und du landest direkt im Ticketshop. Nach dem Kauf bekommst du dein Ticket per E-Mail. Am Einlass zeigst du es auf dem Handy oder ausgedruckt vor."],
+    ["Was kosten die Tickets?",
+     "Ein Ticket für den Winterball kostet 15 €, für den Abiball 35 €. Mit dem Kombiticket für beide Abende zahlst du 45 € und sparst 5 €."],
     ["Wo findet das Event statt?",
      "Winterball und Galaabend finden in der Aula der FOS Holzkirchen statt (Jörg-Hube-Straße 2, 83607 Holzkirchen). Den Ort für den Abiball geben wir rechtzeitig hier auf der Seite bekannt."],
     ["Brauche ich einen Ausweis?",
@@ -968,6 +988,30 @@ html.sheet-open{overflow:hidden}
 .flash{animation:wb-flash 1.4s ease}
 @keyframes wb-flash{30%{box-shadow:0 0 0 4px var(--flash,rgba(255,200,120,.8))}}
 ::view-transition-old(root),::view-transition-new(root){animation-duration:.32s}
+/* Eckdaten (Wann · Wo · Preis · Tickets): auf allen Seiten gleich aufgebaut, Farben kommen von der Seite */
+.kf{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:0;text-align:left;border-top:1px solid var(--kf-line,rgba(127,127,127,.3));border-bottom:1px solid var(--kf-line,rgba(127,127,127,.3))}
+.kf-i{min-width:0;padding:16px 18px 14px}
+.kf-i:first-child{padding-left:0}.kf-i:last-child{padding-right:0}
+.kf-i+.kf-i{border-left:1px solid var(--kf-line,rgba(127,127,127,.3))}
+.kf dt{margin:0 0 5px;font-size:11px;font-weight:600;line-height:1.2;letter-spacing:.16em;text-transform:uppercase;color:var(--kf-label,inherit);opacity:var(--kf-label-o,.75)}
+.kf dd{margin:0;font-size:var(--kf-size,16px);font-weight:500;line-height:1.35;color:var(--kf-value,inherit)}
+.kf dd small{display:block;margin-top:3px;font-size:13px;font-weight:400;opacity:.72}
+.kf-tbc{display:inline-block;margin-left:6px;padding:1px 7px;border:1px solid currentColor;border-radius:99px;font-size:10px;font-style:normal;font-weight:600;letter-spacing:.08em;text-transform:uppercase;vertical-align:2px;opacity:.8;white-space:nowrap}
+/* 2 × 2: schmale Spalten (kf--2), Karten (kf--compact) und alle Handys */
+.kf--2,.kf--compact{grid-template-columns:1fr 1fr}
+.kf--2 .kf-i:nth-child(odd),.kf--compact .kf-i:nth-child(odd){padding-left:0;padding-right:16px;border-left:0}
+.kf--2 .kf-i:nth-child(even),.kf--compact .kf-i:nth-child(even){padding-left:16px;padding-right:0}
+.kf--2 .kf-i:nth-child(n+3),.kf--compact .kf-i:nth-child(n+3){border-top:1px solid var(--kf-line,rgba(127,127,127,.3))}
+.kf--compact{border-bottom:0}.kf--compact .kf-i{padding-top:10px;padding-bottom:9px}
+.kf--compact dd{font-size:15px}.kf--compact .kf-wo small{display:none}
+@media (max-width:720px){
+  .kf{grid-template-columns:1fr 1fr}
+  .kf .kf-i:nth-child(odd){padding-left:0;padding-right:14px;border-left:0}
+  .kf .kf-i:nth-child(even){padding-left:14px;padding-right:0}
+  .kf .kf-i:nth-child(n+3){border-top:1px solid var(--kf-line,rgba(127,127,127,.3))}
+}
+/* Kein Doppeltipp-Zoom auf Buttons und Links (z. B. beim schnellen Tippen) */
+a,button,label,summary,[role=tab]{touch-action:manipulation}
 /* Auf Touch-Geräten: größere Tippflächen für Textlinks, ohne das Layout zu verschieben */
 @media (pointer:coarse){
   .link,a.chip,button.chip,.chip-s,.ev-cal,.back,.txt-btn,.inline-link{padding-top:10px!important;padding-bottom:10px!important;margin-top:-10px;margin-bottom:-10px;background-origin:content-box}
@@ -1030,8 +1074,17 @@ html.sheet-open{overflow:hidden}
       <div class="quota-bar" role="progressbar" aria-valuemin="0" aria-valuemax="${gesamt}" aria-valuenow="${verkauft}" aria-label="Verkaufte Tickets"><i></i></div>
       <p class="quota-txt">${q >= 1 ? "Ausverkauft" : `Noch <b>${frei}</b> von ${gesamt} Tickets frei`}${q >= .8 && q < 1 ? " · <em>bald weg</em>" : ""}</p></div>`;
   };
+  const nb = (t) => t.replace(/(\d) (€|Uhr)/g, "$1&nbsp;$2");          // „45 €“ nie umbrechen
   const prices = (ev, cls) => !ev.preise.length ? `<p class="price-note">Alle Preise und Ticketarten findest du direkt im Ticketshop.</p>` : `<ul class="${cls}">${ev.preise.map((p) =>
-    `<li><span>${esc(p.label)}${p.hinweis ? `<small>${ph(p.hinweis)}</small>` : ""}</span><b>${p.alt ? `<s>${ph(p.alt)}</s> ` : ""}${ph(p.preis)}</b></li>`).join("")}</ul>`;
+    `<li><span>${esc(p.label)}${p.hinweis ? `<small>${ph(p.hinweis)}</small>` : ""}</span><b>${p.alt ? `<s>${ph(p.alt)}</s> ` : ""}${nb(ph(p.preis))}</b></li>`).join("")}</ul>`;
+  // Eckdaten: immer Wann · Wo · Preis · Tickets, in dieser Reihenfolge
+  // kurz = ohne Jahreszahl (z. B. auf den Karten der Startseite, wo das Jahr schon im Titel steht)
+  const keyfacts = (ev, kurz) => [
+    ["wann", "Wann", ph(kurz ? ev.datumText.replace(/\s*\d{4}$/, "") : ev.datumText) + (ev.vorlaeufig ? '<em class="kf-tbc">vorläufig</em>' : ""), ph(ev.zeitText)],
+    ["wo", "Wo", ph(ev.ort), ev.ortZusatz ? ph(ev.ortZusatz) : ""],
+    ["preis", "Preis", ev.preise.length ? ph(ev.preise[0].preis) : "Preis folgt", ev.preisInfo ? ph(ev.preisInfo) : ""],
+    ["tickets", "Tickets", esc(ev.statusText), ev.statusInfo ? ph(ev.statusInfo) : ""]
+  ].map(([c, k, v, sub]) => `<div class="kf-i kf-${c}"><dt>${k}</dt><dd>${nb(v)}${sub ? `<small>${nb(sub)}</small>` : ""}</dd></div>`).join("");
   const buyLabel = (ev) => ev.status === "live" ? "Ticket kaufen" : ev.status === "soldout" ? "Ausverkauft" : "Infos zum Vorverkauf";
 
   /* ---- Event-Karten ---- */
@@ -1043,9 +1096,8 @@ html.sheet-open{overflow:hidden}
         <h3 class="ev-name">${esc(ev.name)} <span class="ev-year">${esc(ev.jahr)}</span></h3>
         <p class="ev-tag">${esc(ev.tagline)}</p>
         <dl class="ev-facts">
-          <div><dt>Datum</dt><dd>${ph(ev.datumText)}${ev.vorlaeufig ? "<small>Vorläufiger Termin</small>" : ""}</dd></div>
-          <div><dt>Zeit</dt><dd>${ph(ev.zeitText)}</dd></div>
-          <div><dt>Ort</dt><dd>${ph(ev.ort)}${ev.ortZusatz ? `<small>${ph(ev.ortZusatz)}</small>` : ""}</dd></div>
+          <div><dt>Wann</dt><dd>${ph(ev.datumText)}${ev.vorlaeufig ? '<em class="kf-tbc">vorläufig</em>' : ""}<small>${ph(ev.zeitText)}</small></dd></div>
+          <div><dt>Wo</dt><dd>${ph(ev.ort)}${ev.ortZusatz ? `<small>${ph(ev.ortZusatz)}</small>` : ""}</dd></div>
         </dl>
       </div>
       <div class="ev-side">
@@ -1086,6 +1138,10 @@ html.sheet-open{overflow:hidden}
       `<a class="teaser" href="${esc(base)}">
          <span class="t-txt"><span class="t-name">Alle Events</span><span class="t-meta">Startseite der FOS-Events</span></span>
          <span class="t-go" aria-hidden="true">→</span></a>`;
+  });
+  $$("[data-keyfacts]").forEach((el) => {
+    const ev = el.dataset.keyfacts === "next" ? next : ALL.find((e) => e.id === el.dataset.keyfacts);
+    if (ev) { el.classList.add("kf"); el.innerHTML = keyfacts(ev); }
   });
   $$("[data-quota]").forEach((el) => { const ev = el.dataset.quota === "next" ? live : evById(el.dataset.quota); el.innerHTML = quota(ev); el.hidden = !el.innerHTML; });
   $$("[data-next-name]").forEach((el) => (el.textContent = `${next.name} ${next.jahr}`));
@@ -1340,7 +1396,7 @@ html.sheet-open{overflow:hidden}
   });
   window.addEventListener("hashchange", () => { const h = location.hash.slice(1); if (h === "kaufen") openSheet(); else go_(h); });
 
-  window.WB = { burst, openSheet, closeSheet, config: CONFIG, all: ALL, next, live, still, fine, esc, ph, calUrl, ics, ortText, pageUrl };
+  window.WB = { burst, openSheet, closeSheet, config: CONFIG, all: ALL, next, live, still, fine, esc, ph, calUrl, ics, ortText, pageUrl, keyfacts };
   const h0 = location.hash.slice(1);
   go_(h0 === "kaufen" ? "start" : h0 || "start");
   if (h0 === "kaufen") setTimeout(() => openSheet(), 300);
