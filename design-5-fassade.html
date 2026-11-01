@@ -752,6 +752,12 @@ html.sheet-open{overflow:hidden}
 .flash{animation:wb-flash 1.4s ease}
 @keyframes wb-flash{30%{box-shadow:0 0 0 4px var(--flash,rgba(255,200,120,.8))}}
 ::view-transition-old(root),::view-transition-new(root){animation-duration:.32s}
+/* Auf Touch-Geräten: größere Tippflächen für Textlinks, ohne das Layout zu verschieben */
+@media (pointer:coarse){
+  .link,a.chip,button.chip,.chip-s,.ev-cal,.back,.txt-btn,.inline-link{padding-top:10px!important;padding-bottom:10px!important;margin-top:-10px;margin-bottom:-10px;background-origin:content-box}
+  footer .f-col{gap:0!important}
+  footer .f-col a,footer .f-col button{padding-top:8px!important;padding-bottom:8px!important;background-origin:content-box}
+}
 @media (prefers-reduced-motion:reduce){.sheet-in,.sheet.closing .sheet-in,.cd-n i.in,.quota-bar i,.flash{animation:none!important}}
 `;
   document.head.prepend(base);
