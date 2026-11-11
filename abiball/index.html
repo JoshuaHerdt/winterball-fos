@@ -398,7 +398,7 @@ footer { border-top: 1px solid var(--ink); font-size: 14px; color: var(--ink-2);
             <div class="cta">
               <button class="btn" type="button" data-buy data-when="live">Ticket sichern <span class="arr" aria-hidden="true">→</span></button>
               <a class="link" href="#infos" data-goto="infos" data-when="live">Ablauf &amp; Infos</a>
-              <button class="btn" type="button" data-buy data-when="soon">Zum Ticketshop <span class="arr" aria-hidden="true">→</span></button>
+              <button class="btn" type="button" data-buy data-when="soon">Infos zum Verkauf <span class="arr" aria-hidden="true">→</span></button>
               <a class="link" data-cal-next href="#" target="_blank" rel="noopener" data-when="soon">Termin im Kalender speichern</a>
             </div>
             <div data-quota="next"></div>
@@ -443,7 +443,7 @@ footer { border-top: 1px solid var(--ink); font-size: 14px; color: var(--ink-2);
 
     <div class="wrap">
       <section class="sec" aria-labelledby="h-st">
-        <div class="sec-head"><div><p class="label">So geht's</p><h2 id="h-st">In drei Schritten zum Ticket</h2></div><p>Bezahlt wird direkt im Ticketshop. Dein Ticket kommt per E-Mail.</p></div>
+        <div class="sec-head"><div><p class="label">So geht's</p><h2 id="h-st">In drei Schritten zum Ticket</h2></div><p>Tickets gibt es nur beim Verkauf in der Pause. Bezahlt wird bar.</p></div>
         <ol id="steps"></ol>
       </section>
 
@@ -458,7 +458,7 @@ footer { border-top: 1px solid var(--ink); font-size: 14px; color: var(--ink-2);
           <p>Feiert euren Abschluss zusammen. Schick den Link in eure Jahrgangsgruppe.</p>
           <div class="cta">
             <button class="btn" type="button" data-buy data-when="live">Ticket sichern <span class="arr" aria-hidden="true">→</span></button>
-            <button class="btn" type="button" data-buy data-when="soon">Zum Ticketshop <span class="arr" aria-hidden="true">→</span></button>
+            <button class="btn" type="button" data-buy data-when="soon">Infos zum Verkauf <span class="arr" aria-hidden="true">→</span></button>
             <a class="link" data-share-wa href="#">Per WhatsApp teilen</a>
           </div>
         </div>
@@ -471,10 +471,10 @@ footer { border-top: 1px solid var(--ink); font-size: 14px; color: var(--ink-2);
     <div class="wrap">
       <div class="page-head">
         <div><p class="label rise">Vorverkauf</p><h2 class="rise d1">Events</h2></div>
-        <p class="rise d2">Mit „Ticket kaufen“ siehst du alle Infos auf einen Blick und kommst danach direkt in den Ticketshop.</p>
+        <p class="rise d2">Tickets gibt es Mittwoch und Donnerstag in der 2. Pause im Aufenthaltsraum. Du zahlst bar und bekommst dein Ticket direkt auf Papier.</p>
       </div>
       <div id="events" class="rise d3"></div>
-      <p class="note">Tickets gibt es ausschließlich im offiziellen Ticketshop. Bitte kauf keine Tickets über Chats oder Direktnachrichten.</p>
+      <p class="note">Tickets gibt es ausschließlich beim Verkauf in der Pause. Bitte kauf keine Tickets über Chats oder Direktnachrichten.</p>
     </div>
   </section>
 
@@ -509,7 +509,7 @@ footer { border-top: 1px solid var(--ink); font-size: 14px; color: var(--ink-2);
     <div class="wrap">
       <div class="page-head">
         <div><p class="label rise">Fragen?</p><h2 class="rise d1">Kontakt</h2></div>
-        <p class="rise d2">Fragen zur Bestellung beantwortet der Ticketshop. Bei allem rund um den Abend hilft dir das Organisationsteam.</p>
+        <p class="rise d2">Fragen zu Tickets beantworten wir dir beim Verkauf in der Pause. Bei allem rund um den Abend hilft dir das Organisationsteam.</p>
       </div>
       <div class="contact rise d3">
         <figure class="hero-photo">
@@ -518,7 +518,7 @@ footer { border-top: 1px solid var(--ink); font-size: 14px; color: var(--ink-2);
         </figure>
         <div>
           <div class="rows">
-            <div class="row"><span class="k">Ticketshop</span><p class="v">Bestellung &amp; Zahlung<small>Fragen zu Bestellung, Zahlung oder Ticket</small></p><button class="chip" type="button" data-buy>Öffnen ↗</button></div>
+            <div class="row"><span class="k">Tickets</span><p class="v">Mi + Do, 2. Pause<small>Im Aufenthaltsraum, bar bezahlen</small></p><button class="chip" type="button" data-buy>Infos</button></div>
             <div class="row" data-opt="insta"><span class="k">Instagram</span><p class="v" data-insta-text></p><a class="chip" data-insta href="#">Öffnen ↗</a></div>
             <div class="row" data-opt="mail"><span class="k">E-Mail</span><p class="v" data-mail-text></p><button class="chip" type="button" data-copy-mail><span class="lbl">Kopieren</span></button></div>
             <div class="row"><span class="k">Schule</span><p class="v">Staatliche Fachoberschule Holzkirchen<small data-address></small></p><a class="chip" href="https://www.fos-holzkirchen.de" target="_blank" rel="noopener">Website ↗</a></div>
@@ -542,7 +542,7 @@ footer { border-top: 1px solid var(--ink); font-size: 14px; color: var(--ink-2);
       <a data-home href="../">Alle Events</a>
       <a href="../winterball/">Winterball 2026</a>
       <a href="../galaabend/">Galaabend 2027</a>
-      <button type="button" data-buy>Ticketshop</button>
+      <button type="button" data-buy>Ticketverkauf</button>
     </nav>
     <nav class="f-col" aria-label="Rechtliches">
       <b>Rechtliches</b>
@@ -569,17 +569,19 @@ const CONFIG = {
   adresse: "Jörg-Hube-Straße 2, 83607 Holzkirchen",
   team: "Winterball-Team",
   seitenUrl: "https://joshuaherdt.github.io/winterball-fos/",   // Adresse der Website (für Teilen-Links)
-  ticketUrl: "https://tickets.maximiliangruendinger.de/FOS-Hoki/26-27/", // Ticketshop
+  // Ticketverkauf: nur persönlich in der Pause, bar, mit Papierticket
+  verkauf: {
+    wann: "Mittwoch und Donnerstag, 2. Pause",
+    wo: "Aufenthaltsraum",
+    zahlung: "Bar, du bekommst dein Ticket direkt auf Papier"
+  },
   instagram: "fos_holzkirchen_smv",               // Instagram-Name ohne @ (leer = ausgeblendet)
   mail: "tickets.fosholzkirchen@gmail.com",        // Kontakt-E-Mail (leer = ausgeblendet)
   // Angaben für Impressum und Datenschutzerklärung (§ 5 DDG, Art. 13 DSGVO)
   verantwortlich: {
     name: "Joshua Herdt (Schülersprecher)",        // verantwortlich für die Website
-    name2: "Maximilian Gründinger (Ticketsystem)",  // ebenfalls verantwortlich für die Website
-    name3: "Pascal Schindler (Website und Ticketsystem)", // ebenfalls verantwortlich für Website und Ticketsystem
-    projekt: "Regine Romatka-Hort",                // verantwortlich für das Projekt
-    lehrkraft: "Stefan Rostas",                    // verantwortliche Lehrkraft für das Ticketsystem
-    anschrift: "c/o Staatliche Fachoberschule Holzkirchen, Jörg-Hube-Straße 2, 83607 Holzkirchen",
+    name2: "Maximilian Gründinger (Website)",       // ebenfalls verantwortlich für die Website
+    name3: "Pascal Schindler (Website)",           // ebenfalls verantwortlich für die Website
     mail: "tickets.fosholzkirchen@gmail.com",
     fotos: "Malou, Klasse 13BS"   // Bildnachweis Abiball-Fotos
   },
@@ -592,10 +594,10 @@ const CONFIG = {
       kicker: "Die Ballnacht im Dezember",
       tagline: "Ein Abend in Abendgarderobe, mit Musik, Tanz und dem ganzen Jahrgang.",
       start: "2026-12-18T17:30:00",                // Einlass
-      ende: null,                                  // Ende noch offen
+      ende: "2026-12-18T22:00:00",
       datumText: "Fr, 18. Dezember 2026",
       datumKurz: "18.12.2026",
-      zeitText: "Einlass 17:30 · Beginn 18:00",
+      zeitText: "Einlass 17:30 · Beginn 18:00 · Ende 22:00",
       ort: "Aula der FOS Holzkirchen",
       ortZusatz: "Jörg-Hube-Straße 2, 83607 Holzkirchen",
       preise: [                                    // erster Eintrag = Preis in den Eckdaten
@@ -604,15 +606,15 @@ const CONFIG = {
       ],
       preisInfo: "Kombi mit Abiball: 45 €",        // kleine Zeile unter dem Preis in den Eckdaten
       kontingent: null,                            // { gesamt: 300, verkauft: 120 } – nur echte Zahlen
-      status: "live",                              // live | soon | soldout
-      statusText: "Vorverkauf läuft",
-      statusInfo: "Online im Ticketshop",          // kleine Zeile unter dem Ticketstatus in den Eckdaten
-      ticketUrl: null,                             // null = CONFIG.ticketUrl
+      verkaufAb: "2026-11-18",                     // Verkaufsstart in der Pause (null = steht noch nicht fest)
+                                                   // Status und Text stellen sich daraus automatisch ein
       dresscode: "Abendgarderobe",
       ablauf: [
         ["17:30", "Einlass"],
-        ["18:00", "Beginn des Winterballs"]
-      ]
+        ["18:00", "Beginn des Winterballs"],
+        ["22:00", "Ende"]
+      ],
+      ablaufFertig: true
     },
     {
       id: "galaabend",
@@ -636,12 +638,9 @@ const CONFIG = {
       kontingent: null,
       plaetze: 420,
       ausweis: false,                              // kein Ausweis am Einlass nötig
-      status: "soon",
-      statusText: "Vorverkauf ab 25. November",
-      statusInfo: "Online, ab Januar auch an der Schule",
-      vorverkauf: "Online ab 25. November 2026, an der Schule ab dem ersten Schultag im Januar.",
-      ticketUrl: null,
-      dresscode: "Wird noch bekannt gegeben",
+      verkaufAb: null,                             // Verkaufsstart steht noch nicht fest
+      vorverkauf: "Tickets gibt es Mittwoch und Donnerstag in der 2. Pause im Aufenthaltsraum. Den Verkaufsstart geben wir hier und auf Instagram bekannt.",
+      dresscode: "Kein Dresscode, komm, wie du magst",
       anmeldungUrl: "anmeldung/",                  // Link zur Act-Anmeldung (leer = „Anmeldung öffnet bald“)
       // Act-Anmeldung (galaabend/anmeldung/): schickt die Angaben an ein Google-Formular.
       // formUrl = Link zum Formular (…/viewform), felder = Zuordnung unserer Felder zu den Formularfragen (entry.…)
@@ -678,7 +677,7 @@ const CONFIG = {
         ["Steht der Termin schon fest?",
          "Geplant ist Freitag, der 5. Februar 2027. Der Termin ist noch vorläufig. Sobald er endgültig feststeht, steht es hier und auf Instagram."],
         ["Ab wann gibt es Tickets?",
-         "Online ab dem 25. November 2026, an der Schule zusätzlich ab dem ersten Schultag im Januar."],
+         "Der Verkaufsstart steht noch nicht fest. Dann gibt es die Tickets Mittwoch und Donnerstag in der 2. Pause im Aufenthaltsraum, bezahlt wird bar. Wir geben den Start hier und auf Instagram bekannt."],
         ["Gibt es feste Sitzplätze?",
          "Nein, es gilt freie Platzwahl. In der Aula gibt es 420 Plätze. Der Einlass beginnt um 18:00 Uhr."],
         ["Wie kann ich selbst auftreten?",
@@ -709,10 +708,7 @@ const CONFIG = {
       ],
       preisInfo: "Kombi mit Winterball: 45 €",
       kontingent: null,
-      status: "live",
-      statusText: "Vorverkauf läuft",
-      statusInfo: "Online im Ticketshop",
-      ticketUrl: null,
+      verkaufAb: "2026-11-18",
       dresscode: "Abendgarderobe",
       ablauf: []
     }
@@ -724,13 +720,13 @@ const CONFIG = {
     ["camera", "Erinnerungen", "Ein Abend, über den ihr noch lange redet."]
   ],
   schritte: [
-    ["Event wählen", "Such dir dein Event aus und tipp auf „Ticket kaufen“."],
-    ["Im Ticketshop bezahlen", "Du landest direkt im Ticketshop und bezahlst dort."],
-    ["Ticket vorzeigen", "Dein Ticket kommt per E-Mail. Am Einlass zeigst du es vor."]
+    ["In die Pause kommen", "Mittwoch oder Donnerstag in der 2. Pause in den Aufenthaltsraum."],
+    ["Bar bezahlen", "Du zahlst bar und bekommst dein Ticket direkt auf Papier."],
+    ["Ticket vorzeigen", "Am Einlass zeigst du dein Papierticket vor. Gut aufheben!"]
   ],
   faq: [
-    ["Wie bekomme ich mein Ticket?",
-     "Tipp auf „Ticket kaufen“ und du landest direkt im Ticketshop. Nach dem Kauf bekommst du dein Ticket per E-Mail. Am Einlass zeigst du es auf dem Handy oder ausgedruckt vor."],
+    ["Wo gibt es die Tickets?",
+     "Ab dem 18. November Mittwoch und Donnerstag in der 2. Pause im Aufenthaltsraum. Du zahlst bar und bekommst dein Ticket direkt auf Papier. Am Einlass zeigst du es vor."],
     ["Was kosten die Tickets?",
      "Ein Ticket für den Winterball kostet 15 €, für den Abiball 35 €. Mit dem Kombiticket für beide Abende zahlst du 45 € und sparst 5 €."],
     ["Wo findet das Event statt?",
@@ -740,9 +736,9 @@ const CONFIG = {
     ["Ich bin unter 18. Was muss ich beachten?",
      "Es gilt das Jugendschutzgesetz. Alle Details zu Einlass und Altersregeln geben wir rechtzeitig vor dem Event bekannt."],
     ["Darf ich Gäste mitbringen?",
-     "Ob und wie viele Gäste mitkommen dürfen, siehst du beim Ticketkauf im Ticketshop."],
+     "Ja, auch Freund:innen von außerhalb der Schule sind willkommen. Jede Person braucht ein eigenes Ticket, das du in der Pause gleich mitkaufen kannst."],
     ["Kann ich mein Ticket zurückgeben oder weitergeben?",
-     "Es gelten die Bedingungen des Ticketshops. Bei Fragen helfen wir dir gern weiter."]
+     "Sprich uns dazu einfach beim Ticketverkauf in der Pause an oder schreib uns eine E-Mail."]
   ],
   dresscodeTipps: [
     ["Zur Inspiration", "Anzug, Kleid, Hosenanzug oder was du sonst gern zu einem festlichen Abend trägst."],
@@ -764,6 +760,15 @@ const CONFIG = {
   const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const fine = matchMedia("(pointer: fine)").matches;
   // Eine Event-Seite setzt vorher window.WB_ONLY = "winterball" o. ä. und zeigt dann nur dieses Event
+  // Verkaufsstatus aus dem Verkaufsstart (verkaufAb) ableiten: vorher „bald“, ab dem Tag „läuft“
+  CONFIG.events.forEach((e) => {
+    if (e.verkaufAb === undefined) return;
+    const ab = e.verkaufAb ? new Date(e.verkaufAb + "T00:00:00") : null;
+    e.verkaufAbText = ab ? ab.toLocaleDateString("de-DE", { day: "numeric", month: "long" }) : "";
+    if (ab && Date.now() >= ab.getTime()) { e.status = "live"; e.statusText = "Verkauf läuft"; }
+    else { e.status = "soon"; e.statusText = ab ? `Verkauf ab ${e.verkaufAbText}` : "Verkaufsstart folgt"; }
+    e.statusInfo = "Mi + Do, 2. Pause";
+  });
   const ALL = CONFIG.events.slice();
   if (window.WB_ONLY) CONFIG.events = CONFIG.events.filter((e) => e.id === window.WB_ONLY);
   const single = CONFIG.events.length === 1;
@@ -771,8 +776,6 @@ const CONFIG = {
   const pageUrl = /^https?:$/.test(location.protocol) && !/claude|localhost|127\.0\.0\.1/.test(location.hostname)
     ? location.origin + location.pathname : CONFIG.seitenUrl;
   const evById = (id) => CONFIG.events.find((e) => e.id === id);
-  const urlOf = (ev) => (ev && ev.ticketUrl) || CONFIG.ticketUrl;
-  const host = (u) => { try { return new URL(u).host; } catch { return u; } };
   const upcoming = CONFIG.events.map((e) => ({ e, t: new Date(e.start).getTime() }))
     .filter((x) => x.t > Date.now()).sort((a, b) => a.t - b.t);
   const next = upcoming[0] ? upcoming[0].e : CONFIG.events[0];
@@ -870,6 +873,7 @@ a,button,label,summary,[role=tab]{touch-action:manipulation}
     lock: S('<rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/>'),
     check: S('<path d="m5 12.5 4.5 4.5L19 7.5"/>'),
     cal: S('<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M12 13.5v4M10 15.5h4"/>'),
+    pin: S('<path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>'),
     chat: S('<path d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1-4.2A8 8 0 1 1 20 12z"/><path d="M9 10h6M9 14h4"/>'),
     link: S('<path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/>'),
     mic: S('<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4M8.5 21h7"/>'),
@@ -909,7 +913,7 @@ a,button,label,summary,[role=tab]{touch-action:manipulation}
       <p class="quota-txt">${q >= 1 ? "Ausverkauft" : `Noch <b>${frei}</b> von ${gesamt} Tickets frei`}${q >= .8 && q < 1 ? " · <em>bald weg</em>" : ""}</p></div>`;
   };
   const nb = (t) => t.replace(/(\d) (€|Uhr)/g, "$1&nbsp;$2");          // „45 €“ nie umbrechen
-  const prices = (ev, cls) => !ev.preise.length ? `<p class="price-note">Alle Preise und Ticketarten findest du direkt im Ticketshop.</p>` : `<ul class="${cls}">${ev.preise.map((p) =>
+  const prices = (ev, cls) => !ev.preise.length ? `<p class="price-note">Die Preise geben wir rechtzeitig bekannt.</p>` : `<ul class="${cls}">${ev.preise.map((p) =>
     `<li><span>${esc(p.label)}${p.hinweis ? `<small>${ph(p.hinweis)}</small>` : ""}</span><b>${p.alt ? `<s>${ph(p.alt)}</s> ` : ""}${nb(ph(p.preis))}</b></li>`).join("")}</ul>`;
   // Eckdaten: immer Wann · Wo · Preis · Tickets, in dieser Reihenfolge
   // kurz = ohne Jahreszahl (z. B. auf den Karten der Startseite, wo das Jahr schon im Titel steht)
@@ -919,7 +923,7 @@ a,button,label,summary,[role=tab]{touch-action:manipulation}
     ["preis", "Preis", ev.preise.length ? ph(ev.preise[0].preis) : "Preis folgt", ev.preisInfo ? ph(ev.preisInfo) : ""],
     ["tickets", "Tickets", esc(ev.statusText), ev.statusInfo ? ph(ev.statusInfo) : ""]
   ].map(([c, k, v, sub]) => `<div class="kf-i kf-${c}"><dt>${k}</dt><dd>${nb(v)}${sub ? `<small>${nb(sub)}</small>` : ""}</dd></div>`).join("");
-  const buyLabel = (ev) => ev.status === "live" ? "Ticket kaufen" : ev.status === "soldout" ? "Ausverkauft" : "Infos zum Vorverkauf";
+  const buyLabel = (ev) => ev.status === "live" ? "Ticket kaufen" : ev.status === "soldout" ? "Ausverkauft" : "Infos zum Verkauf";
 
   /* ---- Event-Karten ---- */
   const list = $("#events");
@@ -982,7 +986,7 @@ a,button,label,summary,[role=tab]{touch-action:manipulation}
   $$("[data-next-date]").forEach((el) => (el.textContent = next.datumText));
   $$("[data-next-time]").forEach((el) => (el.textContent = next.zeitText));
   $$("[data-next-ort]").forEach((el) => (el.innerHTML = ph(next.ort)));
-  $$("[data-next-from]").forEach((el) => (el.innerHTML = next.preise.length ? "ab " + ph(next.preise[0].preis) : "Im Ticketshop"));
+  $$("[data-next-from]").forEach((el) => (el.innerHTML = next.preise.length ? "ab " + ph(next.preise[0].preis) : "Preis folgt"));
   $$("[data-days]").forEach((el) => {
     if (!nextT) { el.hidden = true; return; }
     const d = Math.floor((nextT - Date.now()) / 864e5);
@@ -1101,24 +1105,18 @@ a,button,label,summary,[role=tab]{touch-action:manipulation}
   <div class="sheet-in">
     <button type="button" class="sheet-x" data-close aria-label="Schließen">${ICON.x}</button>
     <div class="sheet-step" data-step="pick">
-      <p class="sheet-kicker">Ticket kaufen</p>
+      <p class="sheet-kicker">Tickets</p>
       <h2 class="sheet-title" id="buy-title">Für welchen Abend?</h2>
       <div class="sheet-evs" role="radiogroup" aria-label="Event wählen">
         ${CONFIG.events.map((e) => `<button type="button" role="radio" class="sheet-ev" data-pick="${e.id}" data-status="${e.status}" aria-checked="false">
           <b>${esc(e.name)} ${esc(e.jahr)}</b><span>${esc(e.datumKurz)}</span><em>${esc(e.statusText)}</em></button>`).join("")}
       </div>
       <div class="sheet-detail" aria-live="polite"></div>
-      <div class="sheet-need"><p>Das brauchst du</p><ul>
-        <li>${ICON.mail}<span>Eine E-Mail-Adresse für dein Ticket</span></li>
-        <li>${ICON.card}<span>Bezahlung direkt im Ticketshop</span></li>
+      <div class="sheet-need"><p>So kommst du an dein Ticket</p><ul>
+        <li>${ICON.cal}<span>${esc(CONFIG.verkauf.wann)}</span></li>
+        <li>${ICON.pin}<span>${esc(CONFIG.verkauf.wo)}</span></li>
+        <li>${ICON.card}<span>${esc(CONFIG.verkauf.zahlung)}</span></li>
         ${single && CONFIG.events[0].ausweis === false ? "" : `<li>${ICON.id}<span>Deinen Ausweis am Einlass</span></li>`}</ul></div>
-      <a class="btn sheet-go" href="#" target="_blank" rel="noopener"><span class="lbl">Weiter zur Ticketseite</span> <span aria-hidden="true">→</span></a>
-      <p class="sheet-host">${ICON.lock}<span>Weiter zu <b class="sheet-host-name"></b>, dort bezahlst du sicher.</span></p>
-    </div>
-    <div class="sheet-step sheet-done" data-step="done" hidden>
-      <div class="sheet-ok">${ICON.check}</div>
-      <h2 class="sheet-title">Ab zur Ticketseite!</h2>
-      <p class="sheet-sub">Die Ticketseite ist in einem neuen Tab geöffnet. Falls nicht, <a class="sheet-retry" href="#" target="_blank" rel="noopener">tipp hier</a>.</p>
       <p class="sheet-kicker">Wer kommt mit?</p>
       <div class="sheet-share">
         <a class="chip-s sheet-wa" href="#" target="_blank" rel="noopener">${ICON.chat}<span>Per WhatsApp einladen</span></a>
@@ -1132,17 +1130,15 @@ a,button,label,summary,[role=tab]{touch-action:manipulation}
     $(".sheet-evs", sheet).hidden = true;
     $("#buy-title", sheet).textContent = `Dein Ticket für den ${CONFIG.events[0].name}`;
   }
-  const detail = $(".sheet-detail", sheet), go = $(".sheet-go", sheet);
+  const detail = $(".sheet-detail", sheet);
   let current = live;
   function pick(id) {
     const ev = evById(id) || live; current = ev;
     $$(".sheet-ev", sheet).forEach((b) => b.setAttribute("aria-checked", b.dataset.pick === ev.id));
-    detail.innerHTML = prices(ev, "sheet-prices") + quota(ev) + (ev.status === "soon"
-      ? `<p class="sheet-note">Der Vorverkauf startet bald. Im Ticketshop siehst du, sobald Tickets verfügbar sind${CONFIG.instagram ? `, und auf Instagram (<b>@${esc(CONFIG.instagram)}</b>) sagen wir Bescheid` : ""}.</p>` : "");
-    go.href = urlOf(ev);
-    $(".lbl", go).textContent = ev.status === "live" ? "Weiter zur Ticketseite" : "Ticketseite ansehen";
-    $(".sheet-host-name", sheet).textContent = host(urlOf(ev));
-    $(".sheet-retry", sheet).href = urlOf(ev);
+    const insta = CONFIG.instagram ? ` Auf Instagram (<b>@${esc(CONFIG.instagram)}</b>) sagen wir Bescheid.` : "";
+    detail.innerHTML = prices(ev, "sheet-prices") + quota(ev) + (ev.status !== "soon" ? ""
+      : ev.verkaufAbText ? `<p class="sheet-note">Der Verkauf startet am <b>${esc(ev.verkaufAbText)}</b>.</p>`
+      : `<p class="sheet-note">Der Verkaufsstart steht noch nicht fest.${insta}</p>`);
     $(".sheet-wa", sheet).href = waUrl(ev);
     $(".sheet-cal", sheet).href = calUrl(ev);
   }
@@ -1167,10 +1163,6 @@ a,button,label,summary,[role=tab]{touch-action:manipulation}
   sheet.addEventListener("click", (e) => {
     if (e.target === sheet || e.target.closest("[data-close]")) return closeSheet();
     const p = e.target.closest("[data-pick]"); if (p) pick(p.dataset.pick);
-  });
-  go.addEventListener("click", (e) => {
-    burst(e.clientX || innerWidth / 2, e.clientY || innerHeight / 2);
-    setTimeout(() => step("done"), 380);
   });
   document.addEventListener("click", (e) => {
     const b = e.target.closest("[data-buy]");
