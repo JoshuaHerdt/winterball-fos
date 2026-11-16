@@ -272,10 +272,11 @@ const CONFIG = {
       dresscode: "Abendgarderobe",
       ablauf: [
         ["17:30", "Einlass"],
-        ["18:00", "Beginn des Winterballs"],
+        ["18:00", "Klassischer Start in den Ballabend"],
+        ["Später", "Dann wird es immer mehr Party"],
         ["22:00", "Ende"]
       ],
-      ablaufFertig: true
+      ablaufHinweis: "Das genaue Programm gibt es am Abend selbst."
     },
     {
       id: "galaabend",
@@ -284,11 +285,12 @@ const CONFIG = {
       jahr: "2027",
       kicker: "Die Bühnenshow im Februar",
       tagline: "Eine Bühnenshow von Schüler:innen und Lehrkräften: Musik, Tanz, Comedy, Theater und mehr.",
-      start: "2027-02-03T18:00:00",                // Einlass
-      ende: "2027-02-03T22:00:00",
+      start: "2027-02-03T00:00:00",
+      ganztags: true,                              // Uhrzeiten stehen noch nicht fest
+      ende: null,
       datumText: "Mi, 3. Februar 2027",
       datumKurz: "03.02.2027",
-      zeitText: "Einlass 18:00 · Beginn 18:30",
+      zeitText: "Uhrzeiten noch offen",
       ort: "Aula der FOS Holzkirchen",
       ortZusatz: "Jörg-Hube-Straße 2, 83607 Holzkirchen",
       preise: [
@@ -316,12 +318,11 @@ const CONFIG = {
       anmeldeschluss: "23. Dezember 2026",
       ablaufFertig: true,                          // kompletter Ablauf, kein „weiteres Programm folgt“
       ablauf: [
-        ["18:00", "Einlass, freie Platzwahl"],
-        ["18:30", "Erster Teil der Show"],
-        ["19:30", "Pause"],
-        ["20:00", "Zweiter Teil der Show"],
-        ["21:00", "Ausklang"],
-        ["22:00", "Ende"]
+        ["Einlass", "Freie Platzwahl"],
+        ["Teil 1", "Erster Teil der Show"],
+        ["Pause", "Kurz durchatmen"],
+        ["Teil 2", "Zweiter Teil der Show"],
+        ["Ende", "Uhrzeiten noch offen"]
       ],
       highlights: [
         ["mic", "Musik & Tanz", "Bands, Gesang, Instrumentalstücke und Choreos."],
@@ -335,15 +336,17 @@ const CONFIG = {
         ["Was kostet ein Ticket?",
          "Ein Ticket kostet 5 €. Wer zwei Tickets kauft, bekommt ein drittes gratis dazu. Das Gratisticket ist für eine Person von außerhalb der Schule gedacht, zum Beispiel Familie oder Freunde."],
         ["Steht der Termin schon fest?",
-         "Ja, der Galaabend ist am Mittwoch, 3. Februar 2027, in der Aula. Einlass ist um 18:00 Uhr, los geht es um 18:30 Uhr."],
+         "Das Datum steht fest: Mittwoch, 3. Februar 2027, in der Aula. Die genauen Uhrzeiten sind noch offen, wir geben sie hier und auf Instagram bekannt."],
         ["Ab wann gibt es Tickets?",
          "Der Verkaufsstart steht noch nicht fest. Dann gibt es die Tickets Mittwoch und Donnerstag in der 2. Pause im Aufenthaltsraum, bezahlt wird bar. Wir geben den Start hier und auf Instagram bekannt."],
         ["Gibt es feste Sitzplätze?",
-         "Nein, es gilt freie Platzwahl. In der Aula gibt es 420 Plätze. Der Einlass beginnt um 18:00 Uhr."],
+         "Nein, es gilt freie Platzwahl. In der Aula gibt es 420 Plätze."],
+        ["Gibt es Alkohol?",
+         "Nein, der Galaabend ist alkoholfrei."],
         ["Wie kann ich selbst auftreten?",
          "Melde deinen Act bis zum 23. Dezember 2026 an. Ein Act dauert höchstens 10 Minuten, erlaubt ist fast alles, was auf eine Bühne passt. Nach der Anmeldung meldet sich das Orga-Team innerhalb von ein bis zwei Wochen bei dir."],
         ["Gibt es etwas zu essen und zu trinken?",
-         "In der Pause ist ein Verkauf von Schüler:innen geplant. Genauere Infos geben wir rechtzeitig hier bekannt."]
+         "Ob es in der Pause einen Verkauf gibt, ist noch offen. Wir geben es hier rechtzeitig bekannt."]
       ]
     },
     {
@@ -392,8 +395,8 @@ const CONFIG = {
      "Winterball und Galaabend finden in der Aula der FOS Holzkirchen statt (Jörg-Hube-Straße 2, 83607 Holzkirchen). Den Ort für den Abiball geben wir rechtzeitig hier auf der Seite bekannt."],
     ["Brauche ich einen Ausweis?",
      "Ja. Bring bitte einen gültigen Lichtbildausweis mit, er kann am Einlass zusammen mit deinem Ticket kontrolliert werden."],
-    ["Ich bin unter 18. Was muss ich beachten?",
-     "Es gilt das Jugendschutzgesetz. Alle Details zu Einlass und Altersregeln geben wir rechtzeitig vor dem Event bekannt."],
+    ["Gibt es Alkohol?",
+     "Nein, der Winterball und der Galaabend sind alkoholfrei. Beim Abiball regelt das der externe Gastgeber."],
     ["Darf ich Gäste mitbringen?",
      "Ja, auch Freund:innen von außerhalb der Schule sind willkommen. Jede Person braucht ein eigenes Ticket, das du in der Pause gleich mitkaufen kannst."],
     ["Kann ich mein Ticket zurückgeben oder weitergeben?",
@@ -425,7 +428,7 @@ const CONFIG = {
     const ab = e.verkaufAb ? new Date(e.verkaufAb + "T00:00:00") : null;
     e.verkaufAbText = ab ? ab.toLocaleDateString("de-DE", { day: "numeric", month: "long" }) : "";
     if (ab && Date.now() >= ab.getTime()) { e.status = "live"; e.statusText = "Verkauf läuft"; }
-    else { e.status = "soon"; e.statusText = ab ? `Verkauf ab ${e.verkaufAbText}` : "Verkaufsstart folgt"; }
+    else { e.status = "soon"; e.statusText = ab ? `Verkauf ab ${e.verkaufAbText}` : "Verkaufsstart noch offen"; }
     e.statusInfo = "Mi + Do, 2. Pause";
   });
   const ALL = CONFIG.events.slice();
@@ -658,7 +661,7 @@ a,button,label,summary,[role=tab]{touch-action:manipulation}
     const ev = evById(id) || CONFIG.events[0];
     if (sw) $$("button", sw).forEach((b) => b.setAttribute("aria-pressed", b.dataset.ev === ev.id));
     if (ab) ab.innerHTML = ev.ablauf.map(([t, w]) => `<li><time>${esc(t)}</time><span>${esc(w)}</span></li>`).join("") + (ev.ablaufFertig ? "" :
-      `<li class="ablauf-more"><time>…</time><span>Das weitere Programm geben wir rechtzeitig bekannt.</span></li>`);
+      `<li class="ablauf-more"><time>…</time><span>${esc(ev.ablaufHinweis || "Das weitere Programm geben wir rechtzeitig bekannt.")}</span></li>`);
     if (dc) dc.innerHTML = `<b>${esc(ev.name)}:</b> ${ph(ev.dresscode)}`;
   }
   if (sw) {
