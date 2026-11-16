@@ -617,10 +617,9 @@ const CONFIG = {
       ort: "Aula der FOS Holzkirchen",
       ortZusatz: "Jörg-Hube-Straße 2, 83607 Holzkirchen",
       preise: [                                    // erster Eintrag = Preis in den Eckdaten
-        { label: "Ticket", preis: "15 €" },
-        { label: "Kombiticket Winterball + Abiball", preis: "45 €", hinweis: "Für beide Abende, du sparst 5 €" }
+        { label: "Ticket", preis: "10 €" }
       ],
-      preisInfo: "Kombi mit Abiball: 45 €",        // kleine Zeile unter dem Preis in den Eckdaten
+      preisInfo: "",                               // kleine Zeile unter dem Preis in den Eckdaten (leer = keine)
       kontingent: null,                            // { gesamt: 300, verkauft: 120 } – nur echte Zahlen
       verkaufAb: "2026-11-18",                     // Verkaufsstart in der Pause (null = steht noch nicht fest)
                                                    // Status und Text stellen sich daraus automatisch ein
@@ -639,11 +638,10 @@ const CONFIG = {
       jahr: "2027",
       kicker: "Die Bühnenshow im Februar",
       tagline: "Eine Bühnenshow von Schüler:innen und Lehrkräften: Musik, Tanz, Comedy, Theater und mehr.",
-      start: "2027-02-05T18:00:00",                // Einlass
-      ende: "2027-02-05T22:00:00",
-      datumText: "Fr, 5. Februar 2027",
-      datumKurz: "05.02.2027",
-      vorlaeufig: true,                            // Termin noch nicht endgültig (wird als „vorläufig“ angezeigt)
+      start: "2027-02-03T18:00:00",                // Einlass
+      ende: "2027-02-03T22:00:00",
+      datumText: "Mi, 3. Februar 2027",
+      datumKurz: "03.02.2027",
       zeitText: "Einlass 18:00 · Beginn 18:30",
       ort: "Aula der FOS Holzkirchen",
       ortZusatz: "Jörg-Hube-Straße 2, 83607 Holzkirchen",
@@ -691,7 +689,7 @@ const CONFIG = {
         ["Was kostet ein Ticket?",
          "Ein Ticket kostet 5 €. Wer zwei Tickets kauft, bekommt ein drittes gratis dazu. Das Gratisticket ist für eine Person von außerhalb der Schule gedacht, zum Beispiel Familie oder Freunde."],
         ["Steht der Termin schon fest?",
-         "Geplant ist Freitag, der 5. Februar 2027. Der Termin ist noch vorläufig. Sobald er endgültig feststeht, steht es hier und auf Instagram."],
+         "Ja, der Galaabend ist am Mittwoch, 3. Februar 2027, in der Aula. Einlass ist um 18:00 Uhr, los geht es um 18:30 Uhr."],
         ["Ab wann gibt es Tickets?",
          "Der Verkaufsstart steht noch nicht fest. Dann gibt es die Tickets Mittwoch und Donnerstag in der 2. Pause im Aufenthaltsraum, bezahlt wird bar. Wir geben den Start hier und auf Instagram bekannt."],
         ["Gibt es feste Sitzplätze?",
@@ -719,10 +717,9 @@ const CONFIG = {
       ortZusatz: "",
       abimotto: "",                                // Abimotto (leer = ausgeblendet)
       preise: [
-        { label: "Ticket", preis: "35 €" },
-        { label: "Kombiticket Winterball + Abiball", preis: "45 €", hinweis: "Für beide Abende, du sparst 5 €" }
+        { label: "Ticket", preis: "35 €" }
       ],
-      preisInfo: "Kombi mit Winterball: 45 €",
+      preisInfo: "",
       kontingent: null,
       verkaufAb: "2026-11-18",
       dresscode: "Abendgarderobe",
@@ -744,7 +741,7 @@ const CONFIG = {
     ["Wo gibt es die Tickets?",
      "Ab dem 18. November Mittwoch und Donnerstag in der 2. Pause im Aufenthaltsraum. Du zahlst bar und bekommst dein Ticket direkt auf Papier. Am Einlass zeigst du es vor."],
     ["Was kosten die Tickets?",
-     "Ein Ticket für den Winterball kostet 15 €, für den Abiball 35 €. Mit dem Kombiticket für beide Abende zahlst du 45 € und sparst 5 €."],
+     "Ein Ticket für den Winterball kostet 10 €, für den Abiball 35 €."],
     ["Wo findet das Event statt?",
      "Winterball und Galaabend finden in der Aula der FOS Holzkirchen statt (Jörg-Hube-Straße 2, 83607 Holzkirchen). Den Ort für den Abiball geben wir rechtzeitig hier auf der Seite bekannt."],
     ["Brauche ich einen Ausweis?",
