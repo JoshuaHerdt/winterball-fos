@@ -283,14 +283,15 @@ const CONFIG = {
       seite: "galaabend/",
       name: "Galaabend",
       jahr: "2027",
-      kicker: "Die Bühnenshow im Februar",
+      kicker: "Die große Bühnenshow",
       tagline: "Eine Bühnenshow von Schüler:innen und Lehrkräften: Musik, Tanz, Comedy, Theater und mehr.",
-      start: "2027-02-03T00:00:00",
-      ganztags: true,                              // Uhrzeiten stehen noch nicht fest
+      terminOffen: true,                           // Datum steht noch nicht fest: wird als „offen“ angezeigt,
+      start: "2027-02-01T00:00:00",                // start dient dann nur der Reihenfolge und wird nirgends gezeigt
+      ganztags: true,
       ende: null,
-      datumText: "Mi, 3. Februar 2027",
-      datumKurz: "03.02.2027",
-      zeitText: "Uhrzeiten noch offen",
+      datumText: "Termin offen",
+      datumKurz: "Termin offen",
+      zeitText: "Datum und Uhrzeit folgen",
       ort: "Aula der FOS Holzkirchen",
       ortZusatz: "Jörg-Hube-Straße 2, 83607 Holzkirchen",
       preise: [
@@ -337,7 +338,7 @@ const CONFIG = {
         ["Was kostet ein Ticket?",
          "Ein Ticket kostet 5 €. Wer zwei Tickets kauft (10 €), bekommt ein drittes gratis dazu, also drei Tickets für 10 €. Das Gratisticket ist für eine Person von außerhalb der Schule gedacht, zum Beispiel Familie oder Freunde."],
         ["Steht der Termin schon fest?",
-         "Das Datum steht fest: Mittwoch, 3. Februar 2027, in der Aula. Die genauen Uhrzeiten sind noch offen, wir geben sie hier und auf Instagram bekannt."],
+         "Nein, Datum und Uhrzeit sind noch offen. Sobald sie feststehen, findest du sie hier und auf Instagram."],
         ["Ab wann gibt es Tickets?",
          "Der Verkaufsstart steht noch nicht fest. Dann gibt es die Tickets Mittwoch und Donnerstag in der 2. Pause im Aufenthaltsraum, bezahlt wird bar. Wir geben den Start hier und auf Instagram bekannt."],
         ["Gibt es feste Sitzplätze?",
@@ -371,7 +372,7 @@ const CONFIG = {
       ],
       preisInfo: "",
       kontingent: null,
-      verkaufAb: "2026-11-18",
+      verkaufAb: "2026-11-16",
       dresscode: "Abendgarderobe",
       ablauf: []
     }
@@ -439,7 +440,7 @@ const CONFIG = {
   const pageUrl = /^https?:$/.test(location.protocol) && !/claude|localhost|127\.0\.0\.1/.test(location.hostname)
     ? location.origin + location.pathname : CONFIG.seitenUrl;
   const evById = (id) => CONFIG.events.find((e) => e.id === id);
-  const upcoming = CONFIG.events.map((e) => ({ e, t: new Date(e.start).getTime() }))
+  const upcoming = CONFIG.events.filter((e) => !e.terminOffen).map((e) => ({ e, t: new Date(e.start).getTime() }))
     .filter((x) => x.t > Date.now()).sort((a, b) => a.t - b.t);
   const next = upcoming[0] ? upcoming[0].e : CONFIG.events[0];
   const nextT = upcoming[0] ? upcoming[0].t : null;
@@ -607,7 +608,7 @@ a,button,label,summary,[role=tab]{touch-action:manipulation}
         ${quota(ev)}
         <div class="ev-actions">
           <button type="button" class="btn ev-btn" data-buy="${ev.id}">${buyLabel(ev)} <span aria-hidden="true">→</span></button>
-          <a class="ev-cal" href="${calUrl(ev)}" target="_blank" rel="noopener">${ICON.cal}Im Kalender speichern</a>
+          ${ev.terminOffen ? "" : `<a class="ev-cal" href="${calUrl(ev)}" target="_blank" rel="noopener">${ICON.cal}Im Kalender speichern</a>`}
         </div>
         <span class="ev-no">Nr. ${String(i + 1).padStart(2, "0")} · ${esc(ev.jahr)}</span>
       </div>
@@ -803,7 +804,8 @@ a,button,label,summary,[role=tab]{touch-action:manipulation}
       : ev.verkaufAbText ? `<p class="sheet-note">Der Verkauf startet am <b>${esc(ev.verkaufAbText)}</b>.</p>`
       : `<p class="sheet-note">Der Verkaufsstart steht noch nicht fest.${insta}</p>`);
     $(".sheet-wa", sheet).href = waUrl(ev);
-    $(".sheet-cal", sheet).href = calUrl(ev);
+    $(".sheet-cal", sheet).href = ev.terminOffen ? "#" : calUrl(ev);
+    $(".sheet-cal", sheet).hidden = !!ev.terminOffen;
   }
   function step(name) { $$(".sheet-step", sheet).forEach((s) => (s.hidden = s.dataset.step !== name)); }
   async function openSheet(id) {
