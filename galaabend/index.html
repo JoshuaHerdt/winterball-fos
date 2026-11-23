@@ -782,6 +782,11 @@ const CONFIG = {
       preisInfo: "",                               // kleine Zeile unter dem Preis in den Eckdaten (leer = keine)
       kontingent: null,                            // { gesamt: 300, verkauft: 120 } – nur echte Zahlen
       verkaufAb: "2026-11-18",                     // Verkaufsstart in der Pause (null = steht noch nicht fest)
+      // Eigene Verkaufsorte (nur Winterball): erscheinen als Spalten im Ticket-Bereich und im Ticketfenster
+      verkaufOrte: [
+        { name: "FOS", tage: "Mittwoch und Donnerstag", pause: "2. Pause", wo: "Aufenthaltsraum", ab: "2026-11-18" },
+        { name: "Gymnasium", tage: "Mittwoch und Freitag", pause: "2. Pause", wo: "Foyer", ab: "2026-11-27" }
+      ],
                                                    // Status und Text stellen sich daraus automatisch ein
       dresscode: "Abendgarderobe",
       ablauf: [
@@ -904,7 +909,7 @@ const CONFIG = {
   ],
   faq: [
     ["Wo gibt es die Tickets?",
-     "Ab dem 18. November Mittwoch und Donnerstag in der 2. Pause im Aufenthaltsraum. Du zahlst bar und bekommst dein Ticket direkt auf Papier. Am Einlass zeigst du es vor."],
+     "Ab dem 18. November Mittwoch und Donnerstag in der 2. Pause im Aufenthaltsraum. Für den Winterball gibt es zusätzlich einen Verkauf am Gymnasium: Mittwoch und Freitag in der 2. Pause im Foyer, ab dem 27. November. Du zahlst bar und bekommst dein Ticket direkt auf Papier. Am Einlass zeigst du es vor."],
     ["Was kosten die Tickets?",
      "Ein Ticket für den Winterball kostet 10 €, für den Abiball 35 €."],
     ["Wo findet das Event statt?",
@@ -945,8 +950,13 @@ const CONFIG = {
     e.verkaufAbText = ab ? ab.toLocaleDateString("de-DE", { day: "numeric", month: "long" }) : "";
     if (ab && Date.now() >= ab.getTime()) { e.status = "live"; e.statusText = "Verkauf läuft"; }
     else { e.status = "soon"; e.statusText = ab ? `Verkauf ab ${e.verkaufAbText}` : "Verkaufsstart noch offen"; }
-    e.statusInfo = "Mi + Do, 2. Pause";
+    e.statusInfo = e.verkaufOrte ? "FOS und Gymnasium, 2. Pause" : "Mi + Do, 2. Pause";
   });
+  // „27. November“, solange ein Verkaufsstart noch in der Zukunft liegt, sonst leer
+  const abText = (d, opt = { day: "numeric", month: "long" }) => {
+    if (!d) return ""; const t = new Date(d + "T00:00:00");
+    return Date.now() < t.getTime() ? t.toLocaleDateString("de-DE", opt) : "";
+  };
   const ALL = CONFIG.events.slice();
   if (window.WB_ONLY) CONFIG.events = CONFIG.events.filter((e) => e.id === window.WB_ONLY);
   const single = CONFIG.events.length === 1;
@@ -1155,6 +1165,20 @@ a,button,label,summary,[role=tab]{touch-action:manipulation}
          <span class="t-txt"><span class="t-name">Alle Events</span><span class="t-meta">Startseite der FOS-Events</span></span>
          <span class="t-go" aria-hidden="true">→</span></a>`;
   });
+  // Verkaufsorte als Spalten (z. B. Winterball: FOS und Gymnasium)
+  $$("[data-sale-cols]").forEach((box) => {
+    const ev = ALL.find((e) => e.id === box.dataset.saleCols);
+    if (!ev || !ev.verkaufOrte) { box.hidden = true; return; }
+    box.innerHTML = ev.verkaufOrte.map((o) => {
+      const ab = abText(o.ab, { weekday: "long", day: "numeric", month: "long" });
+      return `<div class="sale-col" data-glow>
+        <p class="sc-k">${esc(o.name)}</p>
+        <h3 class="sc-tage">${esc(o.tage)}</h3>
+        <p class="sc-ort">${esc(o.pause)} · ${esc(o.wo)}</p>
+        <span class="sc-ab${ab ? "" : " on"}">${ab ? `Ab ${esc(ab)}` : "Verkauf läuft"}</span>
+      </div>`;
+    }).join("");
+  });
   $$("[data-keyfacts]").forEach((el) => {
     const ev = el.dataset.keyfacts === "next" ? next : ALL.find((e) => e.id === el.dataset.keyfacts);
     if (ev) { el.classList.add("kf"); el.innerHTML = keyfacts(ev); }
@@ -1290,11 +1314,7 @@ a,button,label,summary,[role=tab]{touch-action:manipulation}
           <b>${esc(e.name)} ${esc(e.jahr)}</b><span>${esc(e.datumKurz)}</span><em>${esc(e.statusText)}</em></button>`).join("")}
       </div>
       <div class="sheet-detail" aria-live="polite"></div>
-      <div class="sheet-need"><p>So kommst du an dein Ticket</p><ul>
-        <li>${ICON.cal}<span>${esc(CONFIG.verkauf.wann)}</span></li>
-        <li>${ICON.pin}<span>${esc(CONFIG.verkauf.wo)}</span></li>
-        <li>${ICON.card}<span>${esc(CONFIG.verkauf.zahlung)}</span></li>
-        ${single && CONFIG.events[0].ausweis === false ? "" : `<li>${ICON.id}<span>Deinen Ausweis am Einlass</span></li>`}</ul></div>
+      <div class="sheet-need"><p>So kommst du an dein Ticket</p><ul class="sheet-orte"></ul></div>
       <p class="sheet-kicker">Wer kommt mit?</p>
       <div class="sheet-share">
         <a class="chip-s sheet-wa" href="#" target="_blank" rel="noopener">${ICON.chat}<span>Per WhatsApp einladen</span></a>
@@ -1317,6 +1337,11 @@ a,button,label,summary,[role=tab]{touch-action:manipulation}
     detail.innerHTML = prices(ev, "sheet-prices") + quota(ev) + (ev.status !== "soon" ? ""
       : ev.verkaufAbText ? `<p class="sheet-note">Der Verkauf startet am <b>${esc(ev.verkaufAbText)}</b>.</p>`
       : `<p class="sheet-note">Der Verkaufsstart steht noch nicht fest.${insta}</p>`);
+    $(".sheet-orte", sheet).innerHTML = (ev.verkaufOrte
+      ? ev.verkaufOrte.map((o) => `<li>${ICON.pin}<span><b>${esc(o.name)}:</b> ${esc(o.tage)}, ${esc(o.pause)}, ${esc(o.wo)}${abText(o.ab) ? ` (ab ${esc(abText(o.ab))})` : ""}</span></li>`).join("")
+      : `<li>${ICON.cal}<span>${esc(CONFIG.verkauf.wann)}</span></li><li>${ICON.pin}<span>${esc(CONFIG.verkauf.wo)}</span></li>`) +
+      `<li>${ICON.card}<span>${esc(CONFIG.verkauf.zahlung)}</span></li>` +
+      (ev.ausweis === false ? "" : `<li>${ICON.id}<span>Deinen Ausweis am Einlass</span></li>`);
     $(".sheet-wa", sheet).href = waUrl(ev);
     $(".sheet-cal", sheet).href = ev.terminOffen ? "#" : calUrl(ev);
     $(".sheet-cal", sheet).hidden = !!ev.terminOffen;
