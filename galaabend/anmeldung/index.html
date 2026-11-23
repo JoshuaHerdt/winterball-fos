@@ -461,15 +461,13 @@ const CONFIG = {
       seite: "galaabend/",
       name: "Galaabend",
       jahr: "2027",
-      kicker: "Die große Bühnenshow",
+      kicker: "Die Bühnenshow im März",
       tagline: "Eine Bühnenshow von Schüler:innen und Lehrkräften: Musik, Tanz, Comedy, Theater und mehr.",
-      terminOffen: true,                           // Datum steht noch nicht fest: wird als „offen“ angezeigt,
-      start: "2027-02-01T00:00:00",                // start dient dann nur der Reihenfolge und wird nirgends gezeigt
-      ganztags: true,
-      ende: null,
-      datumText: "Termin offen",
-      datumKurz: "Termin offen",
-      zeitText: "Datum und Uhrzeit folgen",
+      start: "2027-03-18T19:00:00",                // Beginn
+      ende: null,                                  // Ende noch offen
+      datumText: "Do, 18. März 2027",
+      datumKurz: "18.03.2027",
+      zeitText: "Beginn 19:00",
       ort: "Aula der FOS Holzkirchen",
       ortZusatz: "Jörg-Hube-Straße 2, 83607 Holzkirchen",
       preise: [
@@ -480,8 +478,9 @@ const CONFIG = {
       kontingent: null,
       plaetze: 420,
       ausweis: false,                              // kein Ausweis am Einlass nötig
-      verkaufAb: null,                             // Verkaufsstart steht noch nicht fest
-      vorverkauf: "Tickets gibt es Mittwoch und Donnerstag in der 2. Pause im Aufenthaltsraum. Den Verkaufsstart geben wir hier und auf Instagram bekannt.",
+      verkaufAb: null,                             // genauer Verkaufsstart steht noch nicht fest
+      verkaufHinweis: "Tickets ab den Faschingsferien", // ersetzt Status und Verkaufszeiten, solange es keinen genauen Start gibt
+      vorverkauf: "Tickets gibt es ab den Faschingsferien. Die genauen Verkaufszeiten geben wir hier und auf Instagram bekannt.",
       dresscode: "Kein Dresscode, komm, wie du magst",
       anmeldungUrl: "anmeldung/",                  // Link zur Act-Anmeldung (leer = „Anmeldung öffnet bald“)
       // Act-Anmeldung (galaabend/anmeldung/): schickt die Angaben an ein Google-Formular.
@@ -499,10 +498,10 @@ const CONFIG = {
       ablaufFertig: true,                          // kompletter Ablauf, kein „weiteres Programm folgt“
       ablauf: [
         ["Einlass", "Freie Platzwahl"],
-        ["Teil 1", "Erster Teil der Show"],
+        ["19:00", "Erster Teil der Show"],
         ["Pause", "Kurz durchatmen"],
         ["Teil 2", "Zweiter Teil der Show"],
-        ["Ende", "Uhrzeiten noch offen"]
+        ["Ende", "Uhrzeit folgt"]
       ],
       highlights: [
         ["mic", "Musik & Tanz", "Bands, Gesang, Instrumentalstücke und Choreos."],
@@ -516,15 +515,15 @@ const CONFIG = {
         ["Was kostet ein Ticket?",
          "Ein Ticket kostet 5 €. Wer zwei Tickets kauft (10 €), bekommt ein drittes gratis dazu, also drei Tickets für 10 €. Das Gratisticket ist für eine Person von außerhalb der Schule gedacht, zum Beispiel Familie oder Freunde."],
         ["Steht der Termin schon fest?",
-         "Nein, Datum und Uhrzeit sind noch offen. Sobald sie feststehen, findest du sie hier und auf Instagram."],
+         "Ja: Donnerstag, 18. März 2027, in der Aula. Beginn ist um 19:00 Uhr."],
         ["Ab wann gibt es Tickets?",
-         "Der Verkaufsstart steht noch nicht fest. Dann gibt es die Tickets Mittwoch und Donnerstag in der 2. Pause im Aufenthaltsraum, bezahlt wird bar. Wir geben den Start hier und auf Instagram bekannt."],
+         "Ab den Faschingsferien. Die genauen Verkaufszeiten geben wir hier und auf Instagram bekannt."],
         ["Gibt es feste Sitzplätze?",
          "Nein, es gilt freie Platzwahl. In der Aula gibt es 420 Plätze."],
         ["Gibt es Alkohol?",
          "Nein, der Galaabend ist alkoholfrei."],
         ["Wie kann ich selbst auftreten?",
-         "Melde deinen Act bis zum 23. Dezember 2026 an. Ein Act dauert höchstens 10 Minuten, erlaubt ist fast alles, was auf eine Bühne passt. Nach der Anmeldung meldet sich das Orga-Team innerhalb von ein bis zwei Wochen bei dir."],
+         "Die Anmeldung ist ab sofort möglich. Melde deinen Act bis zum 23. Dezember 2026 an. Ein Act dauert höchstens 10 Minuten, erlaubt ist fast alles, was auf eine Bühne passt. Nach der Anmeldung meldet sich das Orga-Team innerhalb von ein bis zwei Wochen bei dir."],
         ["Gibt es etwas zu essen und zu trinken?",
          "Ob es in der Pause einen Verkauf gibt, ist noch offen. Wir geben es hier rechtzeitig bekannt."]
       ]
@@ -608,8 +607,8 @@ const CONFIG = {
     const ab = e.verkaufAb ? new Date(e.verkaufAb + "T00:00:00") : null;
     e.verkaufAbText = ab ? ab.toLocaleDateString("de-DE", { day: "numeric", month: "long" }) : "";
     if (ab && Date.now() >= ab.getTime()) { e.status = "live"; e.statusText = "Verkauf läuft"; }
-    else { e.status = "soon"; e.statusText = ab ? `Verkauf ab ${e.verkaufAbText}` : "Verkaufsstart noch offen"; }
-    e.statusInfo = e.verkaufOrte ? "An FOS und Gymnasium" : "Mi + Do, 2. Pause";
+    else { e.status = "soon"; e.statusText = ab ? `Verkauf ab ${e.verkaufAbText}` : e.verkaufHinweis || "Verkaufsstart noch offen"; }
+    e.statusInfo = e.verkaufOrte ? "An FOS und Gymnasium" : e.verkaufHinweis && !ab ? "Genaue Zeiten folgen" : "Mi + Do, 2. Pause";
   });
   // „27. November“, solange ein Verkaufsstart noch in der Zukunft liegt, sonst leer
   const abText = (d, opt = { day: "numeric", month: "long" }) => {
@@ -1003,8 +1002,11 @@ a,button,label,summary,[role=tab]{touch-action:manipulation}
     const insta = CONFIG.instagram ? ` Auf Instagram (<b>@${esc(CONFIG.instagram)}</b>) sagen wir Bescheid.` : "";
     detail.innerHTML = prices(ev, "sheet-prices") + quota(ev) + (ev.status !== "soon" ? ""
       : ev.verkaufAbText ? `<p class="sheet-note">Der Verkauf startet am <b>${esc(ev.verkaufAbText)}</b>.</p>`
+      : ev.verkaufHinweis ? `<p class="sheet-note">Die genauen Verkaufszeiten geben wir noch bekannt.${insta}</p>`
       : `<p class="sheet-note">Der Verkaufsstart steht noch nicht fest.${insta}</p>`);
-    $(".sheet-orte", sheet).innerHTML = (ev.verkaufOrte
+    $(".sheet-orte", sheet).innerHTML = ev.verkaufHinweis && ev.status === "soon"
+      ? `<li>${ICON.cal}<span>${esc(ev.verkaufHinweis)}</span></li>`
+      : (ev.verkaufOrte
       ? ev.verkaufOrte.map((o) => `<li>${ICON.pin}<span><b>${esc(o.name)}:</b> ${esc(o.tage)}, ${esc(o.pause)}, ${esc(o.wo)}${abText(o.ab) ? ` (ab ${esc(abText(o.ab))})` : ""}</span></li>`).join("")
       : `<li>${ICON.cal}<span>${esc(CONFIG.verkauf.wann)}</span></li><li>${ICON.pin}<span>${esc(CONFIG.verkauf.wo)}</span></li>`) +
       `<li>${ICON.card}<span>${esc(CONFIG.verkauf.zahlung)}</span></li>` +

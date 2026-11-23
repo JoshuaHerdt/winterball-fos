@@ -237,6 +237,8 @@ main { overflow-x: clip; }
 .casting h2 { font: 400 clamp(40px, 5vw, 70px)/1 var(--f-show); color: var(--gold-hi); margin-top: 12px; }
 .casting > div > p { color: var(--mist); max-width: 46ch; margin: 18px 0 0; }
 .casting .cta { margin-top: 28px; display: flex; flex-wrap: wrap; align-items: center; gap: 20px 22px; }
+.casting .now-open { margin: 18px 0 0; font-weight: 500; color: var(--gold-hi); }
+.casting .now-open a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
 .casting .due { display: inline-flex; align-items: center; gap: 10px; margin-top: 22px; padding: 10px 16px 8px; border-radius: 999px; background: rgba(7, 13, 31, .6); border: 1px solid var(--line); font-size: 14px; }
 .casting .due b { color: var(--gold-hi); }
 .need ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
@@ -557,11 +559,11 @@ footer { margin-top: 0; border-top: 1px solid var(--line-2); font-size: 15px; co
           <div><p class="label">Der Abend</p><h2 class="show" style="font-size:clamp(38px,4.6vw,64px);line-height:1.02;color:var(--gold-hi);margin-top:12px">Zwei Akte, eine Reise</h2></div>
           <p>Eigentlich sollte es nur ein ganz normaler Urlaub werden. <b>Eigentlich.</b> Irgendwo ist etwas schiefgegangen, und seitdem gibt es nur noch ein Ziel: irgendwie nach Hause kommen.</p>
           <p>Wo die Reise hinführt und wem man unterwegs begegnet? Das erfahrt ihr am Abend. Nur so viel: Jeder Act ist eine Station.</p>
-          <div class="pass" aria-label="Bordkarte: Ziel unbekannt, Gate Aula, Abflug noch offen, Rückkehr ungewiss">
+          <div class="pass" aria-label="Bordkarte: Ziel unbekannt, Gate Aula, Abflug 19:00 Uhr, Rückkehr ungewiss">
             <div class="pass-main">
               <p class="pass-k">Bordkarte · Boarding Pass</p>
               <div class="pass-route"><b>HOLZKIRCHEN</b><span aria-hidden="true">✈</span><b class="pass-q" id="passDest">???</b></div>
-              <dl><div><dt>Gate</dt><dd>Aula</dd></div><div><dt>Boarding</dt><dd>offen</dd></div><div><dt>Abflug</dt><dd>offen</dd></div><div><dt>Rückkehr</dt><dd>ungewiss</dd></div></dl>
+              <dl><div><dt>Gate</dt><dd>Aula</dd></div><div><dt>Boarding</dt><dd>offen</dd></div><div><dt>Abflug</dt><dd>19:00</dd></div><div><dt>Rückkehr</dt><dd>ungewiss</dd></div></dl>
             </div>
             <div class="pass-stub"><span>Sitz</span><b>frei</b><span>wählbar</span></div>
           </div>
@@ -577,8 +579,8 @@ footer { margin-top: 0; border-top: 1px solid var(--line-2); font-size: 15px; co
             <p>Bring deine Familie und deine Freunde mit. Ein Ticket kostet 5 €. Wer zwei kauft, bekommt ein drittes gratis dazu, für eine Person von außerhalb der Schule.</p>
             <ul>
               <li><span><span data-seats>420</span> Plätze in der Aula, freie Platzwahl</span></li>
-              <li>Verkauf Mittwoch und Donnerstag in der 2. Pause</li>
-              <li>Im Aufenthaltsraum, bar bezahlen, Ticket auf Papier</li>
+              <li>Tickets ab den Faschingsferien</li>
+              <li>Genaue Verkaufszeiten folgen hier und auf Instagram</li>
             </ul>
             <div class="cta">
               <button class="btn" type="button" data-buy data-when="live">Ticket sichern <span class="arr" aria-hidden="true">→</span></button>
@@ -600,6 +602,7 @@ footer { margin-top: 0; border-top: 1px solid var(--line-2); font-size: 15px; co
           <p class="label">Acts gesucht</p>
           <h2 id="h-ca">Du willst auf die Bühne?</h2>
           <p>Singen, tanzen, zaubern, Sketche spielen oder etwas ganz anderes: Melde deinen Act an. Auch Lehrkräfte sind ausdrücklich eingeladen. Nach der Anmeldung meldet sich das Orga-Team innerhalb von ein bis zwei Wochen bei dir.</p>
+          <p class="now-open">Die <a href="anmeldung/">Anmeldung</a> ist ab sofort möglich.</p>
           <span class="due">Anmeldeschluss: <b data-due></b></span>
           <div class="cta">
             <a class="btn" id="signup" href="#" hidden>Act anmelden <span class="arr" aria-hidden="true">→</span></a>
@@ -649,15 +652,15 @@ footer { margin-top: 0; border-top: 1px solid var(--line-2); font-size: 15px; co
     <div class="wrap">
       <div class="page-head">
         <div><p class="label rise">Vorverkauf</p><h2 class="rise d1">Tickets</h2></div>
-        <p class="rise d2">Tickets gibt es Mittwoch und Donnerstag in der 2. Pause im Aufenthaltsraum. Du zahlst bar und bekommst dein Ticket direkt auf Papier.</p>
+        <p class="rise d2">Tickets gibt es ab den Faschingsferien. Die genauen Verkaufszeiten geben wir hier und auf Instagram bekannt.</p>
       </div>
       <div id="events" class="rise d3"></div>
       <div class="sale rise d3">
-        <div><small>Wann</small>Mittwoch und Donnerstag, 2. Pause</div>
-        <div><small>Wo</small>Im Aufenthaltsraum, bezahlt wird bar</div>
+        <div><small>Ab wann</small>Ab den Faschingsferien</div>
+        <div><small>Wann und wo</small>Genaue Zeiten folgen</div>
         <div><small>2 + 1</small>Zwei Tickets kaufen (10 €), ein drittes gratis für Familie oder Freunde</div>
       </div>
-      <p class="note">Tickets gibt es ausschließlich beim Verkauf in der Pause. Bitte kauf keine Tickets über Chats oder Direktnachrichten.</p>
+      <p class="note">Tickets gibt es ausschließlich beim offiziellen Verkauf an der Schule. Bitte kauf keine Tickets über Chats oder Direktnachrichten.</p>
     </div>
   </section>
 
@@ -692,11 +695,11 @@ footer { margin-top: 0; border-top: 1px solid var(--line-2); font-size: 15px; co
     <div class="wrap">
       <div class="page-head">
         <div><p class="label rise">Fragen?</p><h2 class="rise d1">Kontakt</h2></div>
-        <p class="rise d2">Fragen zu Tickets beantworten wir dir beim Verkauf in der Pause. Bei allem rund um den Abend und die Act-Anmeldung hilft dir das Orga-Team.</p>
+        <p class="rise d2">Bei Fragen zu Tickets, zum Abend und zur Act-Anmeldung hilft dir das Orga-Team.</p>
       </div>
       <div class="contact rise d3">
         <div class="rows">
-          <div class="row"><span class="k">Tickets</span><p class="v">Mi + Do, 2. Pause<small>Im Aufenthaltsraum, bar bezahlen</small></p><button class="chip" type="button" data-buy>Infos</button></div>
+          <div class="row"><span class="k">Tickets</span><p class="v">Ab den Faschingsferien<small>Genaue Zeiten folgen</small></p><button class="chip" type="button" data-buy>Infos</button></div>
           <div class="row" data-opt="insta"><span class="k">Instagram</span><p class="v" data-insta-text></p><a class="chip" data-insta href="#">Öffnen ↗</a></div>
           <div class="row" data-opt="mail"><span class="k">E-Mail</span><p class="v" data-mail-text></p><button class="chip" type="button" data-copy-mail><span class="lbl">Kopieren</span></button></div>
           <div class="row"><span class="k">Schule</span><p class="v">Staatliche Fachoberschule Holzkirchen<small data-address></small></p><a class="chip" href="https://www.fos-holzkirchen.de" target="_blank" rel="noopener">Website ↗</a></div>
@@ -802,15 +805,13 @@ const CONFIG = {
       seite: "galaabend/",
       name: "Galaabend",
       jahr: "2027",
-      kicker: "Die große Bühnenshow",
+      kicker: "Die Bühnenshow im März",
       tagline: "Eine Bühnenshow von Schüler:innen und Lehrkräften: Musik, Tanz, Comedy, Theater und mehr.",
-      terminOffen: true,                           // Datum steht noch nicht fest: wird als „offen“ angezeigt,
-      start: "2027-02-01T00:00:00",                // start dient dann nur der Reihenfolge und wird nirgends gezeigt
-      ganztags: true,
-      ende: null,
-      datumText: "Termin offen",
-      datumKurz: "Termin offen",
-      zeitText: "Datum und Uhrzeit folgen",
+      start: "2027-03-18T19:00:00",                // Beginn
+      ende: null,                                  // Ende noch offen
+      datumText: "Do, 18. März 2027",
+      datumKurz: "18.03.2027",
+      zeitText: "Beginn 19:00",
       ort: "Aula der FOS Holzkirchen",
       ortZusatz: "Jörg-Hube-Straße 2, 83607 Holzkirchen",
       preise: [
@@ -821,8 +822,9 @@ const CONFIG = {
       kontingent: null,
       plaetze: 420,
       ausweis: false,                              // kein Ausweis am Einlass nötig
-      verkaufAb: null,                             // Verkaufsstart steht noch nicht fest
-      vorverkauf: "Tickets gibt es Mittwoch und Donnerstag in der 2. Pause im Aufenthaltsraum. Den Verkaufsstart geben wir hier und auf Instagram bekannt.",
+      verkaufAb: null,                             // genauer Verkaufsstart steht noch nicht fest
+      verkaufHinweis: "Tickets ab den Faschingsferien", // ersetzt Status und Verkaufszeiten, solange es keinen genauen Start gibt
+      vorverkauf: "Tickets gibt es ab den Faschingsferien. Die genauen Verkaufszeiten geben wir hier und auf Instagram bekannt.",
       dresscode: "Kein Dresscode, komm, wie du magst",
       anmeldungUrl: "anmeldung/",                  // Link zur Act-Anmeldung (leer = „Anmeldung öffnet bald“)
       // Act-Anmeldung (galaabend/anmeldung/): schickt die Angaben an ein Google-Formular.
@@ -840,10 +842,10 @@ const CONFIG = {
       ablaufFertig: true,                          // kompletter Ablauf, kein „weiteres Programm folgt“
       ablauf: [
         ["Einlass", "Freie Platzwahl"],
-        ["Teil 1", "Erster Teil der Show"],
+        ["19:00", "Erster Teil der Show"],
         ["Pause", "Kurz durchatmen"],
         ["Teil 2", "Zweiter Teil der Show"],
-        ["Ende", "Uhrzeiten noch offen"]
+        ["Ende", "Uhrzeit folgt"]
       ],
       highlights: [
         ["mic", "Musik & Tanz", "Bands, Gesang, Instrumentalstücke und Choreos."],
@@ -857,15 +859,15 @@ const CONFIG = {
         ["Was kostet ein Ticket?",
          "Ein Ticket kostet 5 €. Wer zwei Tickets kauft (10 €), bekommt ein drittes gratis dazu, also drei Tickets für 10 €. Das Gratisticket ist für eine Person von außerhalb der Schule gedacht, zum Beispiel Familie oder Freunde."],
         ["Steht der Termin schon fest?",
-         "Nein, Datum und Uhrzeit sind noch offen. Sobald sie feststehen, findest du sie hier und auf Instagram."],
+         "Ja: Donnerstag, 18. März 2027, in der Aula. Beginn ist um 19:00 Uhr."],
         ["Ab wann gibt es Tickets?",
-         "Der Verkaufsstart steht noch nicht fest. Dann gibt es die Tickets Mittwoch und Donnerstag in der 2. Pause im Aufenthaltsraum, bezahlt wird bar. Wir geben den Start hier und auf Instagram bekannt."],
+         "Ab den Faschingsferien. Die genauen Verkaufszeiten geben wir hier und auf Instagram bekannt."],
         ["Gibt es feste Sitzplätze?",
          "Nein, es gilt freie Platzwahl. In der Aula gibt es 420 Plätze."],
         ["Gibt es Alkohol?",
          "Nein, der Galaabend ist alkoholfrei."],
         ["Wie kann ich selbst auftreten?",
-         "Melde deinen Act bis zum 23. Dezember 2026 an. Ein Act dauert höchstens 10 Minuten, erlaubt ist fast alles, was auf eine Bühne passt. Nach der Anmeldung meldet sich das Orga-Team innerhalb von ein bis zwei Wochen bei dir."],
+         "Die Anmeldung ist ab sofort möglich. Melde deinen Act bis zum 23. Dezember 2026 an. Ein Act dauert höchstens 10 Minuten, erlaubt ist fast alles, was auf eine Bühne passt. Nach der Anmeldung meldet sich das Orga-Team innerhalb von ein bis zwei Wochen bei dir."],
         ["Gibt es etwas zu essen und zu trinken?",
          "Ob es in der Pause einen Verkauf gibt, ist noch offen. Wir geben es hier rechtzeitig bekannt."]
       ]
@@ -949,8 +951,8 @@ const CONFIG = {
     const ab = e.verkaufAb ? new Date(e.verkaufAb + "T00:00:00") : null;
     e.verkaufAbText = ab ? ab.toLocaleDateString("de-DE", { day: "numeric", month: "long" }) : "";
     if (ab && Date.now() >= ab.getTime()) { e.status = "live"; e.statusText = "Verkauf läuft"; }
-    else { e.status = "soon"; e.statusText = ab ? `Verkauf ab ${e.verkaufAbText}` : "Verkaufsstart noch offen"; }
-    e.statusInfo = e.verkaufOrte ? "An FOS und Gymnasium" : "Mi + Do, 2. Pause";
+    else { e.status = "soon"; e.statusText = ab ? `Verkauf ab ${e.verkaufAbText}` : e.verkaufHinweis || "Verkaufsstart noch offen"; }
+    e.statusInfo = e.verkaufOrte ? "An FOS und Gymnasium" : e.verkaufHinweis && !ab ? "Genaue Zeiten folgen" : "Mi + Do, 2. Pause";
   });
   // „27. November“, solange ein Verkaufsstart noch in der Zukunft liegt, sonst leer
   const abText = (d, opt = { day: "numeric", month: "long" }) => {
@@ -1344,8 +1346,11 @@ a,button,label,summary,[role=tab]{touch-action:manipulation}
     const insta = CONFIG.instagram ? ` Auf Instagram (<b>@${esc(CONFIG.instagram)}</b>) sagen wir Bescheid.` : "";
     detail.innerHTML = prices(ev, "sheet-prices") + quota(ev) + (ev.status !== "soon" ? ""
       : ev.verkaufAbText ? `<p class="sheet-note">Der Verkauf startet am <b>${esc(ev.verkaufAbText)}</b>.</p>`
+      : ev.verkaufHinweis ? `<p class="sheet-note">Die genauen Verkaufszeiten geben wir noch bekannt.${insta}</p>`
       : `<p class="sheet-note">Der Verkaufsstart steht noch nicht fest.${insta}</p>`);
-    $(".sheet-orte", sheet).innerHTML = (ev.verkaufOrte
+    $(".sheet-orte", sheet).innerHTML = ev.verkaufHinweis && ev.status === "soon"
+      ? `<li>${ICON.cal}<span>${esc(ev.verkaufHinweis)}</span></li>`
+      : (ev.verkaufOrte
       ? ev.verkaufOrte.map((o) => `<li>${ICON.pin}<span><b>${esc(o.name)}:</b> ${esc(o.tage)}, ${esc(o.pause)}, ${esc(o.wo)}${abText(o.ab) ? ` (ab ${esc(abText(o.ab))})` : ""}</span></li>`).join("")
       : `<li>${ICON.cal}<span>${esc(CONFIG.verkauf.wann)}</span></li><li>${ICON.pin}<span>${esc(CONFIG.verkauf.wo)}</span></li>`) +
       `<li>${ICON.card}<span>${esc(CONFIG.verkauf.zahlung)}</span></li>` +
