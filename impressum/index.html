@@ -436,7 +436,7 @@ const CONFIG = {
     e.verkaufAbText = ab ? ab.toLocaleDateString("de-DE", { day: "numeric", month: "long" }) : "";
     if (ab && Date.now() >= ab.getTime()) { e.status = "live"; e.statusText = "Verkauf läuft"; }
     else { e.status = "soon"; e.statusText = ab ? `Verkauf ab ${e.verkaufAbText}` : "Verkaufsstart noch offen"; }
-    e.statusInfo = e.verkaufOrte ? "FOS und Gymnasium, 2. Pause" : "Mi + Do, 2. Pause";
+    e.statusInfo = e.verkaufOrte ? "An FOS und Gymnasium" : "Mi + Do, 2. Pause";
   });
   // „27. November“, solange ein Verkaufsstart noch in der Zukunft liegt, sonst leer
   const abText = (d, opt = { day: "numeric", month: "long" }) => {
@@ -509,6 +509,11 @@ html.sheet-open{overflow:hidden}
 .kf dd small{display:block;margin-top:3px;font-size:13px;font-weight:400;opacity:.72}
 .kf-tbc{display:inline-block;margin-left:6px;padding:1px 7px;border:1px solid currentColor;border-radius:99px;font-size:10px;font-style:normal;font-weight:600;letter-spacing:.08em;text-transform:uppercase;vertical-align:2px;opacity:.8;white-space:nowrap}
 /* 2 × 2: schmale Spalten (kf--2), Karten (kf--compact) und alle Handys */
+.kf .kf-i.kf-verkauf{grid-column:1/-1;padding-left:0;padding-right:0;border-left:0;border-top:1px solid var(--kf-line,rgba(127,127,127,.3))}
+.kf .kf-verkauf dt{margin-bottom:12px}
+.kf-verkauf dd{display:grid;grid-template-columns:1fr 1fr;gap:12px 28px}
+.kf-ort{min-width:0}.kf-ort b{display:block;margin-bottom:3px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--kf-label,inherit)}
+@media (max-width:440px){.kf-verkauf dd{grid-template-columns:1fr}}
 .kf--2,.kf--compact{grid-template-columns:1fr 1fr}
 .kf--2 .kf-i:nth-child(odd),.kf--compact .kf-i:nth-child(odd){padding-left:0;padding-right:16px;border-left:0}
 .kf--2 .kf-i:nth-child(even),.kf--compact .kf-i:nth-child(even){padding-left:16px;padding-right:0}
@@ -596,7 +601,10 @@ a,button,label,summary,[role=tab]{touch-action:manipulation}
     ["wo", "Wo", ph(ev.ort), ev.ortZusatz ? ph(ev.ortZusatz) : ""],
     ["preis", "Preis", ev.preise.length ? ph(ev.preise[0].preis) : "Preis folgt", ev.preisInfo ? ph(ev.preisInfo) : ""],
     ["tickets", "Tickets", esc(ev.statusText), ev.statusInfo ? ph(ev.statusInfo) : ""]
-  ].map(([c, k, v, sub]) => `<div class="kf-i kf-${c}"><dt>${k}</dt><dd>${nb(v)}${sub ? `<small>${nb(sub)}</small>` : ""}</dd></div>`).join("");
+  ].map(([c, k, v, sub]) => `<div class="kf-i kf-${c}"><dt>${k}</dt><dd>${nb(v)}${sub ? `<small>${nb(sub)}</small>` : ""}</dd></div>`).join("") +
+  // Zusätzliche breite Zeile mit den Verkaufsorten (nur Events mit verkaufOrte, nicht in der kurzen Fassung)
+  (!kurz && ev.verkaufOrte ? `<div class="kf-i kf-verkauf"><dt>Verkauf</dt><dd>${ev.verkaufOrte.map((o) =>
+    `<span class="kf-ort"><b>${esc(o.name)}</b>${esc(o.tage)}, ${esc(o.pause)}<small>${esc(o.wo)}${abText(o.ab) ? ` · ab ${esc(abText(o.ab))}` : ""}</small></span>`).join("")}</dd></div>` : "");
   const buyLabel = (ev) => ev.status === "live" ? "Ticket kaufen" : ev.status === "soldout" ? "Ausverkauft" : "Infos zum Verkauf";
 
   /* ---- Event-Karten ---- */
