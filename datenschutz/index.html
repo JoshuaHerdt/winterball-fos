@@ -906,6 +906,23 @@ a,button,label,summary,[role=tab]{touch-action:manipulation}
     });
   }
 
+  /* ---- Untere Leiste auf dem Handy ----
+     Auf schmalen Bildschirmen ist die Reiter-Leiste unten fixiert. Steckt sie dabei im
+     klebenden Kopfbereich (position: sticky), setzt Safari auf dem iPhone sie manchmal
+     mitten auf den Bildschirm. Deshalb hängt sie, solange sie fixiert ist, direkt am body. */
+  const tabsNav = $("nav.tabs");
+  if (tabsNav) {
+    const home = tabsNav.parentNode, mark = document.createComment("tabs");
+    home.insertBefore(mark, tabsNav);
+    const place = () => {
+      const fixed = getComputedStyle(tabsNav).position === "fixed";
+      if (fixed && tabsNav.parentNode !== document.body) document.body.appendChild(tabsNav);
+      else if (!fixed && tabsNav.parentNode === document.body) home.insertBefore(tabsNav, mark);
+    };
+    place();
+    addEventListener("resize", place);
+  }
+
   /* ---- Reiter (mit Tastatur & weichem Übergang) ---- */
   const tabs = ["start", "events", "infos", "kontakt"], alias = { tickets: "events" };
   $$("[data-panel]").forEach((p) => { p.id = p.id || "p-" + p.dataset.panel; p.setAttribute("role", "tabpanel"); p.tabIndex = -1; });
