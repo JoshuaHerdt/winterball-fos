@@ -222,6 +222,17 @@ html.menu-open .top { position: fixed; left: 0; right: 0; }
 
 /* ---------- So geht's & Kontakt ---------- */
 .sec { padding-block: 96px 0; }
+.wev { padding-block: 88px 0; }
+.wev-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 16px; }
+.wev-i { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 18px; align-items: start; padding: 22px; border: 1px solid var(--line); border-radius: 18px; background: #fff; }
+.wev-i h3 { margin: 0; font: 400 26px/1.1 var(--f-serif); letter-spacing: -.01em; hyphens: auto; -webkit-hyphens: auto; overflow-wrap: break-word; }
+@media (max-width: 400px) { .wev-i { grid-template-columns: 52px minmax(0, 1fr); gap: 14px; padding: 18px; } .wev-i .m-date { height: 52px; } .wev-i h3 { font-size: 23px; } }
+.wev-when { margin: 6px 0 0; font-size: 14px; font-weight: 600; color: var(--blue); }
+.wev-txt { margin: 8px 0 0; font-size: 15px; color: var(--ink-2); }
+.wev-ort { display: inline-block; margin-top: 12px; padding: 4px 10px; border-radius: 999px; background: var(--tint); font-size: 13px; color: var(--ink-2); }
+.wev-i.past { opacity: .55; }
+.wev-i.past .wev-when::after { content: " · vorbei"; color: var(--ink-3); }
+.wev-by { margin: 18px 0 0; font-size: 13px; color: var(--ink-3); }
 #steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .step { display: grid; gap: 6px; align-content: start; padding: 26px 24px 28px; border-radius: 14px; background: #fff; border: 1px solid var(--line); }
 .step-n { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--tint); color: var(--blue); font-weight: 600; font-size: 15px; margin-bottom: 10px; }
@@ -357,6 +368,7 @@ footer { margin-top: 96px; border-top: 1px solid var(--line); font-size: 14px; c
       <div class="menu-col">
         <p class="label">Events</p>
         <div id="menuEvents"></div>
+        <a class="m-link" href="#weitere"><span>Weitere Events<small>Basar, Mottotage, Valentinstag und mehr</small></span><span class="m-ic" aria-hidden="true">→</span></a>
       </div>
       <div class="menu-col">
         <p class="label">Mehr</p>
@@ -420,6 +432,17 @@ footer { margin-top: 96px; border-top: 1px solid var(--line); font-size: 14px; c
     </div>
   </section>
 
+  <section class="wev" id="weitere" aria-labelledby="h-wev">
+    <div class="wrap">
+      <div class="head">
+        <div><p class="label">Rund ums Schuljahr</p><h2 id="h-wev">Weitere Events</h2></div>
+        <p>Weitere Aktionen und Termine im Schuljahr, ganz ohne Tickets. Neue Termine tragen wir hier ein, sobald sie feststehen.</p>
+      </div>
+      <ol class="wev-list" id="wevList"></ol>
+      <p class="wev-by" id="wevBy"></p>
+    </div>
+  </section>
+
   <div class="wrap">
     <section class="sec" id="so-gehts" aria-labelledby="h-st">
       <div class="head"><div><p class="label">So geht's</p><h2 id="h-st">In drei Schritten zum Ticket</h2></div><p>Tickets gibt es nur beim Verkauf in der Pause. Bezahlt wird bar.</p></div>
@@ -453,6 +476,7 @@ footer { margin-top: 96px; border-top: 1px solid var(--line); font-size: 14px; c
       <a href="winterball/">Winterball 2026</a>
       <a href="galaabend/">Galaabend 2027</a>
       <a href="abiball/">Abiball 2027</a>
+      <a href="#weitere">Weitere Events</a>
       <button type="button" data-open-cal>Kalender</button>
       <button type="button" data-buy>Ticketverkauf</button>
     </nav>
@@ -630,6 +654,23 @@ const CONFIG = {
       ablauf: []
     }
   ],
+  // Weitere Events (ohne Tickets): erscheinen auf der Startseite unter „Weitere Events“, in dieser Reihenfolge.
+  // datum = Tag im Format JJJJ-MM-TT (für die Datumsbox und „vorbei“), null = Termin steht noch nicht fest
+  weitere: {
+    veranstalter: "AG Schulleben",
+    liste: [
+      { name: "Weihnachtsbasar", datum: "2026-12-23", wann: "Mi, 23. Dezember 2026 · ganzer Tag", ort: "Aula und Schulgebäude",
+        text: "Jede Klasse hat einen eigenen Stand oder eine eigene Aktion. Schau vorbei und lass dich überraschen." },
+      { name: "Mottotage", datum: null, wann: "Termin folgt", ort: "",
+        text: "Ein paar Tage, an denen jeder Tag ein eigenes Motto hat. Die Mottos geben wir rechtzeitig bekannt." },
+      { name: "Valentinstag", datum: null, wann: "Rund um den 14. Februar · Termin folgt", ort: "",
+        text: "Rosen verschenken: Die SMV gibt euren Klassensprecher:innen Bestellzettel. Ausgefüllt gebt ihr sie bis zum Abgabetag im Sekretariat ab, und wir liefern die Rosen aus." },
+      { name: "Volleyballturnier", datum: null, wann: "Termin folgt", ort: "Turnhalle",
+        text: "Für alle 12. und 13. Klassen." },
+      { name: "Zeugnisverleihung", datum: "2027-07-09", wann: "Fr, 9. Juli 2027", ort: "Aula",
+        text: "Die feierliche Übergabe der Abschlusszeugnisse." }
+    ]
+  },
   highlights: [
     ["music", "Musik & Tanz", "Die Tanzfläche gehört euch, den ganzen Abend lang."],
     ["star", "Abendgarderobe", "Ein Anlass, sich richtig schick zu machen."],
@@ -1270,6 +1311,20 @@ a,button,label,summary,[role=tab]{touch-action:manipulation}
   document.getElementById("heroLos").innerHTML = next.status === "live"
     ? `<button class="btn" type="button" data-buy="${esc(next.id)}">Ticket für den ${esc(next.name)} <span class="arr" aria-hidden="true">→</span></button>`
     : `<a class="btn" href="${esc(next.seite || "#programm")}">Mehr zum ${esc(next.name)} <span class="arr" aria-hidden="true">→</span></a>`;
+
+  /* ---- Weitere Events ---- */
+  const wev = window.WB.config.weitere;
+  if (wev && wev.liste.length) {
+    const heute = new Date(); heute.setHours(0, 0, 0, 0);
+    document.getElementById("wevList").innerHTML = wev.liste.map((a) => {
+      const d = a.datum ? new Date(a.datum + "T00:00:00") : null;
+      const box = d ? `<span class="m-date" aria-hidden="true"><b>${d.getDate()}</b><small>${MON[d.getMonth()]}</small></span>`
+        : `<span class="m-date" aria-hidden="true"><b>?</b><small>offen</small></span>`;
+      return `<li class="wev-i${d && d < heute ? " past" : ""}">${box}<div><h3>${esc(a.name)}</h3><p class="wev-when">${esc(a.wann)}</p>` +
+        `<p class="wev-txt">${esc(a.text)}</p>${a.ort ? `<span class="wev-ort">${esc(a.ort)}</span>` : ""}</div></li>`;
+    }).join("");
+    document.getElementById("wevBy").textContent = wev.veranstalter ? `Organisiert von der ${wev.veranstalter}.` : "";
+  } else document.getElementById("weitere").hidden = true;
 
   /* ---- Menü ---- */
   const menu = document.getElementById("menu"), mBtn = document.getElementById("menuBtn");

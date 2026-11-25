@@ -555,6 +555,23 @@ const CONFIG = {
       ablauf: []
     }
   ],
+  // Weitere Events (ohne Tickets): erscheinen auf der Startseite unter „Weitere Events“, in dieser Reihenfolge.
+  // datum = Tag im Format JJJJ-MM-TT (für die Datumsbox und „vorbei“), null = Termin steht noch nicht fest
+  weitere: {
+    veranstalter: "AG Schulleben",
+    liste: [
+      { name: "Weihnachtsbasar", datum: "2026-12-23", wann: "Mi, 23. Dezember 2026 · ganzer Tag", ort: "Aula und Schulgebäude",
+        text: "Jede Klasse hat einen eigenen Stand oder eine eigene Aktion. Schau vorbei und lass dich überraschen." },
+      { name: "Mottotage", datum: null, wann: "Termin folgt", ort: "",
+        text: "Ein paar Tage, an denen jeder Tag ein eigenes Motto hat. Die Mottos geben wir rechtzeitig bekannt." },
+      { name: "Valentinstag", datum: null, wann: "Rund um den 14. Februar · Termin folgt", ort: "",
+        text: "Rosen verschenken: Die SMV gibt euren Klassensprecher:innen Bestellzettel. Ausgefüllt gebt ihr sie bis zum Abgabetag im Sekretariat ab, und wir liefern die Rosen aus." },
+      { name: "Volleyballturnier", datum: null, wann: "Termin folgt", ort: "Turnhalle",
+        text: "Für alle 12. und 13. Klassen." },
+      { name: "Zeugnisverleihung", datum: "2027-07-09", wann: "Fr, 9. Juli 2027", ort: "Aula",
+        text: "Die feierliche Übergabe der Abschlusszeugnisse." }
+    ]
+  },
   highlights: [
     ["music", "Musik & Tanz", "Die Tanzfläche gehört euch, den ganzen Abend lang."],
     ["star", "Abendgarderobe", "Ein Anlass, sich richtig schick zu machen."],
