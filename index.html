@@ -223,15 +223,35 @@ html.menu-open .top { position: fixed; left: 0; right: 0; }
 /* ---------- So geht's & Kontakt ---------- */
 .sec { padding-block: 96px 0; }
 .wev { padding-block: 88px 0; }
-.wev-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 16px; }
-.wev-i { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 18px; align-items: start; padding: 22px; border: 1px solid var(--line); border-radius: 18px; background: #fff; }
-.wev-i h3 { margin: 0; font: 400 26px/1.1 var(--f-serif); letter-spacing: -.01em; hyphens: auto; -webkit-hyphens: auto; overflow-wrap: break-word; }
-@media (max-width: 400px) { .wev-i { grid-template-columns: 52px minmax(0, 1fr); gap: 14px; padding: 18px; } .wev-i .m-date { height: 52px; } .wev-i h3 { font-size: 23px; } }
-.wev-when { margin: 6px 0 0; font-size: 14px; font-weight: 600; color: var(--blue); }
-.wev-txt { margin: 8px 0 0; font-size: 15px; color: var(--ink-2); }
-.wev-ort { display: inline-block; margin-top: 12px; padding: 4px 10px; border-radius: 999px; background: var(--tint); font-size: 13px; color: var(--ink-2); }
+.wev-list { list-style: none; margin: 0; padding: 0; background: #fff; border: 1px solid var(--line); border-radius: 22px; overflow: hidden; box-shadow: 0 18px 50px -34px rgba(21, 32, 45, .35); }
+.wev-i + .wev-i { border-top: 1px solid var(--line); }
+.wev-i details > summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 56px minmax(0, 1fr) 36px; gap: 18px; align-items: center; padding: 18px 22px; transition: background .2s; }
+.wev-i details > summary::-webkit-details-marker { display: none; }
+.wev-i details > summary:hover { background: var(--tint); }
+.wev-i details > summary:focus-visible { outline: 2px solid var(--blue); outline-offset: -2px; }
+.wev-i .m-date { height: 56px; }
+.wev-name { display: block; margin: 0; font: 400 24px/1.15 var(--f-serif); letter-spacing: -.01em; hyphens: auto; -webkit-hyphens: auto; overflow-wrap: break-word; }
+.wev-when { display: block; margin-top: 3px; font-size: 14px; font-weight: 600; color: var(--blue); }
+.wev-chev { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--tint); color: var(--blue); transition: transform .3s cubic-bezier(.2, .8, .2, 1), background .2s; }
+.wev-chev svg { width: 16px; height: 16px; }
+.wev-i details[open] .wev-chev { transform: rotate(180deg); background: var(--blue); color: #fff; }
+.wev-body { padding: 0 22px 22px calc(22px + 56px + 18px); }
+.wev-txt { margin: 0; font-size: 15px; line-height: 1.6; color: var(--ink-2); max-width: 60ch; }
+.wev-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.wev-ort { display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px; border-radius: 999px; background: var(--tint); font-size: 13px; color: var(--ink-2); }
+.wev-ort svg { width: 14px; height: 14px; color: var(--blue); }
+.wev-i details[open] .wev-body { animation: wev-in .35s ease both; }
+@keyframes wev-in { from { opacity: 0; transform: translateY(-6px); } }
 .wev-i.past { opacity: .55; }
 .wev-i.past .wev-when::after { content: " · vorbei"; color: var(--ink-3); }
+@media (max-width: 520px) {
+  .wev-i details > summary { grid-template-columns: 48px minmax(0, 1fr) 32px; gap: 14px; padding: 16px; }
+  .wev-i .m-date { height: 48px; }
+  .wev-i .m-date b { font-size: 22px; }
+  .wev-name { font-size: 21px; }
+  .wev-chev { width: 32px; height: 32px; }
+  .wev-body { padding: 0 16px 18px 16px; }
+}
 .wev-by { margin: 18px 0 0; font-size: 13px; color: var(--ink-3); }
 #steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .step { display: grid; gap: 6px; align-content: start; padding: 26px 24px 28px; border-radius: 14px; background: #fff; border: 1px solid var(--line); }
@@ -436,7 +456,7 @@ footer { margin-top: 96px; border-top: 1px solid var(--line); font-size: 14px; c
     <div class="wrap">
       <div class="head">
         <div><p class="label">Rund ums Schuljahr</p><h2 id="h-wev">Weitere Events</h2></div>
-        <p>Weitere Aktionen und Termine im Schuljahr, ganz ohne Tickets. Neue Termine tragen wir hier ein, sobald sie feststehen.</p>
+        <p>Weitere Aktionen und Termine im Schuljahr, ganz ohne Tickets. Tipp auf ein Event, um mehr zu erfahren.</p>
       </div>
       <ol class="wev-list" id="wevList"></ol>
       <p class="wev-by" id="wevBy"></p>
@@ -1316,12 +1336,16 @@ a,button,label,summary,[role=tab]{touch-action:manipulation}
   const wev = window.WB.config.weitere;
   if (wev && wev.liste.length) {
     const heute = new Date(); heute.setHours(0, 0, 0, 0);
+    const pin = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>';
+    const chev = '<span class="wev-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>';
     document.getElementById("wevList").innerHTML = wev.liste.map((a) => {
       const d = a.datum ? new Date(a.datum + "T00:00:00") : null;
       const box = d ? `<span class="m-date" aria-hidden="true"><b>${d.getDate()}</b><small>${MON[d.getMonth()]}</small></span>`
         : `<span class="m-date" aria-hidden="true"><b>?</b><small>offen</small></span>`;
-      return `<li class="wev-i${d && d < heute ? " past" : ""}">${box}<div><h3>${esc(a.name)}</h3><p class="wev-when">${esc(a.wann)}</p>` +
-        `<p class="wev-txt">${esc(a.text)}</p>${a.ort ? `<span class="wev-ort">${esc(a.ort)}</span>` : ""}</div></li>`;
+      return `<li class="wev-i${d && d < heute ? " past" : ""}"><details>` +
+        `<summary>${box}<span><strong class="wev-name">${esc(a.name)}</strong><span class="wev-when">${esc(a.wann)}</span></span>${chev}</summary>` +
+        `<div class="wev-body"><p class="wev-txt">${esc(a.text)}</p>` +
+        `${a.ort ? `<div class="wev-meta"><span class="wev-ort">${pin}${esc(a.ort)}</span></div>` : ""}</div></details></li>`;
     }).join("");
     document.getElementById("wevBy").textContent = wev.veranstalter ? `Organisiert von der ${wev.veranstalter}.` : "";
   } else document.getElementById("weitere").hidden = true;
