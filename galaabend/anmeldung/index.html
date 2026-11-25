@@ -412,6 +412,7 @@ const CONFIG = {
   },
   instagram: "fos_holzkirchen_smv",               // Instagram-Name ohne @ (leer = ausgeblendet)
   mail: "tickets.fosholzkirchen@gmail.com",        // Kontakt-E-Mail (leer = ausgeblendet)
+  zaehler: "https://joshuaherdt.goatcounter.com/count", // Besucherzählung mit GoatCounter (leer = aus)
   // Angaben für Impressum und Datenschutzerklärung (§ 5 DDG, Art. 13 DSGVO)
   verantwortlich: {
     name: "Joshua Herdt (Schülersprecher)",        // verantwortlich für die Website
@@ -615,6 +616,16 @@ const CONFIG = {
     if (!d) return ""; const t = new Date(d + "T00:00:00");
     return Date.now() < t.getTime() ? t.toLocaleDateString("de-DE", opt) : "";
   };
+  /* ---- Besucherzählung (GoatCounter): ohne Cookies, ohne fremdes Skript ----
+     Schickt pro Seitenaufruf eine kleine Anfrage mit Seite, Herkunft, Titel und Bildschirmgröße.
+     Nicht auf dem eigenen Rechner (localhost) und nicht, wenn der Browser „Do Not Track“ meldet. */
+  if (CONFIG.zaehler && /^https?:$/.test(location.protocol) && !/localhost|127\.0\.0\.1|claude/.test(location.hostname)
+      && navigator.doNotTrack !== "1" && window.doNotTrack !== "1") {
+    const herkunft = document.referrer && !document.referrer.startsWith(location.origin) ? document.referrer : "";
+    const q = new URLSearchParams({ p: location.pathname, q: location.search, r: herkunft, t: document.title,
+      s: [screen.width, screen.height, window.devicePixelRatio || 1].join(","), rnd: Math.random().toString(36).slice(2) });
+    new Image().src = CONFIG.zaehler + "?" + q;
+  }
   const ALL = CONFIG.events.slice();
   if (window.WB_ONLY) CONFIG.events = CONFIG.events.filter((e) => e.id === window.WB_ONLY);
   const single = CONFIG.events.length === 1;
